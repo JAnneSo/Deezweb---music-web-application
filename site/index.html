@@ -5,12 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/css/index.css">
+    <!-- <link rel="stylesheet" href="style/css/index.css"> -->
     <title>Accueil</title>
 </head>
 
 <body>
+    <input type="search" id="search">
+    <input type="radio" name="order" id="order-album" value="ALBUM_ASC">
+    <label for="order-album">Album</label>
+    <input type="radio" name="order" id="order-artist" value="ARTIST_ASC">
+    <label for="order-artist">Artiste</label>
+    <input type="radio" name="order" id="order-title" value="TRACK_ASC">
+    <label for="order-title">Titre</label>
+    <input type="radio" name="order" id="order-popular" value="RANKING">
+    <label for="order-popular">Les plus populaires</label>
+    <input type="radio" name="order" id="order-rate" value="RATING_ASC">
+    <label for="order-rate">Les mieux notés</label>
+    <button id="submit"><i class="fas fa-search"></i></button>
 
+    <section>
+        <h1><span id="nb-find"></span> résultas trouvés</h1>
+        <div id="research"></div>
+        <!-- <button id="prev-btn">Prev</button>
+        <button id="next-btn">Next</button> -->
+    </section>
+    <section id="album-section">
+        <h2>Albums</h2>
+
+    </section>
+    <section id="artist-section">
+        <h2>Artistes</h2>
+
+    </section>
+    <section id="playlist-section">
+        <h2>Playlists</h2>
+
+    </section>
+    <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
+    <script src="js/fonctions.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
