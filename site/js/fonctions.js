@@ -150,6 +150,6 @@ function search(requete) {
         })
         .catch(() => {
             console.log("KO");
-            alert("Une erreur est survenu");
+            //alert("Une erreur est survenu");
         });
 }

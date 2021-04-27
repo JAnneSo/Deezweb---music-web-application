@@ -10,33 +10,10 @@ if (search_params.has('id')) {
     // appel API
     fetch(`https://api.deezer.com/album/${id}`)
         .then((response) => {
-            response.json();
-            console.log(response);
+            return response.json();
         })
         .then((album) => {
-
-            console.log(album);
-            console.log("test");
-            let cardElt = document.createElement("figure");
-            let imgElt = document.createElement("img");
-            imgElt.setAttribute("src", album.cover);
-
-            // imgElt.setAttribute("alt", "cover");
-            let captionElt = document.createElement("figcaption");
-            let titleElt = document.createElement("p");
-            titleElt.textContent = album.title;
-
-            let artisteElt = document.createElement("p");
-
-            console.log(album.artist);
-            // artisteElt.textContent = album.artist.name;
-
-            artisteElt.textContent = "name";
-            captionElt.appendChild(titleElt);
-            captionElt.appendChild(artisteElt);
-            cardElt.appendChild(imgElt);
-            cardElt.appendChild(captionElt);
-            document.getElementById("album").appendChild(cardElt);
+            document.getElementById("album").appendChild(createAlbumCard(album));
             console.log("OK");
         })
         .catch((err) => {

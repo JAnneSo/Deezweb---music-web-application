@@ -1,0 +1,245 @@
+/*  COLORS  */
+/*  FONTS  */
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro.ttf") format("ttf");
+}
+
+/*  BODY  */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: SF Pro;
+  font-size: 12px;
+  background: #212121;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body a,
+body ul,
+body button,
+body input {
+  margin: 0;
+  padding: 0;
+}
+
+body a {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+body ul {
+  list-style-type: none;
+}
+
+body button,
+body input {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  padding-top: 20px;
+  background: #2a2a2a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+aside .logo {
+  color: #bdbdbd;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 auto 30px;
+}
+
+aside nav {
+  margin: 30px 0;
+}
+
+aside .menu {
+  width: 90%;
+  margin: 0 auto;
+}
+
+aside .menu li {
+  margin: 10px 0;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+aside .menu li:hover {
+  background: #353535;
+}
+
+aside .menu .nav-link {
+  font-size: 14px;
+  color: #828282;
+}
+
+aside .menu .link-active {
+  color: #e0e0e0;
+}
+
+aside .menu .fa {
+  margin-right: 10px;
+  font-size: 14px;
+  color: red;
+}
+
+.search-container {
+  background: #e0e0e0;
+  border-radius: 5px;
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  background: #353535;
+}
+
+.search-container input[type="search"] {
+  width: 100%;
+  padding: 5px 20px;
+  font-size: 14px;
+  padding: 5px 15px 5px 20px;
+  color: #e0e0e0;
+}
+
+.search-container button {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  margin: auto 5px;
+  padding: 0 2px;
+  font-size: 15px;
+  cursor: pointer;
+  background: #353535;
+  z-index: 1;
+  height: 20px;
+}
+
+.search-container button i {
+  color: #e0e0e0;
+}
+
+.container-main {
+  margin-left: 200px;
+  width: calc(100vw - 200px);
+}
+
+/*  HEADER  */
+header {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 10%;
+  height: 70px;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #272727;
+  position: fixed;
+  top: 0;
+  width: calc(100vw - 200px);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+  background: rgba(33, 33, 33, 0.5);
+}
+
+header .controls-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 130px;
+  margin-right: 10%;
+}
+
+header .controls-container .control {
+  color: #828282;
+  cursor: pointer;
+}
+
+header .controls-container .control:hover {
+  color: #bdbdbd;
+}
+
+header .controls-container .before,
+header .controls-container .next {
+  font-size: 20px;
+}
+
+header .controls-container .play i {
+  font-size: 28px;
+  position: relative;
+  top: -1px;
+}
+
+header .audio-info-container {
+  height: 65px;
+  width: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+header .audio-info-container div {
+  height: 100%;
+}
+
+header .audio-info-container .cover-container {
+  background: center no-repeat url("../../assets/images/music-solid.svg"), rgba(255, 255, 255, 0.4);
+  background-size: 50%;
+  width: 65px;
+}
+
+header .audio-info-container .info-container {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background: rgba(255, 255, 255, 0.2);
+  width: 285px;
+}
+
+main {
+  padding: 80px 10%;
+}
+
+h1,
+h2,
+h3 {
+  color: #e0e0e0;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+}

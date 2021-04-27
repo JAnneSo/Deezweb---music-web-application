@@ -5,43 +5,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style/css/index.css"> -->
+    <link rel="stylesheet" href="style/css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Accueil</title>
 </head>
 
 <body>
-    <input type="search" id="search">
-    <input type="radio" name="order" id="order-album" value="ALBUM_ASC">
-    <label for="order-album">Album</label>
-    <input type="radio" name="order" id="order-artist" value="ARTIST_ASC">
-    <label for="order-artist">Artiste</label>
-    <input type="radio" name="order" id="order-title" value="TRACK_ASC">
-    <label for="order-title">Titre</label>
-    <input type="radio" name="order" id="order-popular" value="RANKING">
-    <label for="order-popular">Les plus populaires</label>
-    <input type="radio" name="order" id="order-rate" value="RATING_ASC">
-    <label for="order-rate">Les mieux notés</label>
-    <button id="submit"><i class="fas fa-search"></i></button>
+    <aside>
+        <a href="index.html" class="logo">Deez'Web</a>
+        <div class="search-container">
+            <input type="search" id="side-search" placeholder="Rechercher"
+                aria-label="Rechercher parmi le contenu du site">
+            <button id="side-submit"><i class="fa fa-search"></i></button>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><i class="fa fa-home"></i><a href="#" class="nav-link link-active">Accueil</a></li>
+                <li><i class="fa fa-music"></i><a href="pages/explorer.html" class="nav-link">Explorer</a></li>
+                <li><i class="fa fa-search"></i><a href="pages/recherche.html" class="nav-link">Recherche</a></li>
+                <li><i class="fa fa-heart"></i><a href="pages/favoris.html" class="nav-link">Favoris</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="container-main">
+        <header>
+            <audio id="audio-song" src="assets/audio/Markvard-Desire.mp3"></audio>
+            <div class="controls-container">
+                <button class="control before" id="prev-song"><i class="fa fa-backward"></i></button>
+                <button class="control play" id="play-song"><i class="fa fa-play"></i></button>
+                <button class="control next" id="next-song"><i class="fa fa-forward"></i></button>
+                <button class="control infinite-loop"><i class="fa fa-repeat"></i></button>
+            </div>
+            <div class="audio-info-container">
+                <div class="cover-container">
+                </div>
+                <div class="info-container">
 
-    <section>
-        <h1><span id="nb-find"></span> résultas trouvés</h1>
-        <div id="research"></div>
-        <!-- <button id="prev-btn">Prev</button>
-        <button id="next-btn">Next</button> -->
-    </section>
-    <section id="album-section">
-        <h2>Albums</h2>
+                </div>
+            </div>
 
-    </section>
-    <section id="artist-section">
-        <h2>Artistes</h2>
 
-    </section>
-    <section id="playlist-section">
-        <h2>Playlists</h2>
+        </header>
 
-    </section>
-    <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
+        <main>
+            <h1>Accueil</h1>
+            <section>
+                <h2>Albums</h2>
+                <div id="albums-section"></div>
+            </section>
+            <section id="artists-section">
+                <h2>Artistes</h2>
+
+            </section>
+            <section id="playlists-section">
+                <h2>Playlists</h2>
+
+            </section>
+        </main>
+    </div>
+
+
+
+
     <script src="js/fonctions.js"></script>
     <script src="js/index.js"></script>
 </body>
