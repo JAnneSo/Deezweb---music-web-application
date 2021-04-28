@@ -1,0 +1,39 @@
+/*  COLORS  */
+/*  FONTS  */
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro.ttf") format("ttf");
+}
+
+.albums-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.album-card .album-card__img-ctnr {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  width: 20vw;
+  height: 20vw;
+}
+
+.album-card .album-card__img-ctnr .album-card__link {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.album-card .album-card__img-ctnr .album-card__cover {
+  width: 100%;
+  height: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}

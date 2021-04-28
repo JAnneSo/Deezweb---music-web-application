@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/css/global.css">
+    <link rel="stylesheet" href="style/css/index.css">
+    <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="assets/images/music.ico" type="image/x-icon">
     <title>Accueil</title>
 </head>
 
@@ -29,21 +32,26 @@
     </aside>
     <div class="container-main">
         <header>
-            <audio id="audio-song" src="assets/audio/Markvard-Desire.mp3"></audio>
+            <audio id="audio-song">
+            </audio>
             <div class="controls-container">
-                <button class="control before" id="prev-song"><i class="fa fa-backward"></i></button>
-                <button class="control play" id="play-song"><i class="fa fa-play"></i></button>
-                <button class="control next" id="next-song"><i class="fa fa-forward"></i></button>
+                <button class="control before" id="prev-song"><i class="fas fa-backward"></i></button>
+                <button class="control play" id="play-song"><i class="fas fa-play"></i></button>
+                <button class="control next" id="next-song"><i class="fas fa-forward"></i></button>
                 <button class="control infinite-loop"><i class="fa fa-repeat"></i></button>
             </div>
             <div class="audio-info-container">
-                <div class="cover-container">
+                <div class="cover-container" id="cover-container">
                 </div>
                 <div class="info-container">
-
+                    <p class="info-container__title" id="info-container__title"></p>
+                    <p class="info-container__artist" id="info-container__artist"></p>
+                    <label for="song-timeline" id="label-range"></label>
+                    <span id="duration" class="duration"></span>
+                    <input type="range" min="0" value="0" name="song-timeline" id="song-timeline">
                 </div>
-            </div>
 
+            </div>
 
         </header>
 
@@ -51,15 +59,15 @@
             <h1>Accueil</h1>
             <section>
                 <h2>Albums</h2>
-                <div id="albums-section"></div>
+                <div id="albums-section" class="albums-section"></div>
             </section>
-            <section id="artists-section">
+            <section>
                 <h2>Artistes</h2>
-
+                <div id="artists-section" class="artists-section"></div>
             </section>
-            <section id="playlists-section">
-                <h2>Playlists</h2>
-
+            <section>
+                <h2>Tracks</h2>
+                <div id="tracks-section" class="tracks-section"></div>
             </section>
         </main>
     </div>

@@ -28,6 +28,18 @@ body {
         outline: none;
         background: none;
     }
+    h1,
+    h2,
+    h3 {
+        color: $grey-text-2;
+        font-weight: 700;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    h2 {
+        font-size: 24px;
+    }
 }
 
 aside {
@@ -116,7 +128,7 @@ aside {
 header {
     box-sizing: border-box;
     padding: 0 10%;
-    height: 70px;
+    height: 55px;
     z-index: 1;
     display: flex;
     justify-content: space-between;
@@ -131,6 +143,7 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 170px;
         min-width: 130px;
         margin-right: 10%;
         .control {
@@ -151,40 +164,206 @@ header {
         }
     }
     .audio-info-container {
-        height: 65px;
+        height: 50px;
         width: 350px;
         display: flex;
-        border-radius: 5px;
+        border-radius: 2px;
         overflow: hidden;
+
         div {
             height: 100%;
         }
         .cover-container {
-            background: center no-repeat url("../../assets/images/music-solid.svg"), rgba(white, 0.4);
-            background-size: 50%;
-            width: 65px;
+            background: center no-repeat url("../../assets/images/music-note.svg"), rgba(white, 0.4);
+            background-size: 60%;
+            width: 50px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
         }
         .info-container {
-            justify-self: center;
             background: rgba(white, 0.2);
-            width: 285px;
+            width: calc(100% - 50px);
+            text-align: center;
+            padding: 4px 10px 0;
+            box-sizing: border-box;
+            position: relative;
+            &:hover {
+                .duration,
+                label {
+                    opacity: 1;
+                }
+            }
+            p {
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            &__title {
+                color: $grey-text-1;
+                font-size: 14px;
+            }
+            &__artist {
+                padding-top: 2px;
+                color: $grey-text-3;
+            }
+        }
+        label {
+            opacity: 0;
+            position: absolute;
+            left: 3px;
+            bottom: 6px;
+            font-size: 10px;
+            color: $grey-text-3;
+            transition: opacity 0.4s ease;
+        }
+        .duration {
+            opacity: 0;
+            position: absolute;
+            right: 3px;
+            bottom: 6px;
+            font-size: 10px;
+            color: $grey-text-3;
+            transition: opacity 0.4s ease;
+        }
+        input[type="range"] {
+            display: none;
+            appearance: none;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            cursor: pointer;
+            &:before {
+                position: absolute;
+                bottom: 0px;
+                content: "";
+                width: 100%;
+                height: 2px;
+                background: $grey-text-4;
+            }
+            &::-webkit-slider-runnable-track {
+                background: transparent;
+                height: 12px;
+            }
+            &::-webkit-slider-thumb {
+                width: 5px;
+                height: 10px;
+                border-radius: 2.5px;
+                border: none;
+                -webkit-appearance: none;
+                background-color: $grey-text-1;
+                margin-top: 6px;
+                z-index: 99;
+                position: relative;
+                transition: 0.5s all ease;
+            }
         }
     }
 }
 
 main {
-    padding: 80px 10%;
+    padding: 80px 80px;
+    @media screen and (max-width: 1024px) {
+        padding: 80px 50px;
+    }
 }
 
-h1,
-h2,
-h3 {
-    color: $grey-text-2;
-    font-weight: 700;
-}
-h1 {
-    font-size: 32px;
-}
-h2 {
-    font-size: 28px;
+.track-card {
+    overflow: hidden;
+    .track-card__img-cntr {
+        // width: 14vw;
+        // height: 14vw;
+        position: relative;
+        overflow: hidden;
+        &:hover {
+            a,
+            .track-card__play,
+            .track-card__love {
+                opacity: 1;
+                transition: opacity 0.4s ease;
+            }
+        }
+        a {
+            display: block;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(black, 0.3);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .track-card__play,
+        .track-card__love {
+            opacity: 0;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            bottom: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba($grey-text-4, 0.4);
+            backdrop-filter: blur(50px);
+            transition: background 300ms ease;
+            transition: opacity 0.4s ease;
+            &:hover {
+                background: $pop-color;
+            }
+        }
+        .track-card__play {
+            left: 10px;
+            i {
+                position: absolute;
+                top: calc(50% - 7px);
+                left: calc(50% - 4px);
+                font-size: 14px;
+                color: $grey-text-2;
+            }
+        }
+        input[type="checkbox"] {
+            width: 0;
+            height: 0;
+            &:checked + .track-card__love svg path {
+                fill: $grey-text-1;
+            }
+        }
+        .track-card__love {
+            right: 10px;
+            svg {
+                width: 18px;
+                height: 18px;
+                position: absolute;
+                top: calc(50% - 9px);
+                left: calc(50% - 9px);
+                path {
+                    stroke: $grey-text-1;
+                    stroke-width: 1.5px;
+                    fill: none;
+                }
+            }
+        }
+    }
+
+    .track-card__cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .track-card__info {
+        .track-card__info--title-track {
+        }
+        .track-card__info--title-album {
+        }
+        .track-card__info--artiste {
+        }
+        .track-card__info--duration {
+        }
+    }
 }

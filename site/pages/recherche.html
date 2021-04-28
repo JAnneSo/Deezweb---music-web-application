@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/css/global.css">
     <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../assets/images/music.ico" type="image/x-icon">
     <title>Recherche</title>
 </head>
 
@@ -21,15 +23,34 @@
         <nav>
             <ul class="menu">
                 <li><i class="fa fa-home"></i><a href="../index.html" class="nav-link">Accueil</a></li>
-                <li><i class="fa fa-music"></i><a href="pages/explorer.html" class="nav-link">Explorer</a></li>
-                <li><i class="fa fa-search"></i><a href="pages/recherche.html"
-                        class="nav-link link-active">Recherche</a></li>
-                <li><i class="fa fa-heart"></i><a href="pages/favoris.html" class="nav-link">Favoris</a></li>
+                <li><i class="fa fa-music"></i><a href="#" class="nav-link">Explorer</a></li>
+                <li><i class="fa fa-search"></i><a href="recherche.html" class="nav-link link-active">Recherche</a></li>
+                <li><i class="fa fa-heart"></i><a href="favoris.html" class="nav-link">Favoris</a></li>
             </ul>
         </nav>
     </aside>
     <div class="container-main">
         <header>
+            <audio id="audio-song">
+            </audio>
+            <div class="controls-container">
+                <button class="control before" id="prev-song"><i class="fas fa-backward"></i></button>
+                <button class="control play" id="play-song"><i class="fas fa-play"></i></button>
+                <button class="control next" id="next-song"><i class="fas fa-forward"></i></button>
+                <button class="control infinite-loop"><i class="fa fa-repeat"></i></button>
+            </div>
+            <div class="audio-info-container">
+                <div class="cover-container" id="cover-container">
+                </div>
+                <div class="info-container">
+                    <p class="info-container__title" id="info-container__title"></p>
+                    <p class="info-container__artist" id="info-container__artist"></p>
+                    <label for="song-timeline" id="label-range"></label>
+                    <span id="duration" class="duration"></span>
+                    <input type="range" min="0" value="0" name="song-timeline" id="song-timeline">
+                </div>
+
+            </div>
 
         </header>
         <main>
@@ -51,8 +72,6 @@
             <section>
                 <h1><span id="nb-find"></span> résultas trouvés</h1>
                 <div id="research"></div>
-                <!-- <button id="prev-btn">Prev</button>
-                <button id="next-btn">Next</button> -->
             </section>
         </main>
     </div>
