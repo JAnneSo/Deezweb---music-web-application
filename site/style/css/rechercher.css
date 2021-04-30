@@ -1,0 +1,87 @@
+/*  COLORS  */
+/*  MEDIA  */
+/*  FONTS  */
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro.ttf") format("ttf");
+}
+
+/*  MIXINS  */
+main {
+  padding-top: 158px;
+}
+
+fieldset {
+  position: fixed;
+  top: 55px;
+  left: 200px;
+  right: 0;
+  border: none;
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+  padding: 15px 10px 10px;
+}
+
+fieldset .input-research {
+  display: block;
+  margin: 0 auto 10px;
+  width: 500px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+fieldset .input-research input[type="search"] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  padding: 8px 20px;
+  color: #e0e0e0;
+}
+
+fieldset .input-research input[type="search"]:focus + button i {
+  color: #e0e0e0;
+}
+
+fieldset .input-research input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+fieldset .input-research button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100%;
+}
+
+fieldset .input-research button i {
+  color: #828282;
+  font-size: 20px;
+}
+
+fieldset .filters {
+  text-align: center;
+  padding: 10px;
+}
+
+fieldset .filters input[type="radio"] {
+  display: none;
+}
+
+fieldset .filters input[type="radio"]:checked + label {
+  background: #f2f2f2;
+}
+
+fieldset .filters label {
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+fieldset .filters label:not(:last-child) {
+  margin-right: 10px;
+}

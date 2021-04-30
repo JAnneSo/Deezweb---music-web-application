@@ -17,3 +17,17 @@ if (storedList) {
     }
 }
 
+window.addEventListener("load", () => {
+    setTimeout(function () { getCheckboxState(); }, 1000);
+
+});
+
+// const likedTrackList = document.querySelectorAll("input[type=checkbox]");
+// for (let i = 0; i < likedTrackList.length; i++) {
+//     const track = likedTrackList[i];
+//     track.addEventListener("click", (e)=>{
+//         if (!e.target.checked) {
+//             // gérer la disparission de l'élément
+//         }
+//     })
+// }

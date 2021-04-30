@@ -1,8 +1,26 @@
 /*  COLORS  */
+/*  MEDIA  */
 /*  FONTS  */
 @font-face {
   font-family: "SF Pro";
   src: url("/fonts/SF-Pro.ttf") format("ttf");
+}
+
+/*  MIXINS  */
+section {
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 1024px) {
+  section {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section {
+    margin-bottom: 30px;
+  }
 }
 
 .albums-section {
@@ -13,27 +31,38 @@
       flex-wrap: wrap;
 }
 
-.album-card .album-card__img-ctnr {
-  border-radius: 5px;
-  overflow: hidden;
-  position: relative;
-  width: 20vw;
-  height: 20vw;
+/* SWIPER */
+.swiper-container {
+  z-index: 0;
 }
 
-.album-card .album-card__img-ctnr .album-card__link {
-  display: block;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
+.swiper-slide {
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.album-card .album-card__img-ctnr .album-card__cover {
-  width: 100%;
-  height: 100%;
-  -o-object-position: center;
-     object-position: center;
-  -o-object-fit: cover;
-     object-fit: cover;
+.arrows .swiper-button-prev,
+.arrows .swiper-button-next {
+  top: calc(50% - 20px);
+  color: #e0e0e0;
+}
+
+.arrows .swiper-button-prev::after,
+.arrows .swiper-button-next::after {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .arrows .swiper-button-prev,
+  .arrows .swiper-button-next {
+    display: none;
+  }
 }

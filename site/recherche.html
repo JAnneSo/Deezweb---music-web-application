@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/css/global.css">
+    <link rel="stylesheet" href="style/css/rechercher.css">
+    <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="assets/images/music.ico" type="image/x-icon">
+    <title>Recherche</title>
+</head>
+
+<body>
+    <aside>
+        <a href="index.html" class="logo">Deez'Web</a>
+        <div class="search-container">
+            <input type="search" id="side-search" placeholder="Rechercher"
+                aria-label="Rechercher parmi le contenu du site">
+            <button id="side-submit"><i class="fa fa-search"></i></button>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" class="nav-link"><i class="fa fa-home"></i><span>Accueil</span></a>
+                </li>
+                <li><a href="explorer.html" class="nav-link"><i class="fa fa-music"></i><span>Explorer</span></a></li>
+                <li><a href="recherche.html" class="nav-link link-active"><i
+                            class="fa fa-search"></i><span>Recherche</span></a>
+                </li>
+                <li><a href="favoris.html" class="nav-link"><i class="fa fa-heart"></i><span>Favoris</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="container-main">
+        <section class="player">
+            <audio id="audio-song">
+            </audio>
+            <div class="controls-container">
+                <button class="control before" id="prev-song"><i class="fas fa-backward"></i></button>
+                <button class="control play" id="play-song"><i class="fas fa-play"></i></button>
+                <button class="control next" id="next-song"><i class="fas fa-forward"></i></button>
+            </div>
+            <div class="audio-info-container">
+                <div class="cover-container" id="cover-container">
+                </div>
+                <div class="info-container">
+                    <p class="info-container__title" id="info-container__title"></p>
+                    <p class="info-container__artist" id="info-container__artist"></p>
+                    <label for="song-timeline" id="label-range"></label>
+                    <span id="duration" class="duration"></span>
+                    <input type="range" min="0" value="0" name="song-timeline" id="song-timeline">
+                </div>
+
+            </div>
+
+        </section>
+        <main>
+            <fieldset>
+                <div class="input-research">
+                    <input type="search" id="search" placeholder="Artiste, titre, album...">
+                    <button id="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="filters">
+                    <input type="radio" name="order" id="order-album" value="ALBUM_ASC">
+                    <label for="order-album">Album</label>
+                    <input type="radio" name="order" id="order-artist" value="ARTIST_ASC">
+                    <label for="order-artist">Artiste</label>
+                    <input type="radio" name="order" id="order-title" value="TRACK_ASC">
+                    <label for="order-title">Titre</label>
+                    <input type="radio" name="order" id="order-popular" value="RANKING">
+                    <label for="order-popular">Les plus populaires</label>
+                    <input type="radio" name="order" id="order-rate" value="RATING_ASC">
+                    <label for="order-rate">Les mieux notés</label>
+                </div>
+
+            </fieldset>
+
+            <section>
+                <h1 id="nb-find"></h1>
+                <div id="research">
+                    <section id="popular-section">
+                        <h2>Les plus populaires</h2>
+                        <div>
+                            <div class="popular-card">
+                                <img class="popular-card__profile" src="assets/images/music-note.svg" alt="p">
+                                <div class="popular-card__info">
+                                    <p class="popular-card__info--title">Sneazzy</p>
+                                    <p class="popular-card__info--subtitle">Artiste</p>
+                                </div>
+                            </div>
+                            <div class="popular-card">
+                                <img class="popular-card__cover" src="assets/images/music-note.svg" alt="p">
+                                <div class="popular-card__info">
+                                    <p class="popular-card__info--title">NUOVO MODE</p>
+                                    <p class="popular-card__info--subtitle">
+                                        <span>Album</span><span>Sneazzy</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="popular-card">
+                                <img class="popular-card__cover" src="assets/images/music-note.svg" alt="p">
+                                <div class="popular-card__info">
+                                    <p class="popular-card__info--title">Skurt Cobain</p>
+                                    <p class="popular-card__info--subtitle">
+                                        <span>Titre</span><span>Sneazzy</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="track-section">
+
+                    </section>
+                    <section id="artist-section">
+
+                    </section>
+                    <section id="album-section">
+
+                    </section>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+                    <!-- BLOC CHAPEAU -->
+                    <p class="article__chapeau">Un peu plus tôt cette année, l'association Villes et villages où il fait
+                        bon
+                        vivre a fait savoir, par l’intermédiaire du JDD, que la préfecture de la Haute-Savoie serait la
+                        commune la plus agréable où demeurer en France. Professionnels, comme particuliers, peuvent,
+                        d’ailleurs, y prévoir et organiser l’ensemble de leurs temps forts !</p>
+                    <p class="article__bloc-texte">Elle a pris la tête. C’est tout en haut du palmarès des villes de
+                        plus de
+                        2 000 habitants où il est agréable de vivre dans l’Hexagone, publié par l'association des Villes
+                        et
+                        Villages où il fait bon vivre, qu’a réussi à se hisser Annecy. Les 34 841 communes de métropole,
+                        toutes prétendantes au titre, ont été jugées selon 182 critères officiels (fournis par l'INSEE
+                        ou
+                        par des organismes étatiques), répartis en 8 catégories : qualité de vie, sports/loisirs,
+                        sécurité,
+                        transports, commerces et services, santé, éducation et solidarité.
+                        Plus que pour la beauté du cadre de vie qu’elle propose, l’alpine commune lacustre s’est, donc,
+                        illustrée pour sa qualité de vie et les services qu’elle propose à ses administrés. Une
+                        population
+                        qui a, également, la chance d’avoir de beaux espaces de réception à disposition !</p>
+
+                    <!-- BLOC SOUS-TITRE -->
+                    <h2>1. Les réunions “avec vue” du splendid hôtel</h2>
+
+                    <p class="article__bloc-texte">Situé en bord de lac, cet établissement dispose de trois salons -
+                        Fellini
+                        (48 personnes en classe, 60 en conférence, 40 en réunion,Visconti (30 personnes en classe, 40 en
+                        conférence, 20 en réunion) et Pasolini (18 personnes en classe, 20 en conférence 15 en réunion)
+                        -
+                        ouverts aux professionnels. Des espaces spécialement équipés et aménagés pour des séminaires,
+                        des
+                        journées d'étude et plus encore !</p>
+                    <a href="#" class="article__bloc-lien-hypertexte">Je découvre le splendid hôtel</a>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/fonctions.js"></script>
+    <script src="js/recherche.js"></script>
+</body>
+
+</html>

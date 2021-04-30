@@ -1,16 +1,7 @@
+
 // gestion de la recherche
 let searchInput = document.getElementById("side-search");
 let urlParam = "";
-
-document.getElementById("side-submit")
-    .addEventListener("click", () => {
-        if (searchInput.value) {
-            urlParam += `?q=${searchInput.value}`;
-            location.href = `pages/recherche.html${urlParam}`;
-        }
-    });
-
-
 
 fetch("https://api.deezer.com/chart")
     .then(response => response.json())
@@ -20,13 +11,27 @@ fetch("https://api.deezer.com/chart")
         const artists = resFinal.artists.data;
         const tracks = resFinal.tracks.data;
         for (let i = 0; i < albums.length; i++) {
-            document.getElementById("albums-section").appendChild(createAlbumCard(albums[i]));
+            let swiperCntr = createSwiperCardContainer();
+            swiperCntr.appendChild(createAlbumCard(albums[i]));
+            document.getElementById("albums-section").appendChild(swiperCntr);
         }
         for (let i = 0; i < tracks.length; i++) {
-            document.getElementById("tracks-section").appendChild(createTrackCard(tracks[i]));
+            let swiperCntr = createSwiperCardContainer();
+            swiperCntr.appendChild(createTrackCard(tracks[i]));
+            document.getElementById("tracks-section").appendChild(swiperCntr);
         }
         for (let i = 0; i < artists.length; i++) {
-            document.getElementById("artists-section").appendChild(createArtistCard(artists[i]));
+            let swiperCntr = createSwiperCardContainer();
+            swiperCntr.appendChild(createArtistCard(artists[i]));
+            document.getElementById("artists-section").appendChild(swiperCntr);
+        }
+
+        initializeSwiper();
+        resizeSquareElement("square");
+
+        window.onresize = () => {
+            initializeSwiper();
+            resizeSquareElement("square");
         }
 
     })
@@ -53,10 +58,42 @@ fetch("https://api.deezer.com/chart")
 
 
 window.addEventListener("load", () => {
-    setTimeout(function () { getCheckboxState(); }, 1000);
+    setTimeout(function () {
+        getCheckboxState();
+        initializeSwiper();
+        resizeSquareElement("square");
+    }, 1000);
 
 });
 
+function resizeSquareElement(className) {
+    let imgCtnr = document.getElementsByClassName(className);
 
+    for (let i = 0; i < imgCtnr.length; i++) {
+        imgCtnr[i].style.height = imgCtnr[i].offsetWidth + "px";
+    }
+}
 
+function initializeSwiper() {
+    let nbOfSlides;
+    if (1250 < window.outerWidth) {
+        nbOfSlides = 5;
+    } else if (1100 < window.outerWidth && window.outerWidth < 1250) {
+        nbOfSlides = 4;
+    } else if (window.outerWidth < 500) {
+        nbOfSlides = 2;
+    } else if (window.outerWidth < 1100) {
+        nbOfSlides = 3;
+    }
+
+    swiper = new Swiper('.swiper-container', {
+        slidesPerView: nbOfSlides,
+        spaceBetween: 20,
+        slidesPerGroup: nbOfSlides,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+}
 

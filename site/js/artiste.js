@@ -18,3 +18,8 @@ if (search_params.has('id')) {
         });
 
 }
+
+window.addEventListener("load", () => {
+    setTimeout(function () { getCheckboxState(); }, 1000);
+
+});

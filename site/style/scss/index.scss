@@ -1,36 +1,50 @@
 @import "tools.scss";
 
+section {
+    margin-bottom: 60px;
+    @media screen and (max-width: $maxWidthTablet) {
+        margin-bottom: 40px;
+    }
+    @media screen and (max-width: $maxWidthMobile) {
+        margin-bottom: 30px;
+    }
+}
 .albums-section {
     display: flex;
     flex-wrap: wrap;
 }
 
-.album-card {
-    .album-card__img-ctnr {
-        border-radius: 5px;
-        overflow: hidden;
-        position: relative;
-        width: 20vw;
-        height: 20vw;
-        .album-card__link {
-            display: block;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .album-card__cover {
-            width: 100%;
-            height: 100%;
-            object-position: center;
-            object-fit: cover;
-        }
-    }
+/* SWIPER */
+.swiper-container {
+    z-index: 0;
+}
 
-    .album-card__info {
-        .album-card__info--title {
+.swiper-slide {
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.arrows {
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: calc(50% - 20px);
+        color: $grey-text-2;
+        &::after {
+            font-size: 30px;
         }
-        .album-card__info--artiste {
+        @media screen and (max-width: $maxWidthMobile) {
+            display: none;
         }
     }
 }

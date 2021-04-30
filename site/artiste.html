@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/css/global.css">
+    <link rel="stylesheet" href="style/css/global.css">
     <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="../assets/images/music.ico" type="image/x-icon">
-    <title>Album</title>
+    <link rel="shortcut icon" href="assets/images/music.ico" type="image/x-icon">
+    <title>Artiste</title>
 </head>
 
 <body>
     <aside>
-        <a href="../index.html" class="logo">Deez'Web</a>
+        <a href="index.html" class="logo">Deez'Web</a>
         <div class="search-container">
             <input type="search" id="side-search" placeholder="Rechercher"
                 aria-label="Rechercher parmi le contenu du site">
@@ -22,22 +22,24 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><i class="fa fa-home"></i><a href="../index.html" class="nav-link">Accueil</a></li>
-                <li><i class="fa fa-music"></i><a href="explorer.html" class="nav-link link-active">Explorer</a></li>
-                <li><i class="fa fa-search"></i><a href="recherche.html" class="nav-link">Recherche</a></li>
-                <li><i class="fa fa-heart"></i><a href="favoris.html" class="nav-link">Favoris</a></li>
+                <li><a href="index.html" class="nav-link"><i class="fa fa-home"></i><span>Accueil</span></a>
+                </li>
+                <li><a href="explorer.html" class="nav-link link-active"><i
+                            class="fa fa-music"></i><span>Explorer</span></a></li>
+                <li><a href="recherche.html" class="nav-link"><i class="fa fa-search"></i><span>Recherche</span></a>
+                </li>
+                <li><a href="favoris.html" class="nav-link"><i class="fa fa-heart"></i><span>Favoris</span></a></li>
             </ul>
         </nav>
     </aside>
     <div class="container-main">
-        <header>
+        <section class="player">
             <audio id="audio-song">
             </audio>
             <div class="controls-container">
                 <button class="control before" id="prev-song"><i class="fas fa-backward"></i></button>
                 <button class="control play" id="play-song"><i class="fas fa-play"></i></button>
                 <button class="control next" id="next-song"><i class="fas fa-forward"></i></button>
-                <button class="control infinite-loop"><i class="fa fa-repeat"></i></button>
             </div>
             <div class="audio-info-container">
                 <div class="cover-container" id="cover-container">
@@ -52,14 +54,14 @@
 
             </div>
 
-        </header>
+        </section>
         <main>
             <div id="test"></div>
         </main>
     </div>
 
-    <script src="../js/fonctions.js"></script>
-    <script src="../js/album.js"></script>
+    <script src="js/fonctions.js"></script>
+    <script src="js/artiste.js"></script>
 </body>
 
 </html>

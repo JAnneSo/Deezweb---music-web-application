@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/css/swiper-bundle-mag.css">
     <link rel="stylesheet" href="style/css/global.css">
-    <link rel="stylesheet" href="style/css/index.css">
+    <link rel="stylesheet" href="style/css/explorer.css">
     <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="assets/images/music.ico" type="image/x-icon">
-    <title>Accueil</title>
+    <title>Explorer</title>
 </head>
 
 <body>
@@ -24,9 +23,10 @@
         </div>
         <nav>
             <ul class="menu">
-                <li><a href="index.html" class="nav-link link-active"><i class="fa fa-home"></i><span>Accueil</span></a>
+                <li><a href="index.html" class="nav-link"><i class="fa fa-home"></i><span>Accueil</span></a>
                 </li>
-                <li><a href="explorer.html" class="nav-link"><i class="fa fa-music"></i><span>Explorer</span></a></li>
+                <li><a href="explorer.html" class="nav-link link-active"><i
+                            class="fa fa-music"></i><span>Explorer</span></a></li>
                 <li><a href="recherche.html" class="nav-link"><i class="fa fa-search"></i><span>Recherche</span></a>
                 </li>
                 <li><a href="favoris.html" class="nav-link"><i class="fa fa-heart"></i><span>Favoris</span></a></li>
@@ -56,61 +56,14 @@
             </div>
 
         </section>
-
         <main>
-            <h1>Accueil</h1>
-            <section>
-                <h2>Albums</h2>
-                <!-- SWIPER -->
-                <div class="swiper-container">
-                    <div id="albums-section" class="swiper-wrapper">
-
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="arrows">
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-
-                <!-- FIN SWIPER -->
-            </section>
-            <section>
-                <h2>Artistes</h2>
-                <!-- SWIPER -->
-                <div class="swiper-container">
-                    <div id="artists-section" class="swiper-wrapper">
-
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="arrows">
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-                <!-- FIN SWIPER -->
-            </section>
-            <section>
-                <h2>Tracks</h2>
-                <!-- SWIPER -->
-                <div class="swiper-container">
-                    <div id="tracks-section" class="swiper-wrapper">
-
-                    </div>
-                    <!-- Add Arrows -->
-                    <div class="arrows">
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-                <!-- FIN SWIPER -->
-            </section>
+            <h1 id="h1">Explorer</h1>
+            <div id="explore-section" class="explore-section"></div>
         </main>
     </div>
-    <!-- Swiper -->
-    <script src="js/swiper-bundle.js"></script>
+
     <script src="js/fonctions.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/explorer.js"></script>
 </body>
 
 </html>

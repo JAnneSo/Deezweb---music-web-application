@@ -8,8 +8,41 @@ $grey-text-2: #e0e0e0;
 $grey-text-1: #f2f2f2;
 $pop-color: rgb(230, 67, 79);
 
+/*  MEDIA  */
+$maxWidthMobile: 600px;
+$minWidthTablet: 601px;
+$maxWidthTablet: 1024px;
+
 /*  FONTS  */
 @font-face {
     font-family: "SF Pro";
     src: url("/fonts/SF-Pro.ttf") format("ttf");
+}
+
+/*  MIXINS  */
+@mixin imageFit() {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+@mixin textOverflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin titleCard() {
+    display: block;
+    margin-bottom: 3px;
+    color: $grey-text-2;
+    font-size: 14px;
+    font-weight: 400;
+}
+@mixin infoCard() {
+    display: block;
+    color: $grey-text-4;
+    font-size: 14px;
+    font-weight: 400;
 }
