@@ -214,7 +214,7 @@ aside {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 170px;
+        width: 150px;
         min-width: 130px;
         margin-right: 50px;
         @media screen and (max-width: $maxWidthMobile) {
@@ -366,7 +366,7 @@ aside {
 }
 
 main {
-    padding: 80px 30px;
+    padding: 80px 30px 20px;
     max-width: 1500px;
     margin: 0 auto;
     @media screen and (max-width: $maxWidthMobile) {
@@ -376,6 +376,7 @@ main {
 
 .album-card {
     margin: unset;
+    overflow: hidden;
     .album-card__img-ctnr {
         border-radius: 10px;
         overflow: hidden;
@@ -405,6 +406,9 @@ main {
         .album-card__info--artiste {
             @include infoCard();
             @include textOverflow();
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
@@ -481,36 +485,6 @@ main {
         @include imageFit();
     }
 
-    .track-card__play,
-    .track-card__love {
-        opacity: 0;
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        bottom: 10px;
-        cursor: pointer;
-        border-radius: 50%;
-        background: rgba(white, 0.2);
-        backdrop-filter: blur(50px);
-        transition: background 300ms ease;
-        transition: opacity 0.4s ease;
-        &:hover {
-            background: $pop-color;
-        }
-        @media screen and (max-width: 800px) {
-            opacity: 1;
-        }
-    }
-    .track-card__play {
-        left: 10px;
-        i {
-            position: absolute;
-            top: calc(50% - 7px);
-            left: calc(50% - 5px);
-            font-size: 14px;
-            color: $grey-text-2;
-        }
-    }
     input[type="checkbox"] {
         width: 0;
         height: 0;
@@ -549,6 +523,9 @@ main {
         .track-card__info--artiste {
             font-size: 14px;
             font-weight: 400;
+            &:hover {
+                text-decoration: underline;
+            }
         }
         .track-card__info--artiste {
             margin-right: 18px;
@@ -558,5 +535,163 @@ main {
                 margin: 0 5px;
             }
         }
+    }
+}
+
+.track-card__play,
+.track-card__love {
+    opacity: 0;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: rgba(white, 0.2);
+    backdrop-filter: blur(50px);
+    transition: background 300ms ease;
+    transition: opacity 0.4s ease;
+    &:hover {
+        background: $pop-color;
+    }
+    @media screen and (max-width: 800px) {
+        opacity: 1;
+    }
+}
+.track-card__play {
+    left: 10px;
+    i {
+        position: absolute;
+        top: calc(50% - 7px);
+        left: calc(50% - 5px);
+        font-size: 14px;
+        color: $grey-text-2;
+    }
+}
+
+.explicit-tag,
+.explicit-tag-mobile {
+    background: rgba(white, 0.4);
+    width: fit-content;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: white;
+    font-size: 10px;
+}
+.explicit-tag {
+    display: inline-block;
+    @media screen and (max-width: $maxWidthMobile) {
+        display: none;
+    }
+}
+.explicit-tag-mobile {
+    display: none;
+    @media screen and (max-width: $maxWidthMobile) {
+        display: inline-block;
+    }
+}
+.list-track {
+    display: grid;
+    grid-template-rows: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    &:hover {
+        background: rgba($grey2, 0.5);
+        .track-card__play {
+            opacity: 1;
+        }
+    }
+    .list-track__number {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+            color: white;
+            font-size: 14px;
+        }
+        .track-card__play {
+            left: unset;
+            bottom: unset;
+        }
+    }
+    .list-track__cover {
+        width: 50px;
+        height: 50px;
+        border-radius: 2px;
+    }
+    .list-track__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        &--title {
+            @include textOverflow();
+            @include titleCard();
+        }
+        &--artiste {
+            @include textOverflow();
+            @include infoCard();
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .list-track__album {
+        @include infoCard();
+        @include textOverflow();
+        &:hover {
+            text-decoration: underline;
+        }
+        @media screen and (max-width: 800px) {
+            display: none;
+        }
+    }
+    .explicit-tag {
+        margin: 0 auto;
+    }
+    .list-track__love-ctnr {
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input[type="checkbox"] {
+            width: 0;
+            height: 0;
+            &:checked + .track-card__love svg path {
+                fill: $grey-text-1;
+                stroke: $grey-text-1;
+            }
+        }
+        .track-card__love {
+            opacity: 1;
+            right: unset;
+            bottom: unset;
+            background: none;
+            &:hover path {
+                stroke: $grey-text-1;
+            }
+            svg {
+                width: 18px;
+                height: 18px;
+                position: absolute;
+                top: calc(50% - 8.5px);
+                left: calc(50% - 9px);
+                path {
+                    stroke: $grey-text-4;
+                    stroke-width: 1.5px;
+                    fill: none;
+                }
+            }
+        }
+    }
+    .list-track__duration {
+        color: $grey-text-4;
+        margin: 0 auto;
     }
 }

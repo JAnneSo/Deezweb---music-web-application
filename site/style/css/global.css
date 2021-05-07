@@ -297,7 +297,7 @@ aside .menu .fa {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 170px;
+  width: 150px;
   min-width: 130px;
   margin-right: 50px;
 }
@@ -510,7 +510,7 @@ aside .menu .fa {
 }
 
 main {
-  padding: 80px 30px;
+  padding: 80px 30px 20px;
   max-width: 1500px;
   margin: 0 auto;
 }
@@ -523,6 +523,7 @@ main {
 
 .album-card {
   margin: unset;
+  overflow: hidden;
 }
 
 .album-card .album-card__img-ctnr {
@@ -577,6 +578,10 @@ main {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.album-card .album-card__info .album-card__info--artiste:hover {
+  text-decoration: underline;
 }
 
 .artist-card {
@@ -682,48 +687,6 @@ main {
      object-fit: cover;
 }
 
-.track-card .track-card__play,
-.track-card .track-card__love {
-  opacity: 0;
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  bottom: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-backdrop-filter: blur(50px);
-          backdrop-filter: blur(50px);
-  -webkit-transition: background 300ms ease;
-  transition: background 300ms ease;
-  -webkit-transition: opacity 0.4s ease;
-  transition: opacity 0.4s ease;
-}
-
-.track-card .track-card__play:hover,
-.track-card .track-card__love:hover {
-  background: #e6434f;
-}
-
-@media screen and (max-width: 800px) {
-  .track-card .track-card__play,
-  .track-card .track-card__love {
-    opacity: 1;
-  }
-}
-
-.track-card .track-card__play {
-  left: 10px;
-}
-
-.track-card .track-card__play i {
-  position: absolute;
-  top: calc(50% - 7px);
-  left: calc(50% - 5px);
-  font-size: 14px;
-  color: #e0e0e0;
-}
-
 .track-card input[type="checkbox"] {
   width: 0;
   height: 0;
@@ -779,6 +742,11 @@ main {
   font-weight: 400;
 }
 
+.track-card .track-card__info .track-card__info--title-album:hover,
+.track-card .track-card__info .track-card__info--artiste:hover {
+  text-decoration: underline;
+}
+
 .track-card .track-card__info .track-card__info--artiste {
   margin-right: 18px;
 }
@@ -787,4 +755,250 @@ main {
   content: "-";
   position: absolute;
   margin: 0 5px;
+}
+
+.track-card__play,
+.track-card__love {
+  opacity: 0;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+  -webkit-transition: background 300ms ease;
+  transition: background 300ms ease;
+  -webkit-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.track-card__play:hover,
+.track-card__love:hover {
+  background: #e6434f;
+}
+
+@media screen and (max-width: 800px) {
+  .track-card__play,
+  .track-card__love {
+    opacity: 1;
+  }
+}
+
+.track-card__play {
+  left: 10px;
+}
+
+.track-card__play i {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: calc(50% - 5px);
+  font-size: 14px;
+  color: #e0e0e0;
+}
+
+.explicit-tag,
+.explicit-tag-mobile {
+  background: rgba(255, 255, 255, 0.4);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: white;
+  font-size: 10px;
+}
+
+.explicit-tag {
+  display: inline-block;
+}
+
+@media screen and (max-width: 600px) {
+  .explicit-tag {
+    display: none;
+  }
+}
+
+.explicit-tag-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .explicit-tag-mobile {
+    display: inline-block;
+  }
+}
+
+.list-track {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 50px;
+      grid-template-rows: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.list-track:hover {
+  background: rgba(53, 53, 53, 0.5);
+}
+
+.list-track:hover .track-card__play {
+  opacity: 1;
+}
+
+.list-track .list-track__number {
+  position: relative;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-track .list-track__number span {
+  color: white;
+  font-size: 14px;
+}
+
+.list-track .list-track__number .track-card__play {
+  left: unset;
+  bottom: unset;
+}
+
+.list-track .list-track__cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+}
+
+.list-track .list-track__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+.list-track .list-track__info--title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 3px;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.list-track .list-track__info--artiste {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  color: #828282;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.list-track .list-track__info--artiste:hover {
+  text-decoration: underline;
+}
+
+.list-track .list-track__album {
+  display: block;
+  color: #828282;
+  font-size: 14px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-track .list-track__album:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+  .list-track .list-track__album {
+    display: none;
+  }
+}
+
+.list-track .explicit-tag {
+  margin: 0 auto;
+}
+
+.list-track .list-track__love-ctnr {
+  position: relative;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-track .list-track__love-ctnr input[type="checkbox"] {
+  width: 0;
+  height: 0;
+}
+
+.list-track .list-track__love-ctnr input[type="checkbox"]:checked + .track-card__love svg path {
+  fill: #f2f2f2;
+  stroke: #f2f2f2;
+}
+
+.list-track .list-track__love-ctnr .track-card__love {
+  opacity: 1;
+  right: unset;
+  bottom: unset;
+  background: none;
+}
+
+.list-track .list-track__love-ctnr .track-card__love:hover path {
+  stroke: #f2f2f2;
+}
+
+.list-track .list-track__love-ctnr .track-card__love svg {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: calc(50% - 8.5px);
+  left: calc(50% - 9px);
+}
+
+.list-track .list-track__love-ctnr .track-card__love svg path {
+  stroke: #828282;
+  stroke-width: 1.5px;
+  fill: none;
+}
+
+.list-track .list-track__duration {
+  color: #828282;
+  margin: 0 auto;
 }

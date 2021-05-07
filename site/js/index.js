@@ -1,7 +1,4 @@
 
-// gestion de la recherche
-let searchInput = document.getElementById("side-search");
-let urlParam = "";
 
 fetch("https://api.deezer.com/chart")
     .then(response => response.json())

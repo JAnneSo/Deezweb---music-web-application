@@ -7,8 +7,7 @@ if (storedList) {
         fetch(`https://api.deezer.com/track/${storageArray[i]}`)
             .then(response => response.json())
             .then((track) => {
-                document.getElementById("test").appendChild(createTrackCard(track));
-                console.log(track);
+                document.getElementById("test").appendChild(createListCard(i, track));
             })
             .catch((err) => {
                 console.log("KO");

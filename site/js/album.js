@@ -1,47 +1,3 @@
-
-
-
-function createPlaylist(index, objTrack) {
-    let cardElt = document.createElement("div");
-    cardElt.setAttribute("class", "playlist-track");
-
-    let infoContainerElt = document.createElement("div");
-    infoContainerElt.setAttribute("class", "playlist-track__info");
-
-    let trackNbElt = document.createElement("span");
-    trackNbElt.setAttribute("class", "playlist-track__info--number");
-    trackNbElt.textContent = index;
-
-    let checkboxElt = document.createElement("input");
-    checkboxElt.setAttribute("type", "checkbox");
-    checkboxElt.setAttribute("id", `ckbx_${objTrack.id}`);
-    checkboxElt.setAttribute("onclick", "storeFavorite(this)");
-
-    let loveBtnElt = document.createElement("label");
-    loveBtnElt.setAttribute("for", `ckbx_${objTrack.id}`);
-    loveBtnElt.classList.add("playlist-track__info--love");
-    loveBtnElt.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M20.4134 4.84977C19.3781 3.72787 17.9575 3.10999 16.413 3.10999C15.2585 3.10999 14.2012 3.47465 13.2704 4.19377C12.8008 4.55676 12.3752 5.00085 12 5.51919C11.6249 5.001 11.1992 4.55676 10.7294 4.19377C9.79877 3.47465 8.74149 3.10999 7.58701 3.10999C6.04251 3.10999 4.62177 3.72787 3.58646 4.84977C2.56351 5.95856 2 7.47333 2 9.11524C2 10.8052 2.63034 12.3521 3.98364 13.9837C5.19427 15.4431 6.93423 16.9246 8.94916 18.6402C9.63718 19.226 10.4171 19.8901 11.2268 20.5975C11.4408 20.7847 11.7153 20.8878 12 20.8878C12.2846 20.8878 12.5592 20.7847 12.7729 20.5978C13.5826 19.8903 14.363 19.2259 15.0513 18.6397C17.0659 16.9245 18.8059 15.4431 20.0165 13.9835C21.3698 12.3521 22 10.8052 22 9.11508C22 7.47333 21.4365 5.95856 20.4134 4.84977Z" fill="white" /></svg >';
-
-    let titleTrackElt = document.createElement("a");
-    titleTrackElt.setAttribute("href", `titre.html?id=${objTrack.id}`);
-    titleTrackElt.textContent = objTrack.title;
-
-    let durationElt = document.createElement("p");
-    durationElt.classList.add("playlist-track__duration");
-    durationElt.textContent = formatSeconds(objTrack.duration);
-
-    infoContainerElt.appendChild(trackNbElt);
-    infoContainerElt.appendChild(checkboxElt);
-    infoContainerElt.appendChild(loveBtnElt);
-    infoContainerElt.appendChild(titleTrackElt);
-    cardElt.appendChild(infoContainerElt);
-    cardElt.appendChild(durationElt);
-    return cardElt;
-
-}
-
-
 // récupération de l'url
 let search_params = new URLSearchParams(new URL(document.location.href).search);
 let id;
@@ -56,12 +12,42 @@ if (search_params.has('id')) {
         .then(response => response.json())
         .then((album) => {
             console.log(album);
-            document.getElementById("tracks-section").appendChild(createAlbumCard(album));
+            let coverCtnr = document.createElement("div");
+            coverCtnr.classList.add("album__cover");
+            let coverElt = document.createElement("img");
+            coverElt.setAttribute("id", "cover");
+            coverElt.setAttribute("src", album.cover_medium);
+            coverCtnr.appendChild(coverElt);
+            let albumInfoCtnr = document.createElement("div");
+            albumInfoCtnr.classList.add("album__info");
+            albumInfoCtnr.innerHTML = `
+                    <h1 class="album__info--title">${album.title}</h1>
+                    <h2 class="album__info--artist"><a href="artiste.html?id=${album.artist.id}">${album.artist.name}</a></h2>
+                    <p class="album__info--genre"><a href="explorer.html?id=${album.genres.data[0].id}">${album.genres.data[0].name}</a>${album.release_date}</p>
+                    <p class="btn-ctnr">
+                        <button id="readPlaylist" class="album-btn"><i class="fas fa-play"></i>Écouter</button>
+                        <a href="${album.link}" target="blank" class="album-btn"><i class="fab fa-deezer"></i>Voir l'album sur Deezer</a>
+                    </p>
+                `;
+            document.getElementById("album-ctnr").appendChild(coverCtnr);
+            document.getElementById("album-ctnr").appendChild(albumInfoCtnr);
+
+            document.getElementById("cover").addEventListener('mousemove', function (e) {
+                let elem = e.target;
+                mX = e.pageX;
+                mY = e.pageY;
+                distanceY = (calculateDistanceY(elem, mY) / 100) * -4;
+                distanceX = (calculateDistanceX(elem, mX) / 100) * 4;
+                elem.style.transform = `rotateY(${distanceX}deg) rotateX(${distanceY}deg)`;
+                elem.style.transition = "all 0s";
+                elem.style.boxShadow = `${distanceX * 3 * -1}px ${distanceY * 3}px 10px 0px rgba(0,0,0,0.3)`;
+
+            });
             const albumTracks = album.tracks.data;
             let trackList = [];
             let previewList = [];
             for (let i = 0; i < albumTracks.length; i++) {
-                document.getElementById("tracks-section").appendChild(createPlaylist(i + 1, albumTracks[i]));
+                document.getElementById("tracks-section").appendChild(createListCard(i + 1, albumTracks[i]));
                 previewList.push(albumTracks[i].preview);
                 trackList.push(albumTracks[i]);
             }
@@ -135,15 +121,17 @@ if (search_params.has('id')) {
 
 window.addEventListener("load", () => {
     setTimeout(function () { getCheckboxState(); }, 1000);
-
 });
 
 
 
+function calculateDistanceX(elem, mouseX) {
+    return Math.pow(mouseX - (window.scrollX + elem.getBoundingClientRect().left + (elem.style.width / 2)), 1);
+}
 
-
-
-
+function calculateDistanceY(elem, mouseY) {
+    return Math.pow(mouseY - (window.scrollY + elem.getBoundingClientRect().top + (elem.style.height / 2)), 1);
+}
 
 
 

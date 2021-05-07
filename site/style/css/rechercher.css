@@ -20,12 +20,21 @@ fieldset {
   -webkit-backdrop-filter: blur(50px);
           backdrop-filter: blur(50px);
   padding: 15px 10px 10px;
+  z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+  fieldset {
+    top: 0;
+    left: 0;
+  }
 }
 
 fieldset .input-research {
   display: block;
   margin: 0 auto 10px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
   position: relative;
@@ -55,6 +64,7 @@ fieldset .input-research button {
   right: 0;
   width: 40px;
   height: 100%;
+  cursor: pointer;
 }
 
 fieldset .input-research button i {
@@ -65,6 +75,21 @@ fieldset .input-research button i {
 fieldset .filters {
   text-align: center;
   padding: 10px;
+}
+
+@media screen and (max-width: 710px) {
+  fieldset .filters {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    width: 90vw;
+    max-height: 34px;
+    overflow-x: auto;
+    -ms-touch-action: pan-x;
+        touch-action: pan-x;
+  }
 }
 
 fieldset .filters input[type="radio"] {
@@ -84,4 +109,233 @@ fieldset .filters label {
 
 fieldset .filters label:not(:last-child) {
   margin-right: 10px;
+}
+
+.research section {
+  margin: 20px 0;
+}
+
+.popular-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (33%)[3];
+      grid-template-columns: repeat(3, 33%);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .popular-container {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    -ms-grid-rows: (33%)[3];
+        grid-template-rows: repeat(3, 33%);
+    grid-gap: 5px;
+  }
+}
+
+.popular-container .popular-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 7px;
+  position: relative;
+}
+
+.popular-container .popular-card:hover .track-card__play {
+  opacity: 1;
+}
+
+.popular-container .popular-card .track-card__play {
+  left: unset;
+  right: 10px;
+}
+
+.popular-container .popular-card__profile,
+.popular-container .popular-card__cover {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.popular-container .popular-card__cover {
+  border-radius: 3px;
+}
+
+.popular-container .popular-card__profile {
+  border-radius: 50%;
+}
+
+.popular-container .popular-card__info {
+  overflow: hidden;
+  padding-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.popular-container .popular-card__info .popular-card__info--title {
+  display: block;
+  margin-bottom: 3px;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popular-container .popular-card__info .popular-card__info--subtitle {
+  color: #828282;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.popular-container .popular-card__info .popular-card__info--subtitle span:last-child {
+  display: inline-block;
+}
+
+.popular-container .popular-card__info .popular-card__info--subtitle span:last-child::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: #828282;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 4px 2px;
+}
+
+.popular-container .popular-card__link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.artist-container,
+.album-container,
+.track-container,
+.research-section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (17vw)[4];
+      grid-template-columns: repeat(4, 17vw);
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-transition: grid-template-columns 0.5s ease;
+  transition: grid-template-columns 0.5s ease;
+  transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
+}
+
+@media screen and (max-width: 1225px) {
+  .artist-container,
+  .album-container,
+  .track-container,
+  .research-section {
+    -ms-grid-columns: (20vw)[3];
+        grid-template-columns: repeat(3, 20vw);
+    -webkit-transition: grid-template-columns 0.5s ease;
+    transition: grid-template-columns 0.5s ease;
+    transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .artist-container,
+  .album-container,
+  .track-container,
+  .research-section {
+    -ms-grid-columns: (27vw)[2];
+        grid-template-columns: repeat(2, 27vw);
+    -webkit-transition: grid-template-columns 0.5s ease;
+    transition: grid-template-columns 0.5s ease;
+    transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .artist-container,
+  .album-container,
+  .track-container,
+  .research-section {
+    -ms-grid-columns: (35vw)[2];
+        grid-template-columns: repeat(2, 35vw);
+  }
+}
+
+.artist-container .artist-card {
+  margin-bottom: 20px;
+}
+
+.artist-container .artist-card__img-ctnr {
+  height: 17vw;
+}
+
+@media screen and (max-width: 1225px) {
+  .artist-container .artist-card__img-ctnr {
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .artist-container .artist-card__img-ctnr {
+    height: 27vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .artist-container .artist-card__img-ctnr {
+    height: 35vw;
+  }
+}
+
+.artist-container .artist-card__info .artist-card__info--artiste {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 850px) {
+  .artist-container .artist-card__info .artist-card__info--artiste {
+    font-size: 16px;
+  }
+}
+
+.album-card,
+.track-card {
+  margin-bottom: 10px;
+}
+
+.track-card__img-cntr,
+.album-card__img-ctnr {
+  height: 17vw;
+}
+
+@media screen and (max-width: 1225px) {
+  .track-card__img-cntr,
+  .album-card__img-ctnr {
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .track-card__img-cntr,
+  .album-card__img-ctnr {
+    height: 27vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .track-card__img-cntr,
+  .album-card__img-ctnr {
+    height: 35vw;
+  }
 }

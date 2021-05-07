@@ -1,0 +1,166 @@
+@import "tools.scss";
+
+.artist {
+    position: relative;
+    backdrop-filter: blur(50px);
+    width: calc(100vw - 200px);
+    left: -30px;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (max-width: $maxWidthMobile) {
+        width: 100vw;
+        left: -20px;
+        top: -40px;
+    }
+    .blur {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        backdrop-filter: blur(50px);
+        background: rgba(0, 0, 0, 0.3);
+    }
+    img {
+        border-radius: 50%;
+        margin-top: 50px;
+    }
+    h1 {
+        color: $grey-text-1;
+    }
+    .artist__info {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .artist__info--albums,
+    .artist__info--fans {
+        color: $grey-text-1;
+        margin-bottom: 3px;
+    }
+    .artist__info--deezer-link {
+        color: $grey-text-1;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+h2 {
+    font-size: 20px;
+}
+
+.popular-section {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
+
+    .popular-section__album {
+        margin-bottom: 20px;
+        .album-card {
+            width: 20vw;
+            @media screen and (max-width: $maxWidthMobile) {
+                width: 50vw;
+            }
+            .album-card__info--title {
+                font-size: 16px;
+            }
+        }
+    }
+    .popular-section__tracks {
+        width: 100%;
+        @media screen and (min-width: 801px) {
+            margin-left: 50px;
+        }
+
+        h2 {
+            padding-left: 20px;
+            @media screen and (max-width: 800px) {
+                padding-left: 0;
+            }
+        }
+    }
+}
+.list-track {
+    grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;
+    @media screen and (max-width: 800px) and (min-width: 601px) {
+        grid-template-columns: 50px 50px 1fr 0px 59px 37px 35px;
+    }
+    @media screen and (max-width: $maxWidthTablet) {
+        grid-template-columns: 40px 50px 1fr 0 25px 32px 35px;
+    }
+    .list-track__number {
+        @media screen and (max-width: $maxWidthTablet) {
+            justify-content: start;
+        }
+    }
+    .list-track__info {
+        padding: 0 10px;
+    }
+    .list-track__love-ctnr {
+        grid-column: 7;
+    }
+    .list-track__duration {
+        grid-column: 6;
+    }
+    .explicit-tag {
+        display: inline-block;
+        @media screen and (max-width: $maxWidthTablet) {
+            display: none;
+        }
+    }
+    .explicit-tag-mobile {
+        display: none;
+        @media screen and (max-width: $maxWidthTablet) {
+            display: inline-block;
+        }
+    }
+}
+
+.artists-related {
+    margin-top: 40px;
+    h2 {
+        margin-bottom: 30px;
+    }
+    .artists-related__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 17vw);
+        justify-content: space-around;
+        transition: grid-template-columns 0.5s ease;
+        @media screen and (max-width: 1225px) {
+            grid-template-columns: repeat(3, 20vw);
+            transition: grid-template-columns 0.5s ease;
+        }
+        @media screen and (max-width: 850px) {
+            grid-template-columns: repeat(2, 27vw);
+            transition: grid-template-columns 0.5s ease;
+        }
+        @media screen and (max-width: $maxWidthMobile) {
+            grid-template-columns: repeat(2, 35vw);
+        }
+    }
+    .artist-card {
+        margin-bottom: 20px;
+        .artist-card__img-ctnr {
+            height: 17vw;
+            @media screen and (max-width: 1225px) {
+                height: 20vw;
+            }
+            @media screen and (max-width: 850px) {
+                height: 27vw;
+            }
+            @media screen and (max-width: $maxWidthMobile) {
+                height: 35vw;
+            }
+        }
+        .artist-card__info {
+            .artist-card__info--artiste {
+                font-size: 20px;
+                @media screen and (max-width: 850px) {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

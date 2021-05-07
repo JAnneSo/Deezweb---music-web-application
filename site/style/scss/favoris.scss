@@ -1,0 +1,24 @@
+@import "tools.scss";
+.list-track {
+    grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;
+    @media screen and (max-width: 800px) and (min-width: 601px) {
+        grid-template-columns: 50px 50px 1fr 0px 59px 37px 35px;
+    }
+    @media screen and (max-width: $maxWidthMobile) {
+        grid-template-columns: 40px 50px 1fr 0 25px 32px 35px;
+    }
+    .list-track__number {
+        span {
+            display: none;
+        }
+    }
+    .list-track__info {
+        padding: 0 10px;
+    }
+    .list-track__love-ctnr {
+        grid-column: 7;
+    }
+    .list-track__duration {
+        grid-column: 6;
+    }
+}
