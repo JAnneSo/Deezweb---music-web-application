@@ -359,6 +359,11 @@ function getCheckboxState() {
         }
     }
 }
+
+function errorPage(containerId) {
+    document.getElementById(containerId).innerHTML = "<h1 class='error-title'>Désolé, nous ne trouvons pas la page que vous recherchez</h1>";
+}
+
 sideSearchInput.addEventListener("keydown", (e) => {
     if (e.key.charCodeAt(0) == 69) {
         if (sideSearchInput.value) {

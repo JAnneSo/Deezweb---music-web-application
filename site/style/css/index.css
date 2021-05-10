@@ -51,13 +51,19 @@ section {
 
 .arrows .swiper-button-prev,
 .arrows .swiper-button-next {
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
   top: calc(50% - 20px);
   color: #e0e0e0;
 }
 
 .arrows .swiper-button-prev::after,
 .arrows .swiper-button-next::after {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 600px) {

@@ -38,10 +38,15 @@ section {
 .arrows {
     .swiper-button-prev,
     .swiper-button-next {
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(30px);
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
         top: calc(50% - 20px);
         color: $grey-text-2;
         &::after {
-            font-size: 30px;
+            font-size: 20px;
         }
         @media screen and (max-width: $maxWidthMobile) {
             display: none;

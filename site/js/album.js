@@ -12,15 +12,16 @@ if (search_params.has('id')) {
         .then(response => response.json())
         .then((album) => {
             console.log(album);
-            let coverCtnr = document.createElement("div");
-            coverCtnr.classList.add("album__cover");
-            let coverElt = document.createElement("img");
-            coverElt.setAttribute("id", "cover");
-            coverElt.setAttribute("src", album.cover_medium);
-            coverCtnr.appendChild(coverElt);
-            let albumInfoCtnr = document.createElement("div");
-            albumInfoCtnr.classList.add("album__info");
-            albumInfoCtnr.innerHTML = `
+            if (!album.error) {
+                let coverCtnr = document.createElement("div");
+                coverCtnr.classList.add("album__cover");
+                let coverElt = document.createElement("img");
+                coverElt.setAttribute("id", "cover");
+                coverElt.setAttribute("src", album.cover_medium);
+                coverCtnr.appendChild(coverElt);
+                let albumInfoCtnr = document.createElement("div");
+                albumInfoCtnr.classList.add("album__info");
+                albumInfoCtnr.innerHTML = `
                     <h1 class="album__info--title">${album.title}</h1>
                     <h2 class="album__info--artist"><a href="artiste.html?id=${album.artist.id}">${album.artist.name}</a></h2>
                     <p class="album__info--genre">${album.genres.data[0] ? `<a href="explorer.html?id=${album.genres.data[0].id}">${album.genres.data[0].name}</a>` : ''}${new Date(album.release_date).getFullYear()}</p>
@@ -29,94 +30,96 @@ if (search_params.has('id')) {
                         <a href="${album.link}" target="blank" class="album-btn"><i class="fab fa-deezer"></i>Voir l'album sur Deezer</a>
                     </p>
                 `;
-            document.getElementById("album-ctnr").appendChild(coverCtnr);
-            document.getElementById("album-ctnr").appendChild(albumInfoCtnr);
+                document.getElementById("album-ctnr").appendChild(coverCtnr);
+                document.getElementById("album-ctnr").appendChild(albumInfoCtnr);
 
-            document.getElementById("cover").addEventListener('mousemove', function (e) {
-                let elem = e.target;
-                mX = e.pageX;
-                mY = e.pageY;
-                distanceY = (calculateDistanceY(elem, mY) / 100) * -4;
-                distanceX = (calculateDistanceX(elem, mX) / 100) * 4;
+                document.getElementById("cover").addEventListener('mousemove', function (e) {
+                    let elem = e.target;
+                    mX = e.pageX;
+                    mY = e.pageY;
+                    distanceY = (calculateDistanceY(elem, mY) / 100) * -4;
+                    distanceX = (calculateDistanceX(elem, mX) / 100) * 4;
 
-                elem.style.transform = `rotateY(${distanceX}deg) rotateX(${distanceY}deg)`;
-                //elem.style.boxShadow = `${distanceX * 2 * -1}px ${distanceY * 2}px 10px 0px rgba(0,0,0,0.3)`;
-                elem.style.transition = "all 0.1s ease";
-            });
-            document.getElementById("cover").addEventListener('mouseleave', function (e) {
-                let elem = e.target;
-                elem.style.transition = "all 0.1s ease";
-                elem.style.transform = `rotateY(0deg) rotateX(0deg)`;
-                //elem.style.boxShadow = 'none';
-            });
-            const albumTracks = album.tracks.data;
-            let trackList = [];
-            let previewList = [];
-            for (let i = 0; i < albumTracks.length; i++) {
-                document.getElementById("tracks-section").appendChild(createListCard(i + 1, albumTracks[i]));
-                previewList.push(albumTracks[i].preview);
-                trackList.push(albumTracks[i]);
-            }
-            function loadMusic(track) {
-                song.setAttribute('src', `${track.preview}`);
-                document.getElementById("cover-container").innerHTML = `<img src="${album.cover_small}" alt="${track.title}"/>`;
-                document.getElementById("info-container__title").innerHTML = `${track.title}`;
-                document.getElementById("info-container__artist").innerHTML = `${track.artist.name} - ${album.title}`;
-                range.style.display = "block";
-                range.setAttribute("value", "0");
-            }
-            loadMusic(trackList[0]);
-            function playPlaylist(index) {
-                console.log("play index = " + index);
+                    elem.style.transform = `rotateY(${distanceX}deg) rotateX(${distanceY}deg)`;
+                    //elem.style.boxShadow = `${distanceX * 2 * -1}px ${distanceY * 2}px 10px 0px rgba(0,0,0,0.3)`;
+                    elem.style.transition = "all 0.1s ease";
+                });
+                document.getElementById("cover").addEventListener('mouseleave', function (e) {
+                    let elem = e.target;
+                    elem.style.transition = "all 0.1s ease";
+                    elem.style.transform = `rotateY(0deg) rotateX(0deg)`;
+                    //elem.style.boxShadow = 'none';
+                });
+                const albumTracks = album.tracks.data;
+                let trackList = [];
+                let previewList = [];
+                for (let i = 0; i < albumTracks.length; i++) {
+                    document.getElementById("tracks-section").appendChild(createListCard(i + 1, albumTracks[i]));
+                    previewList.push(albumTracks[i].preview);
+                    trackList.push(albumTracks[i]);
+                }
+                function loadMusic(track) {
+                    song.setAttribute('src', `${track.preview}`);
+                    document.getElementById("cover-container").innerHTML = `<img src="${album.cover_small}" alt="${track.title}"/>`;
+                    document.getElementById("info-container__title").innerHTML = `${track.title}`;
+                    document.getElementById("info-container__artist").innerHTML = `${track.artist.name} - ${album.title}`;
+                    range.style.display = "block";
+                    range.setAttribute("value", "0");
+                }
+                loadMusic(trackList[0]);
+                function playPlaylist(index) {
+                    console.log("play index = " + index);
 
 
-                if (index < previewList.length) {
-                    // Check if the player is selected
-                    if (song === null) {
-                        console.log("pas de son" + index);
-                        throw "Playlist Player does not exists ...";
+                    if (index < previewList.length) {
+                        // Check if the player is selected
+                        if (song === null) {
+                            console.log("pas de son" + index);
+                            throw "Playlist Player does not exists ...";
+                        } else {
+                            // Start the player
+                            //song.src = previewList[i];
+                            console.log("loadMusic = " + index);
+                            loadMusic(trackList[index]);
+                            song.play();
+                            // Listen for the music ended event, to play the next audio file
+                            song.addEventListener('ended', () => {
+                                playPlaylist(index + 1)
+                            }, false);
+                        }
                     } else {
-                        // Start the player
-                        //song.src = previewList[i];
-                        console.log("loadMusic = " + index);
-                        loadMusic(trackList[index]);
-                        song.play();
-                        // Listen for the music ended event, to play the next audio file
-                        song.addEventListener('ended', () => {
-                            playPlaylist(index + 1)
-                        }, false);
+                        console.log("fin");
+                        loadMusic(trackList[0]);
                     }
-                } else {
-                    console.log("fin");
-                    loadMusic(trackList[0]);
-                }
 
+                }
+                let index = 0;
+                prevSongBtn.addEventListener("click", (e) => {
+                    if (index == 0) {
+                        index = previewList.length - 1;
+                    } else {
+                        index--;
+                    }
+                    song.pause();
+                    playPlaylist(index)
+                });
+
+                nextSongBtn.addEventListener("click", (e) => {
+                    if (index == previewList.length) {
+                        index = 0;
+                    } else {
+                        index++;
+                    }
+                    song.pause();
+                    playPlaylist(index)
+                });
+                document.getElementById("readPlaylist").addEventListener("click", () => {
+                    playPlaylist(index);
+                    player.innerHTML = '<i class="fa fa-pause"></i>';
+                })
+            } else {
+                errorPage("album-ctnr");
             }
-            let index = 0;
-            prevSongBtn.addEventListener("click", (e) => {
-                if (index == 0) {
-                    index = previewList.length - 1;
-                } else {
-                    index--;
-                }
-                song.pause();
-                playPlaylist(index)
-            });
-
-            nextSongBtn.addEventListener("click", (e) => {
-                if (index == previewList.length) {
-                    index = 0;
-                } else {
-                    index++;
-                }
-                song.pause();
-                playPlaylist(index)
-            });
-            document.getElementById("readPlaylist").addEventListener("click", () => {
-                playPlaylist(index);
-                player.innerHTML = '<i class="fa fa-pause"></i>';
-            })
-
         })
         .catch((err) => {
             console.log("KO");

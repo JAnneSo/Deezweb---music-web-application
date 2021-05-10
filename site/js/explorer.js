@@ -38,16 +38,20 @@ if (search_params.has('id')) {
 fetch(requete)
     .then(response => response.json())
     .then((result) => {
-        const list = result.data;
-        if (id) {
-            for (let i = 0; i < list.length; i++) {
-                //document.getElementById("h1").innerHTML= `Explorer : ${genre}`;
-                document.getElementById("explore-section").appendChild(createArtistCard(list[i]));
+        if (!result.error) {
+            const list = result.data;
+            if (id) {
+                for (let i = 0; i < list.length; i++) {
+                    //document.getElementById("h1").innerHTML= `Explorer : ${genre}`;
+                    document.getElementById("explore-section").appendChild(createArtistCard(list[i]));
+                }
+            } else {
+                for (let i = 0; i < list.length; i++) {
+                    document.getElementById("explore-section").appendChild(createGenreCard(list[i]));
+                }
             }
         } else {
-            for (let i = 0; i < list.length; i++) {
-                document.getElementById("explore-section").appendChild(createGenreCard(list[i]));
-            }
+            errorPage("explore-section");
         }
     })
     .catch((err) => {
