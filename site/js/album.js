@@ -23,7 +23,7 @@ if (search_params.has('id')) {
             albumInfoCtnr.innerHTML = `
                     <h1 class="album__info--title">${album.title}</h1>
                     <h2 class="album__info--artist"><a href="artiste.html?id=${album.artist.id}">${album.artist.name}</a></h2>
-                    <p class="album__info--genre"><a href="explorer.html?id=${album.genres.data[0].id}">${album.genres.data[0].name}</a>${album.release_date}</p>
+                    <p class="album__info--genre">${album.genres.data[0] ? `<a href="explorer.html?id=${album.genres.data[0].id}">${album.genres.data[0].name}</a>` : ''}${new Date(album.release_date).getFullYear()}</p>
                     <p class="btn-ctnr">
                         <button id="readPlaylist" class="album-btn"><i class="fas fa-play"></i>Écouter</button>
                         <a href="${album.link}" target="blank" class="album-btn"><i class="fab fa-deezer"></i>Voir l'album sur Deezer</a>
@@ -38,10 +38,16 @@ if (search_params.has('id')) {
                 mY = e.pageY;
                 distanceY = (calculateDistanceY(elem, mY) / 100) * -4;
                 distanceX = (calculateDistanceX(elem, mX) / 100) * 4;
-                elem.style.transform = `rotateY(${distanceX}deg) rotateX(${distanceY}deg)`;
-                elem.style.transition = "all 0s";
-                elem.style.boxShadow = `${distanceX * 3 * -1}px ${distanceY * 3}px 10px 0px rgba(0,0,0,0.3)`;
 
+                elem.style.transform = `rotateY(${distanceX}deg) rotateX(${distanceY}deg)`;
+                //elem.style.boxShadow = `${distanceX * 2 * -1}px ${distanceY * 2}px 10px 0px rgba(0,0,0,0.3)`;
+                elem.style.transition = "all 0.1s ease";
+            });
+            document.getElementById("cover").addEventListener('mouseleave', function (e) {
+                let elem = e.target;
+                elem.style.transition = "all 0.1s ease";
+                elem.style.transform = `rotateY(0deg) rotateX(0deg)`;
+                //elem.style.boxShadow = 'none';
             });
             const albumTracks = album.tracks.data;
             let trackList = [];

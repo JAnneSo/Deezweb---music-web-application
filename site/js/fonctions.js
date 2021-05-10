@@ -334,7 +334,6 @@ function storeFavorite(e) {
         storageArray = JSON.parse(storedList);
     }
     const index = storageArray.indexOf(trackId);
-    console.log("index fav: " + index);
     if (e.checked) {
         localStorage.setItem(checkboxId, 1);
         if (index == -1) {

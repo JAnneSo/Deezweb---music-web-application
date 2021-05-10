@@ -1,0 +1,173 @@
+/*  COLORS  */
+/*  MEDIA  */
+/*  FONTS  */
+@font-face {
+  font-family: "SF Pro";
+  src: url("/fonts/SF-Pro.ttf") format("ttf");
+}
+
+/*  MIXINS  */
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 750px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+header .album__cover {
+  padding: 20px;
+}
+
+header .album__cover img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+header .track__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 100%;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 750px) {
+  header .track__info {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+header .track__info .explicit-tag {
+  margin-bottom: 5px;
+}
+
+header .track__info .track__info--title {
+  margin: 2px 0;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+header .track__info .track__info--album {
+  margin: 0;
+}
+
+header .track__info .track__info--album a {
+  font-weight: 500;
+  color: #e6434f;
+}
+
+header .track__info .track__info--date {
+  color: #828282;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+header .track__info .track__info--date span:first-of-type {
+  margin-right: 15px;
+}
+
+header .track__info .track__info--date span:first-of-type::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  margin: 7px 5px;
+  background: #828282;
+}
+
+header .btn-ctnr {
+  position: absolute;
+  bottom: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media screen and (max-width: 750px) {
+  header .btn-ctnr {
+    position: initial;
+    margin-top: 30px;
+  }
+}
+
+header .btn-ctnr .red-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: #e6434f;
+  color: #e0e0e0;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+header .btn-ctnr .red-btn i {
+  margin-right: 5px;
+}
+
+header input[type="checkbox"] {
+  width: 0;
+  height: 0;
+}
+
+header input[type="checkbox"]:checked + .track-card__love svg path {
+  fill: #f2f2f2;
+  stroke: #f2f2f2;
+}
+
+header .track-card__love {
+  opacity: unset;
+  position: unset;
+  height: 24px;
+  border-radius: 5px;
+  background: #e6434f;
+}
+
+header .track-card__love svg {
+  width: 16px;
+  height: 16px;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
+}
+
+header .track-card__love svg path {
+  stroke: #bdbdbd;
+}
+
+header .track-card__love:hover path {
+  stroke: #f2f2f2;
+}
+
+.card-container {
+  padding-left: 20px;
+}
+
+.card-container .popular-card {
+  max-width: 400px;
+}
