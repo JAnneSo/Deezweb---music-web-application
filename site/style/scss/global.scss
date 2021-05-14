@@ -89,11 +89,9 @@ aside {
         width: 90%;
         margin: 0 auto;
         @media screen and (max-width: $maxWidthMobile) {
-            display: flex;
-            align-items: center;
+            @include flex(row, space-between, center);
             width: 100%;
             height: 100%;
-            justify-content: space-between;
             padding: 0 30px;
             box-sizing: border-box;
             .nav-link {
@@ -211,9 +209,7 @@ aside {
         bottom: 59px;
     }
     .controls-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex(row, space-between, center);
         width: 150px;
         min-width: 130px;
         margin-right: 50px;
@@ -611,9 +607,7 @@ main {
     .list-track__number {
         position: relative;
         height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(row, center, center);
         span {
             color: white;
             font-size: 14px;
@@ -629,9 +623,7 @@ main {
         border-radius: 2px;
     }
     .list-track__info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include flex(column, center, flex-start);
         overflow: hidden;
         &--title {
             @include textOverflow();
@@ -661,9 +653,7 @@ main {
     .list-track__love-ctnr {
         position: relative;
         height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(row, center, center);
         input[type="checkbox"] {
             width: 0;
             height: 0;
@@ -719,9 +709,7 @@ main {
     .popular-card__info {
         overflow: hidden;
         padding-left: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        @include flex(column, center, flex-start);
         .popular-card__info--title {
             @include titleCard();
             @include textOverflow();

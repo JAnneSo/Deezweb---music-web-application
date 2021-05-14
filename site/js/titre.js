@@ -1,10 +1,10 @@
-// récupération de l'url
+// get the url
 let search_params = new URLSearchParams(new URL(document.location.href).search);
 let id;
-// vérification de la présence du paramètre
+// check if the q param exists
 if (search_params.has('id')) {
     id = search_params.get('id');
-    // appel API
+    // API call
     fetch(`https://api.deezer.com/track/${id}`)
         .then(response => response.json())
         .then((track) => {
@@ -47,6 +47,7 @@ if (search_params.has('id')) {
             }
         })
         .catch((err) => {
+            console.log("KO");
             console.log(err);
         });
 

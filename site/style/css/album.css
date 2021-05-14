@@ -18,11 +18,11 @@
   .album-ctnr {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 }
 
@@ -42,11 +42,11 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   position: relative;
   width: 100%;
   padding-left: 20px;
@@ -55,8 +55,8 @@
 @media screen and (max-width: 750px) {
   .album-ctnr .album__info {
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 }
 
@@ -107,7 +107,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 750px) {
@@ -137,15 +137,15 @@
 
 .list-track {
   -ms-grid-columns: 41px 1fr 70px 50px 45px;
-      grid-template-columns: 41px 1fr 70px 50px 45px;
+  grid-template-columns: 41px 1fr 70px 50px 45px;
 }
 
 @media screen and (max-width: 600px) {
   .list-track {
     -ms-grid-columns: 30px 1fr 30px 40px 38px;
-        grid-template-columns: 30px 1fr 30px 40px 38px;
+    grid-template-columns: 30px 1fr 30px 40px 38px;
     -ms-grid-rows: 30px;
-        grid-template-rows: 30px;
+    grid-template-rows: 30px;
   }
 }
 

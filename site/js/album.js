@@ -1,18 +1,15 @@
-// récupération de l'url
+// get the url
 let search_params = new URLSearchParams(new URL(document.location.href).search);
 let id;
-console.log(typeof document.location.href);
-console.log(search_params);
-// vérification de la présence du paramètre
+// check if the id param exists
 if (search_params.has('id')) {
     id = search_params.get('id');
-    console.log(id);
-    // appel API
+    // API call
     fetch(`https://api.deezer.com/album/${id}`)
         .then(response => response.json())
         .then((album) => {
-            console.log(album);
             if (!album.error) {
+                // creation of Html elements and display
                 let coverCtnr = document.createElement("div");
                 coverCtnr.classList.add("album__cover");
                 let coverElt = document.createElement("img");
@@ -33,22 +30,28 @@ if (search_params.has('id')) {
                 document.getElementById("album-ctnr").appendChild(coverCtnr);
                 document.getElementById("album-ctnr").appendChild(albumInfoCtnr);
 
+                /**
+                 * @event mousemove
+                 * @description puts hover effect on the cover
+                 */
                 document.getElementById("cover").addEventListener('mousemove', function (e) {
                     let elem = e.target;
                     mX = e.pageX;
                     mY = e.pageY;
                     distanceY = (calculateDistanceY(elem, mY) / 100) * -4;
                     distanceX = (calculateDistanceX(elem, mX) / 100) * 4;
-
                     elem.style.transform = `rotateY(${distanceX}deg) rotateX(${distanceY}deg)`;
-                    //elem.style.boxShadow = `${distanceX * 2 * -1}px ${distanceY * 2}px 10px 0px rgba(0,0,0,0.3)`;
                     elem.style.transition = "all 0.1s ease";
                 });
+
+                /**
+                 * @event mouseleave
+                 * @description reset the rotation of the cover
+                 */
                 document.getElementById("cover").addEventListener('mouseleave', function (e) {
                     let elem = e.target;
                     elem.style.transition = "all 0.1s ease";
                     elem.style.transform = `rotateY(0deg) rotateX(0deg)`;
-                    //elem.style.boxShadow = 'none';
                 });
                 const albumTracks = album.tracks.data;
                 let trackList = [];
@@ -58,6 +61,11 @@ if (search_params.has('id')) {
                     previewList.push(albumTracks[i].preview);
                     trackList.push(albumTracks[i]);
                 }
+                /**
+                 * @function loadMusic
+                 * @description fill the player with the new track to play
+                 * @param {object} track 
+                 */
                 function loadMusic(track) {
                     song.setAttribute('src', `${track.preview}`);
                     document.getElementById("cover-container").innerHTML = `<img src="${album.cover_small}" alt="${track.title}"/>`;
@@ -67,19 +75,17 @@ if (search_params.has('id')) {
                     range.setAttribute("value", "0");
                 }
                 loadMusic(trackList[0]);
+                /**
+                 * @function playPlaylist
+                 * @param {number} index 
+                 */
                 function playPlaylist(index) {
-                    console.log("play index = " + index);
-
-
                     if (index < previewList.length) {
                         // Check if the player is selected
                         if (song === null) {
-                            console.log("pas de son" + index);
                             throw "Playlist Player does not exists ...";
                         } else {
                             // Start the player
-                            //song.src = previewList[i];
-                            console.log("loadMusic = " + index);
                             loadMusic(trackList[index]);
                             song.play();
                             // Listen for the music ended event, to play the next audio file
@@ -88,12 +94,15 @@ if (search_params.has('id')) {
                             }, false);
                         }
                     } else {
-                        console.log("fin");
                         loadMusic(trackList[0]);
                     }
 
                 }
                 let index = 0;
+                /**
+                 * @event click
+                 * @description plays the previous song
+                 */
                 prevSongBtn.addEventListener("click", (e) => {
                     if (index == 0) {
                         index = previewList.length - 1;
@@ -103,7 +112,10 @@ if (search_params.has('id')) {
                     song.pause();
                     playPlaylist(index)
                 });
-
+                /**
+                 * @event click
+                 * @description plays the next song
+                 */
                 nextSongBtn.addEventListener("click", (e) => {
                     if (index == previewList.length) {
                         index = 0;
@@ -113,6 +125,10 @@ if (search_params.has('id')) {
                     song.pause();
                     playPlaylist(index)
                 });
+                /**
+                 * @event click
+                 * @description launches the playlist
+                 */
                 document.getElementById("readPlaylist").addEventListener("click", () => {
                     playPlaylist(index);
                     player.innerHTML = '<i class="fa fa-pause"></i>';
@@ -133,11 +149,22 @@ window.addEventListener("load", () => {
 });
 
 
-
+/**
+ * calculateDistanceX
+ * @param {HTMLElement} elem 
+ * @param {number} mouseX 
+ * @returns {number}
+ */
 function calculateDistanceX(elem, mouseX) {
     return Math.pow(mouseX - (window.scrollX + elem.getBoundingClientRect().left + (elem.style.width / 2)), 1);
 }
 
+/**
+ * calculateDistanceY
+ * @param {HTMLElement} elem
+ * @param {number} mouseY
+ * @returns {number}
+ */
 function calculateDistanceY(elem, mouseY) {
     return Math.pow(mouseY - (window.scrollY + elem.getBoundingClientRect().top + (elem.style.height / 2)), 1);
 }

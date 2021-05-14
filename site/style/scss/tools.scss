@@ -46,3 +46,10 @@ $maxWidthTablet: 1024px;
     font-size: 14px;
     font-weight: 400;
 }
+
+@mixin flex($direction, $justifyContent, $alignItems) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+}

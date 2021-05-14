@@ -1,9 +1,57 @@
+/**
+ * @function createSwiperCardContainer
+ * @description create a html element : div
+ * @returns HTMLDivElement
+ */
+function createSwiperCardContainer() {
+    let swiperSlide = document.createElement("div");
+    swiperSlide.classList.add("swiper-slide");
+    return swiperSlide;
+}
 
+/**
+ * @function resizeSquareElement
+ * @description resizes the image correctly
+ * @param {string} className 
+ */
+function resizeSquareElement(className) {
+    let imgCtnr = document.getElementsByClassName(className);
+
+    for (let i = 0; i < imgCtnr.length; i++) {
+        imgCtnr[i].style.height = imgCtnr[i].offsetWidth + "px";
+    }
+}
+
+/**
+ * @function initializeSwiper
+ * @description manages the number of cards displayed in the swiper for all screen size
+ */
+function initializeSwiper() {
+    let nbOfSlides;
+    if (1250 < window.outerWidth) {
+        nbOfSlides = 5;
+    } else if (1100 < window.outerWidth && window.outerWidth < 1250) {
+        nbOfSlides = 4;
+    } else if (window.outerWidth < 500) {
+        nbOfSlides = 2;
+    } else if (window.outerWidth < 1100) {
+        nbOfSlides = 3;
+    }
+
+    let swiper = new Swiper('.swiper-container', {
+        slidesPerView: nbOfSlides,
+        spaceBetween: 20,
+        slidesPerGroup: nbOfSlides,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+}
 
 fetch("https://api.deezer.com/chart")
     .then(response => response.json())
     .then(resFinal => {
-        console.log(resFinal);
         const albums = resFinal.albums.data;
         const artists = resFinal.artists.data;
         const tracks = resFinal.tracks.data;
@@ -37,60 +85,14 @@ fetch("https://api.deezer.com/chart")
         alert("Une erreur est survenue");
     });
 
-// fetch(`https://api.deezer.com/track/1253711502`)
-//     .then(response => response.json())
-//     .then(resFinal => {
-//         console.log("track");
-//         console.log(resFinal);
-//         // const tracks = resFinal.tracks.data;
-//         // for (let i = 0; i < tracks.length; i++) {
-//         //     document.getElementById("audio-song").appendChild(createAlbumCard(tracks[i]));
-//         // }
-
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//         alert("Une erreur est survenue");
-//     });
-
-
+/**
+ * @event load
+ * @description executes these functions 500 milliseconds after the load
+ */
 window.addEventListener("load", () => {
     setTimeout(function () {
-        getCheckboxState();
         initializeSwiper();
         resizeSquareElement("square");
-    }, 1000);
-
+        getCheckboxState();
+    }, 500);
 });
-
-function resizeSquareElement(className) {
-    let imgCtnr = document.getElementsByClassName(className);
-
-    for (let i = 0; i < imgCtnr.length; i++) {
-        imgCtnr[i].style.height = imgCtnr[i].offsetWidth + "px";
-    }
-}
-
-function initializeSwiper() {
-    let nbOfSlides;
-    if (1250 < window.outerWidth) {
-        nbOfSlides = 5;
-    } else if (1100 < window.outerWidth && window.outerWidth < 1250) {
-        nbOfSlides = 4;
-    } else if (window.outerWidth < 500) {
-        nbOfSlides = 2;
-    } else if (window.outerWidth < 1100) {
-        nbOfSlides = 3;
-    }
-
-    swiper = new Swiper('.swiper-container', {
-        slidesPerView: nbOfSlides,
-        spaceBetween: 20,
-        slidesPerGroup: nbOfSlides,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-}
-

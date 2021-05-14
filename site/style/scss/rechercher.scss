@@ -95,6 +95,9 @@ fieldset {
         grid-template-rows: repeat(3, 33%);
         grid-gap: 5px;
     }
+    .track-card__play {
+        z-index: 3;
+    }
 }
 
 .artist-container,

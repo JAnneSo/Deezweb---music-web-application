@@ -135,6 +135,10 @@ fieldset .filters label:not(:last-child) {
   }
 }
 
+.popular-container .track-card__play {
+  z-index: 3;
+}
+
 .artist-container,
 .album-container,
 .track-container,

@@ -1,3 +1,4 @@
+// Variable declaration
 let sideSearchInput = document.getElementById("side-search");
 let urlParam = "";
 var player = document.getElementById("play-song");
@@ -20,6 +21,7 @@ function add0(number) {
  * @function formatSeconds
  * @description format a seconds duration in minutes
  * @param {number} seconds
+ * @returns {string}
  */
 function formatSeconds(seconds) {
     const hh = add0(Math.floor(seconds / 3600));
@@ -33,7 +35,9 @@ function formatSeconds(seconds) {
 
 /**
  * @function createAlbumCard
+ * @description create the html element corresponding to a album card
  * @param {object} objAlbum 
+ * @returns {HTMLElement} cardElt
  */
 function createAlbumCard(objAlbum) {
     let cardElt = document.createElement("figure");
@@ -75,7 +79,9 @@ function createAlbumCard(objAlbum) {
 
 /**
  * @function createTrackCard
+ * @description create the html element corresponding to a track card
  * @param {object} objTrack 
+ * @returns {HTMLElement} cardElt
  */
 function createTrackCard(objTrack) {
     let cardElt = document.createElement("figure");
@@ -149,7 +155,9 @@ function createTrackCard(objTrack) {
 
 /**
  * @function createArtistCard
+ * @description create the html element corresponding to an artist card
  * @param {object} objArtist
+ * @returns {HTMLElement} cardElt
  */
 function createArtistCard(objArtist) {
     let cardElt = document.createElement("figure");
@@ -179,6 +187,13 @@ function createArtistCard(objArtist) {
     return cardElt;
 }
 
+/**
+ * @function createListCard
+ * @description create the html element corresponding to a track card displayed in playlist
+ * @param {number} index 
+ * @param {object} objTrack 
+ * @returns {HTMLElement} cardElt
+ */
 function createListCard(index, objTrack) {
     let cardElt = document.createElement("div");
     cardElt.setAttribute("class", "list-track");
@@ -268,37 +283,10 @@ function createListCard(index, objTrack) {
 }
 
 /**
- * @function createSwiperCardContainer
- * @param {}  
- * @returns HTMLDivElement
+ * @function loadTrack
+ * @description fill the player with the new track to play
+ * @param {*} track 
  */
-function createSwiperCardContainer() {
-    let swiperSlide = document.createElement("div");
-    swiperSlide.classList.add("swiper-slide");
-    return swiperSlide;
-}
-
-function search(requete) {
-    fetch(requete)
-        .then(response => response.json())
-        .then(resFinal => {
-
-            let tracks = resFinal.data;
-
-            if (tracks.length > 0) {
-                document.getElementById("research").innerHTML = "";
-                for (let i = 0; i < tracks.length; i++) {
-                    document.getElementById("research").appendChild(createTrackCard(tracks[i]));
-                }
-            } else {
-                document.getElementById("research").innerHTML = '<h2>Il n\'y a pas de résultats</h2>';
-            }
-        })
-        .catch(() => {
-            console.log("KO");
-        });
-}
-
 function loadTrack(track) {
     song.setAttribute('src', `${track.preview}`);
     document.getElementById("cover-container").innerHTML = `<img src="${track.album.cover_small}" alt="${track.title}"/>`;
@@ -308,11 +296,15 @@ function loadTrack(track) {
     range.setAttribute("value", "0");
 }
 
+/**
+ * @function playSong
+ * @description plays the track
+ * @param {HTMLElement} e 
+ */
 function playSong(e) {
     fetch(`https://api.deezer.com/track/${e.id}`)
         .then(response => response.json())
         .then(track => {
-            console.log(track);
             loadTrack(track);
             song.play();
             player.innerHTML = '<i class="fa fa-pause"></i>';
@@ -324,8 +316,12 @@ function playSong(e) {
 
 }
 
+/**
+ * @function storeFavorite
+ * @description store id of a track in localStorage
+ * @param {HTMLElement} e
+ */
 function storeFavorite(e) {
-    //récupération de l'id de la checkbox
     let checkboxId = e.id;
     let trackId = checkboxId.split("_")[1];
     const storedList = localStorage.getItem("deezweb_track_id");
@@ -349,6 +345,10 @@ function storeFavorite(e) {
     }
 }
 
+/**
+ * @function getCheckboxState
+ * @description checks if a song is liked and displays it as such
+ */
 function getCheckboxState() {
     for (var i = 0, len = localStorage.length; i < len; i++) {
         var key = localStorage.key(i);
@@ -360,10 +360,20 @@ function getCheckboxState() {
     }
 }
 
+/**
+ * @function errorPage
+ * @description displays a error message
+ * @param {string} containerId 
+ */
 function errorPage(containerId) {
     document.getElementById(containerId).innerHTML = "<h1 class='error-title'>Désolé, nous ne trouvons pas la page que vous recherchez</h1>";
 }
 
+
+/**
+ * @event keydown
+ * @description launches the search from the search input in the sidebar if enter is pressed
+ */
 sideSearchInput.addEventListener("keydown", (e) => {
     if (e.key.charCodeAt(0) == 69) {
         if (sideSearchInput.value) {
@@ -372,6 +382,11 @@ sideSearchInput.addEventListener("keydown", (e) => {
         }
     }
 });
+
+/**
+ * @event click
+ * @description launches the search from the search input in the sidebar if the button is pressed
+ */
 document.getElementById("side-submit")
     .addEventListener("click", () => {
         if (sideSearchInput.value) {
@@ -380,8 +395,11 @@ document.getElementById("side-submit")
         }
     });
 
+/**
+* @event timeupdate
+* @description updates progress bar and time during song playback
+*/
 song.addEventListener('timeupdate', (e) => {
-    //console.log('The currentTime ' + e.target.currentTime);
     labelDuration.innerHTML = formatSeconds(song.duration);
     range.setAttribute("max", `${Math.floor(song.duration)}`);
     range.value = e.target.currentTime;
@@ -392,17 +410,27 @@ song.addEventListener('timeupdate', (e) => {
 
 });
 
-song.addEventListener('play', (e) => {
+/**
+* @event play
+* @description replace play icon into pause icon
+*/
+song.addEventListener('play', () => {
     player.innerHTML = '<i class="fa fa-pause"></i>';
-
 });
 
+/**
+* @event change
+* @description updates the current time of the song when the user changes it
+*/
 range.addEventListener("change", (e) => {
     song.currentTime = e.target.value;
 });
 
+/**
+ * @event click
+ * @description put the song in play or pause
+ */
 player.addEventListener("click", () => {
-    // gérer le cas où il n'y a rien à lire
     if (song.getAttribute("src")) {
         if (song.paused) {
             song.play();
@@ -415,6 +443,10 @@ player.addEventListener("click", () => {
 
 });
 
+/**
+ * @event ended
+ * @description reset the icon play when the song is finished
+ */
 song.addEventListener('ended', () => {
     player.innerHTML = '<i class="fa fa-play">';
 });

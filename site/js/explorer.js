@@ -1,7 +1,9 @@
 
 /**
  * @function createGenreCard
+ * @description create the html element corresponding to a genre card
  * @param {object} obj
+ * @returns {HTMLElement} cardElt
  */
 function createGenreCard(obj) {
     let cardElt = document.createElement("div");
@@ -12,7 +14,7 @@ function createGenreCard(obj) {
     linkElt.classList.add("genre-card__link");
     imgElt.classList.add("genre-card__cover");
     // saisie des attributs et text content
-    linkElt.setAttribute("href", `explorer.html?id=${obj.id}`);
+    linkElt.setAttribute("href", `explorer.html?id=${obj.id}&genre=${obj.name}`);
     linkElt.textContent = obj.name;
     imgElt.setAttribute("src", obj.picture_big);
     // mise en place de l'arborescence
@@ -21,28 +23,27 @@ function createGenreCard(obj) {
     return cardElt;
 }
 
-// récupération de l'url
+// get the url
 let search_params = new URLSearchParams(new URL(document.location.href).search);
-let id;
-console.log(typeof document.location.href);
-console.log(search_params);
-let requete = "";
-// vérification de la présence du paramètre
+let id; let genre;
+let requete = "https://api.deezer.com/genre";
+// check if the id param exists
 if (search_params.has('id')) {
     id = search_params.get('id');
-    console.log(id);
-    requete = `https://api.deezer.com/genre/${id}/artists`;
-} else {
-    requete = "https://api.deezer.com/genre";
+    requete += `/${id}/artists`;
+}
+// check if the genre param exists
+if (search_params.has('genre')) {
+    genre = search_params.get('genre');
 }
 fetch(requete)
     .then(response => response.json())
     .then((result) => {
         if (!result.error) {
             const list = result.data;
+            document.getElementById("h1").innerHTML = genre ? genre : "Explorer";
             if (id) {
                 for (let i = 0; i < list.length; i++) {
-                    //document.getElementById("h1").innerHTML= `Explorer : ${genre}`;
                     document.getElementById("explore-section").appendChild(createArtistCard(list[i]));
                 }
             } else {
@@ -58,11 +59,3 @@ fetch(requete)
         console.log("KO");
         console.log(err);
     });
-
-// récupérer l'url, si aucun paramètre, on charge les genres,
-// si on a l'id du genre, on charge tous les artistes liés à ce genre avec https://api.deezer.com/genre/0/artists
-
-
-
-
-

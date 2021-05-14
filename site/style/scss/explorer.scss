@@ -38,9 +38,7 @@
         @include imageFit();
     }
     .genre-card__link {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
+        @include flex(row, center, flex-end);
         position: absolute;
         bottom: 0;
         width: 100%;

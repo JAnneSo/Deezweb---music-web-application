@@ -1,16 +1,15 @@
-// récupération de l'url
+// get the url
 let search_params = new URLSearchParams(new URL(document.location.href).search);
 let id;
-// vérification de la présence du paramètre
+// check if the id param exists
 if (search_params.has('id')) {
     id = search_params.get('id');
-    console.log(id);
-    // appel API
+    // API call
     fetch(`https://api.deezer.com/artist/${id}`)
         .then(response => response.json())
         .then((artist) => {
-            console.log(artist);
             if (!artist.error) {
+                // creation of Html elements and display
                 let imgElt = document.createElement("img");
                 imgElt.setAttribute("src", artist.picture_medium);
                 let nameElt = document.createElement("h1");
@@ -35,32 +34,26 @@ if (search_params.has('id')) {
                 document.getElementById("artist-section").appendChild(imgElt);
                 document.getElementById("artist-section").appendChild(nameElt);
                 document.getElementById("artist-section").appendChild(infoContainer);
-
                 document.getElementById("artist-section").style.background = `center / cover no-repeat url(${artist.picture_big})`;
 
+                // API call to get the artist's last album
                 fetch(`https://api.deezer.com/artist/${id}/albums`)
                     .then(response => response.json())
                     .then((albums) => {
-                        console.log(albums);
                         let lastAlbumTitleElt = document.createElement("h2");
                         lastAlbumTitleElt.textContent = "Dernier album";
                         document.getElementById("popular-album").appendChild(lastAlbumTitleElt);
-                        console.log(albums.data[0]);
                         document.getElementById("popular-album").appendChild(createAlbumCard(albums.data[0]));
 
-
-
+                        // API call to get the artist's top tracks
                         fetch(`https://api.deezer.com/artist/${id}/top`)
                             .then(response => response.json())
                             .then((topTracks) => {
-                                console.log(topTracks);
                                 let popularTracksTitleElt = document.createElement("h2");
                                 popularTracksTitleElt.textContent = "Titres populaires";
                                 document.getElementById("popular-tracks").appendChild(popularTracksTitleElt);
                                 for (let i = 0; i < topTracks.data.length; i++) {
                                     document.getElementById("popular-tracks").appendChild(createListCard(i + 1, topTracks.data[i]));
-                                    // previewList.push(topTracks.data[i].preview);
-                                    // trackList.push(topTracks.data[i]);
                                 }
                             })
                             .catch((err) => {
@@ -68,10 +61,10 @@ if (search_params.has('id')) {
                                 console.log(err);
                             });
 
+                        // API call to get artists related
                         fetch(`https://api.deezer.com/artist/${id}/related&limit=4`)
                             .then(response => response.json())
                             .then((artistsRelated) => {
-                                console.log(artistsRelated);
                                 let titleElt = document.createElement("h2");
                                 titleElt.textContent = "Artistes liés";
                                 document.getElementById("artists-related").appendChild(titleElt);
