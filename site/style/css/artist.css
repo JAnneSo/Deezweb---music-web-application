@@ -203,6 +203,32 @@ h2 {
   }
 }
 
+/* SWIPER */
+.swiper-container {
+  z-index: 0;
+  padding-top: 55px;
+  margin-top: -55px;
+}
+
+.swiper-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.swiper-slide {
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .artists-related {
   margin-top: 40px;
 }

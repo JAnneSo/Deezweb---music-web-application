@@ -8,18 +8,18 @@
 
 /*  MIXINS  */
 section {
-  margin-bottom: 60px;
+  margin-bottom: 50px !important;
 }
 
 @media screen and (max-width: 1024px) {
   section {
-    margin-bottom: 40px;
+    margin-bottom: 40px !important;
   }
 }
 
 @media screen and (max-width: 600px) {
   section {
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
   }
 }
 
@@ -34,6 +34,8 @@ section {
 /* SWIPER */
 .swiper-container {
   z-index: 0;
+  padding-top: 55px;
+  margin-top: -55px;
 }
 
 .swiper-slide {
@@ -49,21 +51,30 @@ section {
   align-items: center;
 }
 
+.arrows {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  width: 92px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
 .arrows .swiper-button-prev,
 .arrows .swiper-button-next {
-  background: rgba(0, 0, 0, 0.2);
-  -webkit-backdrop-filter: blur(30px);
-          backdrop-filter: blur(30px);
-  border-radius: 50%;
   height: 30px;
   width: 30px;
-  top: calc(50% - 20px);
   color: #e0e0e0;
 }
 
 .arrows .swiper-button-prev::after,
 .arrows .swiper-button-next::after {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @media screen and (max-width: 600px) {

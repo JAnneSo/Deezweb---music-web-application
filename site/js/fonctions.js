@@ -8,6 +8,7 @@ let label = document.getElementById("label-range");
 let labelDuration = document.getElementById("duration");
 let prevSongBtn = document.getElementById("prev-song");
 let nextSongBtn = document.getElementById("next-song");
+let volume = document.getElementById("song-volume");
 
 /**
  * @function add0
@@ -451,4 +452,7 @@ song.addEventListener('ended', () => {
     player.innerHTML = '<i class="fa fa-play">';
 });
 
-
+volume.addEventListener("input", (e) => {
+    song.volume = e.target.value;
+    console.log("volume: " + e.target.value);
+})

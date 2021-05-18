@@ -79,7 +79,7 @@ header .track__info .track__info--album {
 
 header .track__info .track__info--album a {
   font-weight: 500;
-  color: #e6434f;
+  color: #239173;
 }
 
 header .track__info .track__info--date {
@@ -123,7 +123,7 @@ header .btn-ctnr .red-btn {
   padding: 5px 10px;
   border-radius: 5px;
   margin-bottom: 5px;
-  background-color: #e6434f;
+  background-color: #239173;
   color: #e0e0e0;
   font-size: 12px;
   cursor: pointer;
@@ -149,7 +149,7 @@ header .track-card__love {
   position: unset;
   height: 24px;
   border-radius: 5px;
-  background: #e6434f;
+  background: #239173;
 }
 
 header .track-card__love svg {

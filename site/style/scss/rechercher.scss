@@ -58,9 +58,7 @@ fieldset {
         padding: 10px;
         @media screen and (max-width: 710px) {
             display: flex;
-            flex-wrap: nowrap;
-            width: 90vw;
-            max-height: 34px;
+            flex-wrap: wrap;
             overflow-x: auto;
             touch-action: pan-x;
         }
@@ -73,6 +71,7 @@ fieldset {
         label {
             font-weight: 500;
             padding: 5px 10px;
+            margin-bottom: 7px;
             border-radius: 20px;
             background: rgba(white, 0.4);
             &:not(:last-child) {

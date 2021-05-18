@@ -1,12 +1,12 @@
 @import "tools.scss";
 
 section {
-    margin-bottom: 60px;
+    margin-bottom: 50px !important;
     @media screen and (max-width: $maxWidthTablet) {
-        margin-bottom: 40px;
+        margin-bottom: 40px !important;
     }
     @media screen and (max-width: $maxWidthMobile) {
-        margin-bottom: 30px;
+        margin-bottom: 30px !important;
     }
 }
 .albums-section {
@@ -17,6 +17,8 @@ section {
 /* SWIPER */
 .swiper-container {
     z-index: 0;
+    padding-top: 55px;
+    margin-top: -55px;
 }
 
 .swiper-slide {
@@ -36,17 +38,19 @@ section {
 }
 
 .arrows {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    width: 92px;
+    display: flex;
+    flex-direction: row-reverse;
     .swiper-button-prev,
     .swiper-button-next {
-        background: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(30px);
-        border-radius: 50%;
         height: 30px;
         width: 30px;
-        top: calc(50% - 20px);
         color: $grey-text-2;
         &::after {
-            font-size: 20px;
+            font-size: 18px;
         }
         @media screen and (max-width: $maxWidthMobile) {
             display: none;

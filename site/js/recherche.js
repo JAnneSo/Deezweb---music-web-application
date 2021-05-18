@@ -137,7 +137,6 @@ function search(requete) {
     fetch(requete)
         .then(response => response.json())
         .then(resFinal => {
-
             let tracks = resFinal.data;
             deleteContent("popular-section");
             deleteContent("artist-section");
@@ -169,6 +168,7 @@ let qParam;
 // check if the q param exists
 if (search_params.has('q')) {
     qParam = search_params.get('q');
+    searchInput.value = qParam;
     globalResearch(qParam);
 }
 

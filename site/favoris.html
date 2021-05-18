@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="style/css/favoris.css">
     <script src="https://kit.fontawesome.com/43f89a69e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="assets/images/music.ico" type="image/x-icon">
-    <title>DeezWeb - Favoris</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+    <title>deezweb - Favoris</title>
 </head>
 
 <body>
     <aside>
-        <a href="index.html" class="logo">Deez'Web</a>
+        <a href="index.html" class="logo"><img src="assets/images/Deezweb.svg" alt="deezweb"></a>
         <div class="search-container">
             <input type="search" id="side-search" placeholder="Rechercher"
                 aria-label="Rechercher parmi le contenu du site">
@@ -52,13 +52,16 @@
                     <span id="duration" class="duration"></span>
                     <input type="range" min="0" value="0" name="song-timeline" id="song-timeline">
                 </div>
-
             </div>
-
+            <div class="volume-controls-container">
+                <span><i class="fas fa-volume-off"></i></span>
+                <input type="range" min="0" max="1" step="0.01" name="song-volume" id="song-volume">
+                <span><i class="fas fa-volume-up"></i></span>
+            </div>
         </section>
         <main>
-            <h1>Mes favoris</h1>
-            <div id="test"></div>
+            <h1 id="title">Mes favoris</h1>
+            <div id="fav-container"></div>
         </main>
     </div>
 

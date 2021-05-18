@@ -40,11 +40,11 @@ if (search_params.has('id')) {
                 fetch(`https://api.deezer.com/artist/${id}/albums`)
                     .then(response => response.json())
                     .then((albums) => {
+
                         let lastAlbumTitleElt = document.createElement("h2");
                         lastAlbumTitleElt.textContent = "Dernier album";
                         document.getElementById("popular-album").appendChild(lastAlbumTitleElt);
                         document.getElementById("popular-album").appendChild(createAlbumCard(albums.data[0]));
-
                         // API call to get the artist's top tracks
                         fetch(`https://api.deezer.com/artist/${id}/top`)
                             .then(response => response.json())
@@ -65,6 +65,7 @@ if (search_params.has('id')) {
                         fetch(`https://api.deezer.com/artist/${id}/related&limit=4`)
                             .then(response => response.json())
                             .then((artistsRelated) => {
+                                console.log(artistsRelated);
                                 let titleElt = document.createElement("h2");
                                 titleElt.textContent = "Artistes liés";
                                 document.getElementById("artists-related").appendChild(titleElt);
@@ -79,6 +80,17 @@ if (search_params.has('id')) {
                                 console.log("KO");
                                 console.log(err);
                             });
+
+
+                        //TODO
+                        // document.getElementById("h2-albums").textContent = "Albums";
+                        // console.log(albums.data);
+                        // for (let i = 1; i < albums.data.length; i++) {
+                        //     let swiperSlide = document.createElement("div");
+                        //     swiperSlide.classList.add("swiper-slide");
+                        //     swiperSlide.appendChild(createAlbumCard(albums.data[i]));
+                        //     document.getElementById("albums-section").appendChild(swiperSlide);
+                        // }
 
                     })
                     .catch((err) => {
@@ -100,3 +112,14 @@ window.addEventListener("load", () => {
     setTimeout(function () { getCheckboxState(); }, 1000);
 
 });
+
+//TODO: 
+// let swiper = new Swiper('.swiper-container', {
+//     slidesPerView: auto,
+//     spaceBetween: 20,
+//     slidesPerGroup: nbOfSlides,
+//     navigation: {
+//         nextEl: '.swiper-button-next',
+//         prevEl: '.swiper-button-prev',
+//     },
+// });

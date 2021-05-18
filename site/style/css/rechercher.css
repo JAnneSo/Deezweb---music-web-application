@@ -82,10 +82,8 @@ fieldset .filters {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    width: 90vw;
-    max-height: 34px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     overflow-x: auto;
     -ms-touch-action: pan-x;
         touch-action: pan-x;
@@ -103,6 +101,7 @@ fieldset .filters input[type="radio"]:checked + label {
 fieldset .filters label {
   font-weight: 500;
   padding: 5px 10px;
+  margin-bottom: 7px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.4);
 }
