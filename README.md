@@ -37,7 +37,7 @@ For more details see [this file](sources/Projet-DFE-Deez'Web-Brief.pdf) (french)
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](sources/screenshot.png)
 
 ## My process
 

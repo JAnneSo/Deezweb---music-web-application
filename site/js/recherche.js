@@ -1,3 +1,6 @@
+let searchInput = document.getElementById("search");
+let radioElts = document.getElementsByName("order");
+
 /**
  * @function displaySection
  * @description displays elements in a section
@@ -133,34 +136,76 @@ function globalResearch(inputValue) {
  * @description displays the result of a search
  * @param {string} requete 
  */
-function search(requete) {
-    fetch(requete)
-        .then(response => response.json())
-        .then(resFinal => {
-            let tracks = resFinal.data;
-            deleteContent("popular-section");
-            deleteContent("artist-section");
-            deleteContent("album-section");
-            deleteContent("track-section");
-            if (tracks.length > 0) {
-                deleteContent("research");
-                for (let i = 0; i < tracks.length; i++) {
-                    document.getElementById("research").appendChild(createTrackCard(tracks[i]));
-                }
+function search(sortCriterion) {
+    deleteContent("popular-section");
+    deleteContent("artist-section");
+    deleteContent("album-section");
+    deleteContent("track-section");
+    switch (sortCriterion) {
+        case "ALBUM":
+            fetch(`https://api.deezer.com/search/album?q=${searchInput.value}`)
+                .then(response => response.json())
+                .then(resFinal => {
+                    let albums = resFinal.data;
+                    if (albums.length > 0) {
+                        deleteContent("research");
+                        for (let i = 0; i < albums.length; i++) {
+                            document.getElementById("research").appendChild(createAlbumCard(albums[i]));
+                        }
+                    } else {
+                        document.getElementById("research").innerHTML = '<h2>Il n\'y a pas de résultats</h2>';
+                    }
+                })
+                .catch((err) => {
+                    console.log("KO");
+                    console.log(err);
+                });
+            break;
+        case "ARTIST":
+            fetch(`https://api.deezer.com/search/artist?q=${searchInput.value}`)
+                .then(response => response.json())
+                .then(resFinal => {
+                    let artist = resFinal.data;
+                    if (artist.length > 0) {
+                        deleteContent("research");
+                        for (let i = 0; i < artist.length; i++) {
+                            document.getElementById("research").appendChild(createArtistCard(artist[i]));
+                        }
+                    } else {
+                        document.getElementById("research").innerHTML = '<h2>Il n\'y a pas de résultats</h2>';
+                    }
+                })
+                .catch((err) => {
+                    console.log("KO");
+                    console.log(err);
+                });
+            break;
+        default:
+            let urlOrderPart = "&order=" + sortCriterion;
+            fetch(`https://api.deezer.com/search?q=${searchInput.value}${urlOrderPart}`)
+                .then(response => response.json())
+                .then(resFinal => {
+                    let tracks = resFinal.data;
+                    if (tracks.length > 0) {
+                        deleteContent("research");
+                        for (let i = 0; i < tracks.length; i++) {
+                            document.getElementById("research").appendChild(createTrackCard(tracks[i]));
+                        }
+                    } else {
+                        document.getElementById("research").innerHTML = '<h2>Il n\'y a pas de résultats</h2>';
+                    }
+                })
+                .catch((err) => {
+                    console.log("KO");
+                    console.log(err);
+                });
+            break;
+    }
 
-            } else {
-                document.getElementById("research").innerHTML = '<h2>Il n\'y a pas de résultats</h2>';
-            }
-        })
-        .catch(() => {
-            console.log("KO");
-        });
 }
 
 
-let searchInput = document.getElementById("search");
-let urlOrderPart = "";
-let radioElts = document.getElementsByName("order");
+
 
 // get the url
 let search_params = new URLSearchParams(new URL(document.location.href).search);
@@ -174,10 +219,9 @@ if (search_params.has('q')) {
 
 for (let i = 0; i < radioElts.length; i++) {
     radioElts[i].addEventListener("change", (e) => {
-        urlOrderPart += "&order=" + e.target.value;
         if (searchInput.value) {
             // launches the search with a sort parameter
-            search(`https://api.deezer.com/search?q=${searchInput.value}${urlOrderPart}`);
+            search(e.target.value);
         }
     });
 }

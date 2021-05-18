@@ -120,9 +120,22 @@ h2 {
     z-index: 0;
     padding-top: 55px;
     margin-top: -55px;
+    overflow-x: hidden;
 }
 .swiper-wrapper {
     display: flex;
+    .album-card__img-ctnr {
+        width: 20vw;
+        height: 20vw;
+        @media screen and (max-width: 800px) {
+            width: 27vw;
+            height: 27vw;
+        }
+        @media screen and (max-width: $maxWidthMobile) {
+            width: 35vw;
+            height: 35vw;
+        }
+    }
 }
 .swiper-slide {
     /* Center slide text vertically */
@@ -138,6 +151,28 @@ h2 {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+    width: auto;
+}
+
+.arrows {
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    width: 92px;
+    display: flex;
+    flex-direction: row-reverse;
+    .swiper-button-prev,
+    .swiper-button-next {
+        height: 30px;
+        width: 30px;
+        color: $grey-text-2;
+        &::after {
+            font-size: 18px;
+        }
+        @media screen and (max-width: $maxWidthMobile) {
+            display: none;
+        }
+    }
 }
 
 .artists-related {
@@ -154,7 +189,7 @@ h2 {
             grid-template-columns: repeat(3, 20vw);
             transition: grid-template-columns 0.5s ease;
         }
-        @media screen and (max-width: 850px) {
+        @media screen and (max-width: 800px) {
             grid-template-columns: repeat(2, 27vw);
             transition: grid-template-columns 0.5s ease;
         }
@@ -169,7 +204,7 @@ h2 {
             @media screen and (max-width: 1225px) {
                 height: 20vw;
             }
-            @media screen and (max-width: 850px) {
+            @media screen and (max-width: 800px) {
                 height: 27vw;
             }
             @media screen and (max-width: $maxWidthMobile) {

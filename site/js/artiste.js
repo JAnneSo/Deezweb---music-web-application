@@ -81,17 +81,23 @@ if (search_params.has('id')) {
                                 console.log(err);
                             });
 
-
-                        //TODO
-                        // document.getElementById("h2-albums").textContent = "Albums";
-                        // console.log(albums.data);
-                        // for (let i = 1; i < albums.data.length; i++) {
-                        //     let swiperSlide = document.createElement("div");
-                        //     swiperSlide.classList.add("swiper-slide");
-                        //     swiperSlide.appendChild(createAlbumCard(albums.data[i]));
-                        //     document.getElementById("albums-section").appendChild(swiperSlide);
-                        // }
-
+                        // create swiper with all albums
+                        document.getElementById("h2-albums").textContent = "Albums";
+                        console.log(albums.data);
+                        for (let i = 1; i < albums.data.length; i++) {
+                            let swiperSlide = document.createElement("div");
+                            swiperSlide.classList.add("swiper-slide");
+                            swiperSlide.appendChild(createAlbumCard(albums.data[i]));
+                            document.getElementById("albums-section").appendChild(swiperSlide);
+                        }
+                        let swiper = new Swiper('.swiper-container', {
+                            slidesPerView: "auto",
+                            spaceBetween: 20,
+                            navigation: {
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            },
+                        });
                     })
                     .catch((err) => {
                         console.log("KO");
@@ -113,13 +119,3 @@ window.addEventListener("load", () => {
 
 });
 
-//TODO: 
-// let swiper = new Swiper('.swiper-container', {
-//     slidesPerView: auto,
-//     spaceBetween: 20,
-//     slidesPerGroup: nbOfSlides,
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev',
-//     },
-// });

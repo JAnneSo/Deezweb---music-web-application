@@ -99,6 +99,7 @@ fieldset .filters input[type="radio"]:checked + label {
 }
 
 fieldset .filters label {
+  cursor: pointer;
   font-weight: 500;
   padding: 5px 10px;
   margin-bottom: 7px;
@@ -231,27 +232,31 @@ fieldset .filters label:not(:last-child) {
 }
 
 .track-card__img-cntr,
-.album-card__img-ctnr {
+.album-card__img-ctnr,
+.artist-card__img-ctnr {
   height: 17vw;
 }
 
 @media screen and (max-width: 1225px) {
   .track-card__img-cntr,
-  .album-card__img-ctnr {
+  .album-card__img-ctnr,
+  .artist-card__img-ctnr {
     height: 20vw;
   }
 }
 
 @media screen and (max-width: 850px) {
   .track-card__img-cntr,
-  .album-card__img-ctnr {
+  .album-card__img-ctnr,
+  .artist-card__img-ctnr {
     height: 27vw;
   }
 }
 
 @media screen and (max-width: 600px) {
   .track-card__img-cntr,
-  .album-card__img-ctnr {
+  .album-card__img-ctnr,
+  .artist-card__img-ctnr {
     height: 35vw;
   }
 }

@@ -208,12 +208,32 @@ h2 {
   z-index: 0;
   padding-top: 55px;
   margin-top: -55px;
+  overflow-x: hidden;
 }
 
 .swiper-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.swiper-wrapper .album-card__img-ctnr {
+  width: 20vw;
+  height: 20vw;
+}
+
+@media screen and (max-width: 800px) {
+  .swiper-wrapper .album-card__img-ctnr {
+    width: 27vw;
+    height: 27vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .swiper-wrapper .album-card__img-ctnr {
+    width: 35vw;
+    height: 35vw;
+  }
 }
 
 .swiper-slide {
@@ -227,6 +247,40 @@ h2 {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  width: auto;
+}
+
+.arrows {
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  width: 92px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.arrows .swiper-button-prev,
+.arrows .swiper-button-next {
+  height: 30px;
+  width: 30px;
+  color: #e0e0e0;
+}
+
+.arrows .swiper-button-prev::after,
+.arrows .swiper-button-next::after {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .arrows .swiper-button-prev,
+  .arrows .swiper-button-next {
+    display: none;
+  }
 }
 
 .artists-related {
@@ -259,7 +313,7 @@ h2 {
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 800px) {
   .artists-related .artists-related__grid {
     -ms-grid-columns: (27vw)[2];
         grid-template-columns: repeat(2, 27vw);
@@ -290,7 +344,7 @@ h2 {
   }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 800px) {
   .artists-related .artist-card .artist-card__img-ctnr {
     height: 27vw;
   }

@@ -69,6 +69,7 @@ fieldset {
             }
         }
         label {
+            cursor: pointer;
             font-weight: 500;
             padding: 5px 10px;
             margin-bottom: 7px;
@@ -152,7 +153,8 @@ fieldset {
 }
 
 .track-card__img-cntr,
-.album-card__img-ctnr {
+.album-card__img-ctnr,
+.artist-card__img-ctnr {
     height: 17vw;
     @media screen and (max-width: 1225px) {
         height: 20vw;
