@@ -224,11 +224,14 @@ aside {
         }
         .control {
             color: $grey-text-4;
+        }
+        .play {
             cursor: pointer;
             &:hover {
                 color: $grey-text-3;
             }
         }
+
         .before,
         .next {
             font-size: 20px;

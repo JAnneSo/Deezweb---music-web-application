@@ -1,5 +1,11 @@
 @import "tools.scss";
 
+.controls-container .control {
+    cursor: pointer;
+    &:hover {
+        color: $grey-text-3;
+    }
+}
 .album-ctnr {
     display: flex;
     margin-bottom: 20px;

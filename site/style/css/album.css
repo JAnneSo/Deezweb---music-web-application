@@ -7,6 +7,14 @@
 }
 
 /*  MIXINS  */
+.controls-container .control {
+  cursor: pointer;
+}
+
+.controls-container .control:hover {
+  color: #bdbdbd;
+}
+
 .album-ctnr {
   display: -webkit-box;
   display: -ms-flexbox;

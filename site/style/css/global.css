@@ -334,10 +334,13 @@ aside .menu .fa {
 
 .player .controls-container .control {
   color: #828282;
+}
+
+.player .controls-container .play {
   cursor: pointer;
 }
 
-.player .controls-container .control:hover {
+.player .controls-container .play:hover {
   color: #bdbdbd;
 }
 
