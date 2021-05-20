@@ -376,7 +376,7 @@ function errorPage(containerId) {
  * @description launches the search from the search input in the sidebar if enter is pressed
  */
 sideSearchInput.addEventListener("keydown", (e) => {
-    if (e.key.charCodeAt(0) == 69) {
+    if (e.key == "Enter") {
         if (sideSearchInput.value) {
             urlParam += `?q=${sideSearchInput.value}`;
             location.href = `recherche.html${urlParam}`;

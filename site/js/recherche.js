@@ -241,7 +241,7 @@ document.getElementById("submit")
  * @description launches the search from the main search input if enter is pressed
  */
 searchInput.addEventListener("keydown", (e) => {
-    if (e.key.charCodeAt(0) == 69) {
+    if (e.key == "Enter") {
         globalResearch(e.target.value);
     }
 });
