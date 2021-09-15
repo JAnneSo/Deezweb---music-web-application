@@ -1,168 +1,175 @@
 @import "tools.scss";
 
 main {
-    padding-top: 158px;
+  padding-top: 158px;
+  @media screen and (max-width: $maxWidthMobile) {
+    padding-top: 140px;
+  }
+}
+#loader {
+  display: none;
 }
 fieldset {
-    position: fixed;
-    top: 55px;
-    left: 200px;
-    right: 0;
-    border: none;
-    backdrop-filter: blur(50px);
-    padding: 15px 10px 10px;
-    z-index: 2;
-    @media screen and (max-width: $maxWidthMobile) {
-        top: 0;
-        left: 0;
-    }
-    .input-research {
-        display: block;
-        margin: 0 auto 10px;
-        width: 100%;
-        max-width: 500px;
-        border-radius: 20px;
-        background: rgba(white, 0.2);
-        position: relative;
-        overflow: hidden;
-        input[type="search"] {
-            display: block;
-            width: 100%;
-            height: 100%;
-            font-size: 18px;
-            padding: 8px 20px;
+  position: fixed;
+  top: 55px;
+  left: 200px;
+  right: 0;
+  border: none;
+  backdrop-filter: blur(50px);
+  padding: 15px 10px 10px;
+  z-index: 2;
+  @media screen and (max-width: $maxWidthMobile) {
+    top: 0;
+    left: 0;
+  }
+  .input-research {
+    display: block;
+    margin: 0 auto 10px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    background: rgba(white, 0.2);
+    position: relative;
+    overflow: hidden;
+    input[type="search"] {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 18px;
+      padding: 8px 20px;
 
-            color: $grey-text-2;
-            &:focus + button i {
-                color: $grey-text-2;
-            }
-            &::-webkit-search-cancel-button {
-                display: none;
-            }
-        }
-        button {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 40px;
-            height: 100%;
-            cursor: pointer;
-            i {
-                color: $grey-text-4;
-                font-size: 20px;
-            }
-        }
+      color: $grey-text-2;
+      &:focus + button i {
+        color: $grey-text-2;
+      }
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
     }
-    .filters {
-        text-align: center;
-        padding: 10px;
-        @media screen and (max-width: 710px) {
-            display: flex;
-            flex-wrap: wrap;
-            overflow-x: auto;
-            touch-action: pan-x;
-        }
-        input[type="radio"] {
-            display: none;
-            &:checked + label {
-                background: $grey-text-1;
-            }
-        }
-        label {
-            cursor: pointer;
-            font-weight: 500;
-            padding: 5px 10px;
-            margin-bottom: 7px;
-            border-radius: 20px;
-            background: rgba(white, 0.4);
-            &:not(:last-child) {
-                margin-right: 10px;
-            }
-        }
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 100%;
+      cursor: pointer;
+      i {
+        color: $grey-text-4;
+        font-size: 20px;
+      }
     }
+  }
+  .filters {
+    text-align: center;
+    padding: 10px;
+    @media screen and (max-width: 710px) {
+      display: flex;
+      overflow: auto;
+      width: calc(100vw - 20px);
+      padding: 10px 0;
+    }
+    input[type="radio"] {
+      display: none;
+      &:checked + label {
+        background: $grey-text-1;
+      }
+    }
+    label {
+      cursor: pointer;
+      font-weight: 500;
+      padding: 5px 10px;
+      margin-bottom: 7px;
+      border-radius: 20px;
+      background: rgba(white, 0.4);
+      white-space: nowrap;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
 }
 
 .research section {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .popular-container {
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    justify-content: space-between;
-    @media screen and (max-width: 800px) {
-        grid-template-columns: 100%;
-        grid-template-rows: repeat(3, 33%);
-        grid-gap: 5px;
-    }
-    .track-card__play {
-        z-index: 3;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  justify-content: space-between;
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, 32%);
+    grid-gap: 2%;
+  }
+  .track-card__play {
+    z-index: 3;
+  }
 }
 
 .artist-container,
 .album-container,
 .track-container,
 .research-section {
-    display: grid;
-    grid-template-columns: repeat(4, 17vw);
-    justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 17vw);
+  justify-content: space-around;
+  transition: grid-template-columns 0.5s ease;
+  @media screen and (max-width: 1225px) {
+    grid-template-columns: repeat(3, 20vw);
     transition: grid-template-columns 0.5s ease;
-    @media screen and (max-width: 1225px) {
-        grid-template-columns: repeat(3, 20vw);
-        transition: grid-template-columns 0.5s ease;
-    }
-    @media screen and (max-width: 850px) {
-        grid-template-columns: repeat(2, 27vw);
-        transition: grid-template-columns 0.5s ease;
-    }
-    @media screen and (max-width: $maxWidthMobile) {
-        grid-template-columns: repeat(2, 35vw);
-    }
+  }
+  @media screen and (max-width: 850px) {
+    grid-template-columns: repeat(2, 27vw);
+    transition: grid-template-columns 0.5s ease;
+  }
+  @media screen and (max-width: $maxWidthMobile) {
+    grid-template-columns: repeat(2, 35vw);
+  }
 }
 
 .artist-container {
-    .artist-card {
-        margin-bottom: 20px;
+  .artist-card {
+    margin-bottom: 20px;
+  }
+  .artist-card__img-ctnr {
+    height: 17vw;
+    @media screen and (max-width: 1225px) {
+      height: 20vw;
     }
-    .artist-card__img-ctnr {
-        height: 17vw;
-        @media screen and (max-width: 1225px) {
-            height: 20vw;
-        }
-        @media screen and (max-width: 850px) {
-            height: 27vw;
-        }
-        @media screen and (max-width: $maxWidthMobile) {
-            height: 35vw;
-        }
+    @media screen and (max-width: 850px) {
+      height: 27vw;
     }
-    .artist-card__info {
-        .artist-card__info--artiste {
-            font-size: 20px;
-            @media screen and (max-width: 850px) {
-                font-size: 16px;
-            }
-        }
+    @media screen and (max-width: $maxWidthMobile) {
+      height: 35vw;
     }
+  }
+  .artist-card__info {
+    .artist-card__info--artiste {
+      font-size: 20px;
+      @media screen and (max-width: 850px) {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .album-card,
 .track-card {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .track-card__img-cntr,
 .album-card__img-ctnr,
 .artist-card__img-ctnr {
-    height: 17vw;
-    @media screen and (max-width: 1225px) {
-        height: 20vw;
-    }
-    @media screen and (max-width: 850px) {
-        height: 27vw;
-    }
-    @media screen and (max-width: $maxWidthMobile) {
-        height: 35vw;
-    }
+  height: 17vw;
+  @media screen and (max-width: 1225px) {
+    height: 20vw;
+  }
+  @media screen and (max-width: 850px) {
+    height: 27vw;
+  }
+  @media screen and (max-width: $maxWidthMobile) {
+    height: 35vw;
+  }
 }

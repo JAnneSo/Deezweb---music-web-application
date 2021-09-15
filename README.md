@@ -1,10 +1,12 @@
 # Deezweb
- School project - music web application - HTML/CSS/JS/API
+
+Music web application - HTML/CSS/JS/API
 
 This project consists of creating a web application making it possible to search, explore and organize
 songs, albums and artists using the free developer API provided by the Deezer service.
 
 ## Table of contents
+
 - [Installation](#installation)
 - [Overview](#overview)
   - [Goals](#goals)
@@ -16,7 +18,8 @@ songs, albums and artists using the free developer API provided by the Deezer se
 - [Author](#author)
 
 ## Installation
-Install the *Moesif Origin & CORS Changer* extension on your browser and activate it.<br>
+
+Install the _Moesif Origin & CORS Changer_ extension on your browser and activate it.<br>
 Open index.html.
 
 ## Overview
@@ -26,14 +29,13 @@ Open index.html.
 Users should be able to:
 
 - do a search and apply a sort criterion
-- see the search results as a list of tracks 
+- see the search results as a list of tracks
   - each track should display the album's title & cover, the track's title & duration and the artist's name.
 - access to an album page, an artist page or a track page
 - like a track and find it in the favorites
 - play a track
 
 For more details see [this file](sources/Projet-DFE-Deez'Web-Brief.pdf) (french).
-
 
 ### Screenshot
 
@@ -51,9 +53,11 @@ For more details see [this file](sources/Projet-DFE-Deez'Web-Brief.pdf) (french)
 - BEM
 
 ### What I learned
+
 - create a custom player
 - send parameters via url
 - store information in localstorage
+- use a cors proxy
 
 ### Useful resources
 
@@ -62,6 +66,8 @@ For more details see [this file](sources/Projet-DFE-Deez'Web-Brief.pdf) (french)
 - [Codepen](https://codepen.io)
 - [w3schools](https://www.w3schools.com/)
 - [MDN](https://developer.mozilla.org/fr/docs/Web/JavaScript)
+- [Heroku](https://devcenter.heroku.com/)
+- [LottieFiles](https://lottiefiles.com/)
 
 Design inspirations : Apple Music, Spotify, Dribbble
 

@@ -1,223 +1,232 @@
 @import "tools.scss";
 
 .artist {
-    position: relative;
-    backdrop-filter: blur(50px);
-    width: calc(100vw - 200px);
-    left: -30px;
-    top: -30px;
-    @include flex(column, start, center);
-    @media screen and (max-width: $maxWidthMobile) {
-        width: 100vw;
-        left: -20px;
-        top: -40px;
+  position: relative;
+  width: calc(100vw - 200px);
+  left: -30px;
+  top: -30px;
+  overflow: hidden;
+  @include flex(column, start, center);
+  @media screen and (max-width: $maxWidthMobile) {
+    width: 100vw;
+    left: -20px;
+    top: -40px;
+  }
+  .blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(30px);
+    background: rgba(0, 0, 0, 0.3);
+  }
+  img {
+    border-radius: 50%;
+    margin-top: 50px;
+  }
+  h1 {
+    color: $grey-text-1;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+  }
+  .artist__info {
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
+  }
+  .artist__info--albums,
+  .artist__info--fans {
+    color: $grey-text-1;
+    margin-bottom: 3px;
+  }
+  .artist__info--deezer-link {
+    color: $grey-text-1;
+    &:hover {
+      text-decoration: underline;
     }
-    .blur {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        backdrop-filter: blur(50px);
-        background: rgba(0, 0, 0, 0.3);
-    }
-    img {
-        border-radius: 50%;
-        margin-top: 50px;
-    }
-    h1 {
-        color: $grey-text-1;
-    }
-    .artist__info {
-        margin-bottom: 40px;
-        text-align: center;
-    }
-    .artist__info--albums,
-    .artist__info--fans {
-        color: $grey-text-1;
-        margin-bottom: 3px;
-    }
-    .artist__info--deezer-link {
-        color: $grey-text-1;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  }
 }
 h2 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .popular-section {
-    @include flex(row, space-between, start);
-    @media screen and (max-width: 800px) {
-        flex-direction: column;
+  @include flex(row, space-between, start);
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+
+  .popular-section__album {
+    margin-bottom: 20px;
+    .album-card {
+      width: 20vw;
+      @media screen and (max-width: $maxWidthMobile) {
+        width: 50vw;
+      }
+      .album-card__info--title {
+        font-size: 16px;
+      }
+    }
+  }
+  .popular-section__tracks {
+    width: 100%;
+    @media screen and (min-width: 801px) {
+      margin-left: 50px;
     }
 
-    .popular-section__album {
-        margin-bottom: 20px;
-        .album-card {
-            width: 20vw;
-            @media screen and (max-width: $maxWidthMobile) {
-                width: 50vw;
-            }
-            .album-card__info--title {
-                font-size: 16px;
-            }
-        }
+    h2 {
+      padding-left: 20px;
+      @media screen and (max-width: 800px) {
+        padding-left: 0;
+      }
     }
-    .popular-section__tracks {
-        width: 100%;
-        @media screen and (min-width: 801px) {
-            margin-left: 50px;
-        }
-
-        h2 {
-            padding-left: 20px;
-            @media screen and (max-width: 800px) {
-                padding-left: 0;
-            }
-        }
-    }
+  }
 }
 .list-track {
-    grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;
-    @media screen and (max-width: 800px) and (min-width: 601px) {
-        grid-template-columns: 50px 50px 1fr 0px 59px 37px 35px;
-    }
+  grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;
+  @media screen and (max-width: 800px) and (min-width: 601px) {
+    grid-template-columns: 50px 50px 1fr 0px 59px 37px 35px;
+  }
+  @media screen and (max-width: $maxWidthTablet) {
+    grid-template-columns: 40px 50px 1fr 0 25px 32px 35px;
+  }
+  .list-track__number {
     @media screen and (max-width: $maxWidthTablet) {
-        grid-template-columns: 40px 50px 1fr 0 25px 32px 35px;
+      justify-content: start;
     }
-    .list-track__number {
-        @media screen and (max-width: $maxWidthTablet) {
-            justify-content: start;
-        }
+  }
+  .list-track__info {
+    padding: 0 10px;
+  }
+  .list-track__love-ctnr {
+    grid-column: 7;
+  }
+  .list-track__duration {
+    grid-column: 6;
+  }
+  .explicit-tag {
+    display: inline-block;
+    @media screen and (max-width: $maxWidthTablet) {
+      display: none;
     }
-    .list-track__info {
-        padding: 0 10px;
+  }
+  .explicit-tag-mobile {
+    display: none;
+    @media screen and (max-width: $maxWidthTablet) {
+      display: inline-block;
     }
-    .list-track__love-ctnr {
-        grid-column: 7;
-    }
-    .list-track__duration {
-        grid-column: 6;
-    }
-    .explicit-tag {
-        display: inline-block;
-        @media screen and (max-width: $maxWidthTablet) {
-            display: none;
-        }
-    }
-    .explicit-tag-mobile {
-        display: none;
-        @media screen and (max-width: $maxWidthTablet) {
-            display: inline-block;
-        }
-    }
+  }
 }
 
 /* SWIPER */
 .swiper-container {
-    z-index: 0;
-    padding-top: 55px;
-    margin-top: -55px;
-    overflow-x: hidden;
+  z-index: 0;
+  padding-top: 55px;
+  margin-top: -55px;
+  overflow-x: hidden;
 }
 .swiper-wrapper {
-    display: flex;
-    .album-card__img-ctnr {
-        width: 20vw;
-        height: 20vw;
-        @media screen and (max-width: 800px) {
-            width: 27vw;
-            height: 27vw;
-        }
-        @media screen and (max-width: $maxWidthMobile) {
-            width: 35vw;
-            height: 35vw;
-        }
+  display: flex;
+  .album-card {
+    width: 20vw;
+    @media screen and (max-width: 800px) {
+      width: 27vw;
     }
+    @media screen and (max-width: $maxWidthMobile) {
+      width: 35vw;
+    }
+  }
+  .album-card__img-ctnr {
+    width: 100%;
+    height: 20vw;
+    @media screen and (max-width: 800px) {
+      height: 27vw;
+    }
+    @media screen and (max-width: $maxWidthMobile) {
+      height: 35vw;
+    }
+  }
 }
 .swiper-slide {
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    width: auto;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: auto;
 }
 
 .arrows {
-    position: absolute;
-    top: 30px;
-    right: 0px;
-    width: 92px;
-    display: flex;
-    flex-direction: row-reverse;
-    .swiper-button-prev,
-    .swiper-button-next {
-        height: 30px;
-        width: 30px;
-        color: $grey-text-2;
-        &::after {
-            font-size: 18px;
-        }
-        @media screen and (max-width: $maxWidthMobile) {
-            display: none;
-        }
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  width: 92px;
+  display: flex;
+  flex-direction: row-reverse;
+  .swiper-button-prev,
+  .swiper-button-next {
+    height: 30px;
+    width: 30px;
+    color: $grey-text-2;
+    &::after {
+      font-size: 18px;
     }
+    @media screen and (max-width: $maxWidthMobile) {
+      display: none;
+    }
+  }
 }
 
 .artists-related {
-    margin-top: 40px;
-    h2 {
-        margin-bottom: 30px;
+  margin-top: 40px;
+  h2 {
+    margin-bottom: 30px;
+  }
+  .artists-related__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 17vw);
+    justify-content: space-around;
+    transition: grid-template-columns 0.5s ease;
+    @media screen and (max-width: 1225px) {
+      grid-template-columns: repeat(3, 20vw);
+      transition: grid-template-columns 0.5s ease;
     }
-    .artists-related__grid {
-        display: grid;
-        grid-template-columns: repeat(4, 17vw);
-        justify-content: space-around;
-        transition: grid-template-columns 0.5s ease;
-        @media screen and (max-width: 1225px) {
-            grid-template-columns: repeat(3, 20vw);
-            transition: grid-template-columns 0.5s ease;
-        }
-        @media screen and (max-width: 800px) {
-            grid-template-columns: repeat(2, 27vw);
-            transition: grid-template-columns 0.5s ease;
-        }
-        @media screen and (max-width: $maxWidthMobile) {
-            grid-template-columns: repeat(2, 35vw);
-        }
+    @media screen and (max-width: 800px) {
+      grid-template-columns: repeat(2, 27vw);
+      transition: grid-template-columns 0.5s ease;
     }
-    .artist-card {
-        margin-bottom: 20px;
-        .artist-card__img-ctnr {
-            height: 17vw;
-            @media screen and (max-width: 1225px) {
-                height: 20vw;
-            }
-            @media screen and (max-width: 800px) {
-                height: 27vw;
-            }
-            @media screen and (max-width: $maxWidthMobile) {
-                height: 35vw;
-            }
-        }
-        .artist-card__info {
-            .artist-card__info--artiste {
-                font-size: 20px;
-                @media screen and (max-width: 850px) {
-                    font-size: 16px;
-                }
-            }
-        }
+    @media screen and (max-width: $maxWidthMobile) {
+      grid-template-columns: repeat(2, 35vw);
     }
+  }
+  .artist-card {
+    margin-bottom: 20px;
+    .artist-card__img-ctnr {
+      height: 17vw;
+      @media screen and (max-width: 1225px) {
+        height: 20vw;
+      }
+      @media screen and (max-width: 800px) {
+        height: 27vw;
+      }
+      @media screen and (max-width: $maxWidthMobile) {
+        height: 35vw;
+      }
+    }
+    .artist-card__info {
+      .artist-card__info--artiste {
+        font-size: 20px;
+        @media screen and (max-width: 850px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
 }

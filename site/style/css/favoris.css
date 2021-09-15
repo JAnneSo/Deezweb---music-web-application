@@ -5,41 +5,29 @@
   font-family: "SF Pro";
   src: url("/fonts/SF-Pro.ttf") format("ttf");
 }
-
 /*  MIXINS  */
 .list-track {
-  -ms-grid-columns: 50px 50px 1fr 1fr 70px 50px 45px;
-      grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;
+  grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;
 }
-
 @media screen and (max-width: 800px) and (min-width: 601px) {
   .list-track {
-    -ms-grid-columns: 50px 50px 1fr 0px 59px 37px 35px;
-        grid-template-columns: 50px 50px 1fr 0px 59px 37px 35px;
+    grid-template-columns: 50px 50px 1fr 0px 59px 37px 35px;
   }
 }
-
 @media screen and (max-width: 600px) {
   .list-track {
-    -ms-grid-columns: 40px 50px 1fr 0 25px 32px 35px;
-        grid-template-columns: 40px 50px 1fr 0 25px 32px 35px;
+    grid-template-columns: 40px 50px 1fr 0 25px 32px 35px;
   }
 }
-
 .list-track .list-track__number span {
   display: none;
 }
-
 .list-track .list-track__info {
   padding: 0 10px;
 }
-
 .list-track .list-track__love-ctnr {
-  -ms-grid-column: 7;
   grid-column: 7;
 }
-
 .list-track .list-track__duration {
-  -ms-grid-column: 6;
   grid-column: 6;
 }

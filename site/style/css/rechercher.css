@@ -5,10 +5,18 @@
   font-family: "SF Pro";
   src: url("/fonts/SF-Pro.ttf") format("ttf");
 }
-
 /*  MIXINS  */
 main {
   padding-top: 158px;
+}
+@media screen and (max-width: 600px) {
+  main {
+    padding-top: 140px;
+  }
+}
+
+#loader {
+  display: none;
 }
 
 fieldset {
@@ -22,14 +30,12 @@ fieldset {
   padding: 15px 10px 10px;
   z-index: 2;
 }
-
 @media screen and (max-width: 600px) {
   fieldset {
     top: 0;
     left: 0;
   }
 }
-
 fieldset .input-research {
   display: block;
   margin: 0 auto 10px;
@@ -40,8 +46,7 @@ fieldset .input-research {
   position: relative;
   overflow: hidden;
 }
-
-fieldset .input-research input[type="search"] {
+fieldset .input-research input[type=search] {
   display: block;
   width: 100%;
   height: 100%;
@@ -49,15 +54,12 @@ fieldset .input-research input[type="search"] {
   padding: 8px 20px;
   color: #e0e0e0;
 }
-
-fieldset .input-research input[type="search"]:focus + button i {
+fieldset .input-research input[type=search]:focus + button i {
   color: #e0e0e0;
 }
-
-fieldset .input-research input[type="search"]::-webkit-search-cancel-button {
+fieldset .input-research input[type=search]::-webkit-search-cancel-button {
   display: none;
 }
-
 fieldset .input-research button {
   position: absolute;
   top: 0;
@@ -66,38 +68,28 @@ fieldset .input-research button {
   height: 100%;
   cursor: pointer;
 }
-
 fieldset .input-research button i {
   color: #828282;
   font-size: 20px;
 }
-
 fieldset .filters {
   text-align: center;
   padding: 10px;
 }
-
 @media screen and (max-width: 710px) {
   fieldset .filters {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    overflow-x: auto;
-    -ms-touch-action: pan-x;
-        touch-action: pan-x;
+    overflow: auto;
+    width: calc(100vw - 20px);
+    padding: 10px 0;
   }
 }
-
-fieldset .filters input[type="radio"] {
+fieldset .filters input[type=radio] {
   display: none;
 }
-
-fieldset .filters input[type="radio"]:checked + label {
+fieldset .filters input[type=radio]:checked + label {
   background: #f2f2f2;
 }
-
 fieldset .filters label {
   cursor: pointer;
   font-weight: 500;
@@ -105,8 +97,8 @@ fieldset .filters label {
   margin-bottom: 7px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
 }
-
 fieldset .filters label:not(:last-child) {
   margin-right: 10px;
 }
@@ -116,25 +108,17 @@ fieldset .filters label:not(:last-child) {
 }
 
 .popular-container {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (33%)[3];
-      grid-template-columns: repeat(3, 33%);
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  grid-template-columns: repeat(3, 33%);
+  justify-content: space-between;
 }
-
 @media screen and (max-width: 800px) {
   .popular-container {
-    -ms-grid-columns: 100%;
-        grid-template-columns: 100%;
-    -ms-grid-rows: (33%)[3];
-        grid-template-rows: repeat(3, 33%);
-    grid-gap: 5px;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, 32%);
+    grid-gap: 2%;
   }
 }
-
 .popular-container .track-card__play {
   z-index: 3;
 }
@@ -143,83 +127,65 @@ fieldset .filters label:not(:last-child) {
 .album-container,
 .track-container,
 .research-section {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (17vw)[4];
-      grid-template-columns: repeat(4, 17vw);
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-transition: grid-template-columns 0.5s ease;
+  grid-template-columns: repeat(4, 17vw);
+  justify-content: space-around;
   transition: grid-template-columns 0.5s ease;
   transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
 }
-
 @media screen and (max-width: 1225px) {
   .artist-container,
-  .album-container,
-  .track-container,
-  .research-section {
-    -ms-grid-columns: (20vw)[3];
-        grid-template-columns: repeat(3, 20vw);
-    -webkit-transition: grid-template-columns 0.5s ease;
+.album-container,
+.track-container,
+.research-section {
+    grid-template-columns: repeat(3, 20vw);
     transition: grid-template-columns 0.5s ease;
     transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
   }
 }
-
 @media screen and (max-width: 850px) {
   .artist-container,
-  .album-container,
-  .track-container,
-  .research-section {
-    -ms-grid-columns: (27vw)[2];
-        grid-template-columns: repeat(2, 27vw);
-    -webkit-transition: grid-template-columns 0.5s ease;
+.album-container,
+.track-container,
+.research-section {
+    grid-template-columns: repeat(2, 27vw);
     transition: grid-template-columns 0.5s ease;
     transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
   }
 }
-
 @media screen and (max-width: 600px) {
   .artist-container,
-  .album-container,
-  .track-container,
-  .research-section {
-    -ms-grid-columns: (35vw)[2];
-        grid-template-columns: repeat(2, 35vw);
+.album-container,
+.track-container,
+.research-section {
+    grid-template-columns: repeat(2, 35vw);
   }
 }
 
 .artist-container .artist-card {
   margin-bottom: 20px;
 }
-
 .artist-container .artist-card__img-ctnr {
   height: 17vw;
 }
-
 @media screen and (max-width: 1225px) {
   .artist-container .artist-card__img-ctnr {
     height: 20vw;
   }
 }
-
 @media screen and (max-width: 850px) {
   .artist-container .artist-card__img-ctnr {
     height: 27vw;
   }
 }
-
 @media screen and (max-width: 600px) {
   .artist-container .artist-card__img-ctnr {
     height: 35vw;
   }
 }
-
 .artist-container .artist-card__info .artist-card__info--artiste {
   font-size: 20px;
 }
-
 @media screen and (max-width: 850px) {
   .artist-container .artist-card__info .artist-card__info--artiste {
     font-size: 16px;
@@ -236,27 +202,24 @@ fieldset .filters label:not(:last-child) {
 .artist-card__img-ctnr {
   height: 17vw;
 }
-
 @media screen and (max-width: 1225px) {
   .track-card__img-cntr,
-  .album-card__img-ctnr,
-  .artist-card__img-ctnr {
+.album-card__img-ctnr,
+.artist-card__img-ctnr {
     height: 20vw;
   }
 }
-
 @media screen and (max-width: 850px) {
   .track-card__img-cntr,
-  .album-card__img-ctnr,
-  .artist-card__img-ctnr {
+.album-card__img-ctnr,
+.artist-card__img-ctnr {
     height: 27vw;
   }
 }
-
 @media screen and (max-width: 600px) {
   .track-card__img-cntr,
-  .album-card__img-ctnr,
-  .artist-card__img-ctnr {
+.album-card__img-ctnr,
+.artist-card__img-ctnr {
     height: 35vw;
   }
 }

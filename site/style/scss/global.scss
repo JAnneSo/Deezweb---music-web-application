@@ -2,785 +2,792 @@
 
 /*  BODY  */
 body {
+  margin: 0;
+  padding: 0;
+  font-family: SF Pro;
+  font-size: 12px;
+  background: $background;
+  display: flex;
+  @media screen and (max-width: $maxWidthMobile) {
+    display: block;
+  }
+  a,
+  p,
+  ul,
+  button,
+  input,
+  section {
     margin: 0;
     padding: 0;
-    font-family: SF Pro;
-    font-size: 12px;
-    background: $background;
-    display: flex;
-    @media screen and (max-width: $maxWidthMobile) {
-        display: block;
-    }
-    a,
-    p,
-    ul,
-    button,
-    input,
-    section {
-        margin: 0;
-        padding: 0;
-    }
-    a {
-        list-style-type: none;
-        text-decoration: none;
-    }
-    ul {
-        list-style-type: none;
-    }
-    button,
-    input {
-        border: none;
-        outline: none;
-        background: none;
-    }
-    h1,
-    h2,
-    h3 {
-        color: $grey-text-2;
-    }
-    h1 {
-        font-size: 32px;
-        font-weight: 700;
-    }
-    h2 {
-        font-size: 22px;
-        font-weight: 600;
-    }
+  }
+  a {
+    list-style-type: none;
+    text-decoration: none;
+  }
+  ul {
+    list-style-type: none;
+  }
+  button,
+  input {
+    border: none;
+    outline: none;
+    background: none;
+  }
+  h1,
+  h2,
+  h3 {
+    color: $grey-text-2;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+  }
 }
 
 aside {
-    position: fixed;
+  position: fixed;
+  left: 0;
+  background: $grey1;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: $maxWidthMobile) {
     top: 0;
-    left: 0;
     width: 200px;
     height: 100vh;
     padding-top: 20px;
-    background: $grey1;
-    display: flex;
-    flex-direction: column;
+  }
+  @media screen and (max-width: $maxWidthMobile) {
+    padding-top: 0px;
+    height: 60px;
+    width: 100vw;
+    flex-direction: row;
+    z-index: 1;
+    bottom: -1px;
+    // backdrop-filter: blur(50px);
+    // background: rgba(black, 0.1);
+  }
+  .logo {
+    color: $grey-text-3;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 30px 30px;
     @media screen and (max-width: $maxWidthMobile) {
-        padding-top: 0px;
-        height: 60px;
-        width: 100vw;
-        flex-direction: row;
-        z-index: 1;
-        top: unset;
-        bottom: 0;
-        backdrop-filter: blur(50px);
-        background: rgba(black, 0.1);
+      display: none;
     }
-    .logo {
-        color: $grey-text-3;
-        font-size: 16px;
-        font-weight: 700;
-        margin: 0 0 30px 30px;
-        @media screen and (max-width: $maxWidthMobile) {
-            display: none;
-        }
-        img {
-            width: 120px;
-        }
+    img {
+      width: 120px;
     }
-    nav {
-        margin: 30px 0;
-        @media screen and (max-width: $maxWidthMobile) {
-            margin: unset;
-            width: 100%;
-        }
+  }
+  nav {
+    margin: 30px 0;
+    @media screen and (max-width: $maxWidthMobile) {
+      margin: unset;
+      width: 100%;
     }
-    .menu {
-        width: 90%;
-        margin: 0 auto;
-        @media screen and (max-width: $maxWidthMobile) {
-            @include flex(row, space-between, center);
-            width: 100%;
-            height: 100%;
-            padding: 0 30px;
-            box-sizing: border-box;
-            .nav-link {
-                span {
-                    display: none;
-                }
-                .fa {
-                    color: $grey-text-4;
-                }
-            }
-            .link-active .fa {
-                color: $pop-color;
-            }
-        }
-        li {
-            margin: 10px 0;
-
-            border-radius: 5px;
-            cursor: pointer;
-            &:hover {
-                background: $grey2;
-            }
-        }
-
-        .nav-link {
-            padding: 5px 20px;
-            display: block;
-            font-size: 14px;
-            color: $grey-text-4;
-            @media screen and (max-width: $maxWidthMobile) {
-                span {
-                    display: none;
-                }
-            }
-        }
-        .link-active {
-            color: $grey-text-2;
-            .fa {
-                @media screen and (max-width: $maxWidthMobile) {
-                    color: $pop-color;
-                }
-            }
+  }
+  .menu {
+    width: 90%;
+    margin: 0 auto;
+    @media screen and (max-width: $maxWidthMobile) {
+      @include flex(row, space-between, center);
+      width: 100%;
+      height: 100%;
+      padding: 0 30px;
+      box-sizing: border-box;
+      .nav-link {
+        span {
+          display: none;
         }
         .fa {
-            margin-right: 10px;
-            font-size: 14px;
-            color: $pop-color;
-            @media screen and (max-width: $maxWidthMobile) {
-                font-size: 24px;
-                color: $grey-text-4;
-            }
+          color: $grey-text-4;
         }
+      }
+      .link-active .fa {
+        color: $pop-color;
+      }
     }
+    li {
+      margin: 10px 0;
+
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background: $grey2;
+      }
+    }
+
+    .nav-link {
+      padding: 5px 20px;
+      display: block;
+      font-size: 14px;
+      color: $grey-text-4;
+      @media screen and (max-width: $maxWidthMobile) {
+        span {
+          display: none;
+        }
+      }
+    }
+    .link-active {
+      color: $grey-text-2;
+      .fa {
+        @media screen and (max-width: $maxWidthMobile) {
+          color: $pop-color;
+        }
+      }
+    }
+    .fa {
+      margin-right: 10px;
+      font-size: 14px;
+      color: $pop-color;
+      @media screen and (max-width: $maxWidthMobile) {
+        font-size: 24px;
+        color: $grey-text-4;
+      }
+    }
+  }
 }
 .search-container {
-    border-radius: 5px;
-    width: 90%;
-    position: relative;
-    margin: 0 auto;
+  border-radius: 5px;
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+  background: $grey2;
+  @media screen and (max-width: $maxWidthMobile) {
+    display: none;
+  }
+  input[type="search"] {
+    width: 100%;
+    padding: 5px 20px;
+    font-size: 14px;
+    padding: 5px 15px 5px 20px;
+    color: $grey-text-2;
+  }
+  button {
+    position: absolute;
+    right: 5px;
+    top: 2px;
+    margin: auto 5px;
+    padding: 0 2px;
+    font-size: 15px;
+    cursor: pointer;
     background: $grey2;
-    @media screen and (max-width: $maxWidthMobile) {
-        display: none;
+    z-index: 1;
+    height: 20px;
+    i {
+      color: $grey-text-2;
     }
-    input[type="search"] {
-        width: 100%;
-        padding: 5px 20px;
-        font-size: 14px;
-        padding: 5px 15px 5px 20px;
-        color: $grey-text-2;
-    }
-    button {
-        position: absolute;
-        right: 5px;
-        top: 2px;
-        margin: auto 5px;
-        padding: 0 2px;
-        font-size: 15px;
-        cursor: pointer;
-        background: $grey2;
-        z-index: 1;
-        height: 20px;
-        i {
-            color: $grey-text-2;
-        }
-    }
+  }
 }
 
 .container-main {
-    @media screen and (min-width: $minWidthTablet) {
-        margin-left: 200px;
-        width: calc(100vw - 200px);
-    }
+  @media screen and (min-width: $minWidthTablet) {
+    margin-left: 200px;
+    width: calc(100vw - 200px);
+  }
 }
 
 /*  HEADER  */
 .player {
-    box-sizing: border-box;
-    padding: 0 30px;
+  box-sizing: border-box;
+  z-index: 1;
+  position: fixed;
+  backdrop-filter: blur(50px);
+  background: rgba(black, 0.1);
+  @media screen and (min-width: $maxWidthMobile) {
     height: 55px;
-    z-index: 1;
-    @include flex(row, space-between, center);
-    border-bottom: 1px solid #272727;
-    position: fixed;
     top: 0;
+    padding: 0 30px;
     width: calc(100vw - 200px);
-    backdrop-filter: blur(50px);
-    background: rgba(black, 0.1);
 
+    border-bottom: 1px solid #272727;
+    @include flex(row, space-between, center);
+  }
+
+  @media screen and (max-width: $maxWidthMobile) {
+    padding: 0 10px;
+    height: 61px;
+    width: 100vw;
+    bottom: 58px;
+    @include flex(row-reverse, space-between, center);
+  }
+  .controls-container {
+    @include flex(row, space-between, center);
+    width: 130px;
+    min-width: 130px;
+    margin-right: 30px;
     @media screen and (max-width: $maxWidthMobile) {
-        padding: 0 10px;
-        height: 61px;
-        width: 100vw;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        top: unset;
-        bottom: 59px;
+      margin: 0 10px;
+      width: unset;
+      min-width: 100px;
     }
-    .controls-container {
-        @include flex(row, space-between, center);
-        width: 130px;
-        min-width: 130px;
-        margin-right: 30px;
-        @media screen and (max-width: $maxWidthMobile) {
-            margin: 0 10px;
-            width: unset;
-            min-width: 100px;
-        }
-        .control {
-            color: $grey-text-4;
-        }
-        .play {
-            cursor: pointer;
-            &:hover {
-                color: $grey-text-3;
-            }
-        }
+    .control {
+      color: $grey-text-4;
+    }
+    .play {
+      cursor: pointer;
+      &:hover {
+        color: $grey-text-3;
+      }
+    }
 
-        .before,
-        .next {
-            font-size: 20px;
-        }
-        .play i {
-            font-size: 28px;
-            position: relative;
-            top: -1px;
-        }
+    .before,
+    .next {
+      font-size: 20px;
     }
-    .audio-info-container {
-        height: 50px;
-        width: 45%;
-        display: flex;
-        border-radius: 2px;
-        overflow: hidden;
-        @media screen and (max-width: 800px) {
-            width: 100%;
-        }
-        div {
-            height: 100%;
-        }
-        .cover-container {
-            background: center no-repeat url("../../assets/images/music-note.svg"), rgba(white, 0.4);
-            background-size: 60%;
-            width: 50px;
-            overflow: hidden;
-            @media screen and (max-width: $maxWidthMobile) {
-                border-radius: 5px;
-            }
-            img {
-                @include imageFit();
-            }
-        }
-        .info-container {
-            background: rgba(white, 0.2);
-            width: calc(100% - 50px);
-            text-align: center;
-            padding: 4px 10px 0;
-            box-sizing: border-box;
-            position: relative;
-            @media screen and (max-width: $maxWidthMobile) {
-                background: none;
-                display: flex;
-                align-items: center;
-                padding-top: 0;
-            }
-            &:hover {
-                .duration,
-                label {
-                    opacity: 1;
-                }
-            }
-            p {
-                margin: 0;
-                @include textOverflow();
-            }
-            &__title {
-                color: $grey-text-1;
-                font-size: 14px;
-            }
-            &__artist {
-                padding-top: 2px;
-                color: $grey-text-3;
-                @media screen and (max-width: $maxWidthMobile) {
-                    display: none;
-                }
-            }
-        }
-        label {
-            opacity: 0;
-            position: absolute;
-            left: 3px;
-            bottom: 6px;
-            font-size: 10px;
-            color: $grey-text-3;
-            transition: opacity 0.4s ease;
-            @media screen and (max-width: $maxWidthMobile) {
-                display: none;
-            }
-        }
-        .duration {
-            opacity: 0;
-            position: absolute;
-            right: 3px;
-            bottom: 6px;
-            font-size: 10px;
-            color: $grey-text-3;
-            transition: opacity 0.4s ease;
-            @media screen and (max-width: $maxWidthMobile) {
-                display: none;
-            }
-        }
-        input[type="range"] {
-            display: none;
-            appearance: none;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            cursor: pointer;
-            @media screen and (max-width: $maxWidthMobile) {
-                display: none;
-            }
-            &:before {
-                position: absolute;
-                bottom: 0px;
-                content: "";
-                width: 100%;
-                height: 2px;
-                background: $grey-text-4;
-                @media screen and (max-width: $maxWidthMobile) {
-                    display: none;
-                }
-            }
-            &::-webkit-slider-runnable-track {
-                background: transparent;
-                height: 12px;
-            }
-            &::-webkit-slider-thumb {
-                width: 5px;
-                height: 10px;
-                border-radius: 2.5px;
-                border: none;
-                -webkit-appearance: none;
-                background-color: $grey-text-1;
-                margin-top: 6px;
-                z-index: 99;
-                position: relative;
-                transition: 0.5s all ease;
-                @media screen and (max-width: $maxWidthMobile) {
-                    display: none;
-                }
-            }
-        }
+    .play i {
+      font-size: 28px;
+      position: relative;
+      top: -1px;
     }
-    .volume-controls-container {
+  }
+  .audio-info-container {
+    height: 50px;
+    width: 45%;
+    display: flex;
+    border-radius: 2px;
+    overflow: hidden;
+    @media screen and (max-width: 800px) {
+      width: 100%;
+    }
+    div {
+      height: 100%;
+    }
+    .cover-container {
+      background: center no-repeat url("../../assets/images/music-note.svg"),
+        rgba(white, 0.4);
+      background-size: 60%;
+      width: 50px;
+      overflow: hidden;
+      @media screen and (max-width: $maxWidthMobile) {
+        border-radius: 5px;
+      }
+      img {
+        @include imageFit();
+      }
+    }
+    .info-container {
+      background: rgba(white, 0.2);
+      width: calc(100% - 50px);
+      text-align: center;
+      padding: 4px 10px 0;
+      box-sizing: border-box;
+      position: relative;
+      @media screen and (max-width: $maxWidthMobile) {
+        background: none;
         display: flex;
         align-items: center;
-        margin-left: 30px;
-        @media screen and (max-width: 800px) {
-            display: none;
+        padding-top: 0;
+      }
+      &:hover {
+        .duration,
+        label {
+          opacity: 1;
         }
-        span {
-            i {
-                color: $grey-text-4;
-            }
+      }
+      p {
+        margin: 0;
+        @include textOverflow();
+      }
+      &__title {
+        color: $grey-text-1;
+        font-size: 14px;
+      }
+      &__artist {
+        padding-top: 2px;
+        color: $grey-text-3;
+        @media screen and (max-width: $maxWidthMobile) {
+          display: none;
         }
-        input[type="range"] {
-            width: 100px;
-            margin: 0 5px;
-            appearance: none;
-            cursor: pointer;
-            &::-webkit-slider-runnable-track {
-                background-color: rgba($grey-text-4, 0.5);
-                height: 4px;
-                border: none;
-                border-radius: 5px;
-            }
-            &::-webkit-slider-thumb {
-                width: 14px;
-                height: 14px;
-                border-radius: 50%;
-                border: 1px solid $grey-text-4;
-                -webkit-appearance: none;
-                background: $background;
-                margin-top: -5px;
-                z-index: 99;
-                position: relative;
-                transition: 0.5s all ease;
-            }
-        }
+      }
     }
+    label {
+      opacity: 0;
+      position: absolute;
+      left: 3px;
+      bottom: 6px;
+      font-size: 10px;
+      color: $grey-text-3;
+      transition: opacity 0.4s ease;
+      @media screen and (max-width: $maxWidthMobile) {
+        display: none;
+      }
+    }
+    .duration {
+      opacity: 0;
+      position: absolute;
+      right: 3px;
+      bottom: 6px;
+      font-size: 10px;
+      color: $grey-text-3;
+      transition: opacity 0.4s ease;
+      @media screen and (max-width: $maxWidthMobile) {
+        display: none;
+      }
+    }
+    input[type="range"] {
+      display: none;
+      appearance: none;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      cursor: pointer;
+      @media screen and (max-width: $maxWidthMobile) {
+        display: none;
+      }
+      &:before {
+        position: absolute;
+        bottom: 0px;
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: $grey-text-4;
+        @media screen and (max-width: $maxWidthMobile) {
+          display: none;
+        }
+      }
+      &::-webkit-slider-runnable-track {
+        background: transparent;
+        height: 12px;
+      }
+      &::-webkit-slider-thumb {
+        width: 5px;
+        height: 10px;
+        border-radius: 2.5px;
+        border: none;
+        -webkit-appearance: none;
+        background-color: $grey-text-1;
+        margin-top: 6px;
+        z-index: 99;
+        position: relative;
+        transition: 0.5s all ease;
+        @media screen and (max-width: $maxWidthMobile) {
+          display: none;
+        }
+      }
+    }
+  }
+  .volume-controls-container {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+    span {
+      i {
+        color: $grey-text-4;
+      }
+    }
+    input[type="range"] {
+      width: 100px;
+      margin: 0 5px;
+      appearance: none;
+      cursor: pointer;
+      &::-webkit-slider-runnable-track {
+        background-color: rgba($grey-text-4, 0.5);
+        height: 4px;
+        border: none;
+        border-radius: 5px;
+      }
+      &::-webkit-slider-thumb {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1px solid $grey-text-4;
+        -webkit-appearance: none;
+        background: $background;
+        margin-top: -5px;
+        z-index: 99;
+        position: relative;
+        transition: 0.5s all ease;
+      }
+    }
+  }
 }
 
 main {
-    padding: 80px 30px 20px;
-    max-width: 1500px;
-    margin: 0 auto;
-    @media screen and (max-width: $maxWidthMobile) {
-        padding: 40px 20px 140px;
-    }
+  padding: 80px 30px 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+  @media screen and (max-width: $maxWidthMobile) {
+    padding: 40px 20px 140px;
+  }
+}
+
+#loader {
+  margin: 100px auto;
 }
 
 .album-card {
-    margin: unset;
+  margin: unset;
+  overflow: hidden;
+  .album-card__img-ctnr {
+    border-radius: 10px;
     overflow: hidden;
-    .album-card__img-ctnr {
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        .album-card__link {
-            display: block;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            transition: background 0.4s ease;
-            &:hover {
-                background: rgba($color: #000000, $alpha: 0.4);
-            }
-        }
-        .album-card__cover {
-            @include imageFit();
-        }
+    position: relative;
+    .album-card__link {
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: background 0.4s ease;
+      &:hover {
+        background: rgba($color: #000000, $alpha: 0.4);
+      }
     }
+    .album-card__cover {
+      @include imageFit();
+    }
+  }
 
-    .album-card__info {
-        padding: 7px 0;
-        .album-card__info--title {
-            @include titleCard();
-            @include textOverflow();
-        }
-        .album-card__info--artiste {
-            @include infoCard();
-            @include textOverflow();
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+  .album-card__info {
+    padding: 7px 0;
+    .album-card__info--title {
+      @include titleCard();
+      @include textOverflow();
     }
+    .album-card__info--artiste {
+      @include infoCard();
+      @include textOverflow();
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .artist-card {
-    display: inline-block;
-    margin: 0;
-    .artist-card__img-ctnr {
-        overflow: hidden;
-        border-radius: 50%;
-        width: 100%;
-        position: relative;
-        &:hover .artist-card__cover {
-            transform: scale(1.1);
-        }
-        .artist-card__cover {
-            @include imageFit();
-            transform: scale(1);
-            transition: transform 0.8s ease;
-        }
-        .artist-card__link {
-            display: block;
-            position: absolute;
-            top: 0;
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-        }
+  display: inline-block;
+  margin: 0;
+  .artist-card__img-ctnr {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 100%;
+    position: relative;
+    &:hover .artist-card__cover {
+      transform: scale(1.1);
     }
-    .artist-card__info {
-        padding: 10px 5px;
-        .artist-card__info--artiste {
-            @include textOverflow();
-            display: block;
-            text-align: center;
-            color: $grey-text-2;
-            font-size: 20px;
-            @media screen and (max-width: 850px) {
-                font-size: 16px;
-            }
-        }
+    .artist-card__cover {
+      @include imageFit();
+      transform: scale(1);
+      transition: transform 0.8s ease;
     }
+    .artist-card__link {
+      display: block;
+      position: absolute;
+      top: 0;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .artist-card__info {
+    padding: 10px 5px;
+    .artist-card__info--artiste {
+      @include textOverflow();
+      display: block;
+      text-align: center;
+      color: $grey-text-2;
+      font-size: 20px;
+      @media screen and (max-width: 850px) {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .track-card {
-    display: inline-block;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+  .track-card__img-cntr {
+    border-radius: 10px;
+    position: relative;
     overflow: hidden;
-    margin: 0;
-    .track-card__img-cntr {
-        border-radius: 10px;
-        position: relative;
-        overflow: hidden;
-        &:hover {
-            a,
-            .track-card__play,
-            .track-card__love {
-                opacity: 1;
-                transition: opacity 0.4s ease;
-            }
-        }
-        a {
-            display: block;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(black, 0.3);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
+    &:hover {
+      a,
+      .track-card__play,
+      .track-card__love {
+        opacity: 1;
+        transition: opacity 0.4s ease;
+      }
     }
-    .track-card__cover {
-        @include imageFit();
+    a {
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(black, 0.3);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
+  }
+  .track-card__cover {
+    @include imageFit();
+  }
 
-    input[type="checkbox"] {
-        width: 0;
-        height: 0;
-        &:checked + .track-card__love svg path {
-            fill: $grey-text-1;
-        }
+  input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    &:checked + .track-card__love svg path {
+      fill: $grey-text-1;
     }
-    .track-card__love {
-        right: 10px;
-        svg path {
-            stroke: $grey-text-1;
-        }
+  }
+  .track-card__love {
+    right: 10px;
+    svg path {
+      stroke: $grey-text-1;
     }
+  }
 
-    .track-card__info {
-        padding: 7px 0;
-        box-sizing: border-box;
-        a,
-        p {
-            @include textOverflow();
-            color: $grey-text-4;
-        }
-        .track-card__info--title-track {
-            @include titleCard();
-        }
-        .track-card__info--title-album,
-        .track-card__info--artiste {
-            font-size: 14px;
-            font-weight: 400;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-        .track-card__info--artiste {
-            margin-right: 18px;
-            &::after {
-                content: "-";
-                position: absolute;
-                margin: 0 5px;
-            }
-        }
+  .track-card__info {
+    padding: 7px 0;
+    box-sizing: border-box;
+    a,
+    p {
+      @include textOverflow();
+      color: $grey-text-4;
     }
+    .track-card__info--title-track {
+      @include titleCard();
+    }
+    .track-card__info--title-album,
+    .track-card__info--artiste {
+      font-size: 14px;
+      font-weight: 400;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .track-card__info--artiste {
+      margin-right: 18px;
+      &::after {
+        content: "-";
+        position: absolute;
+        margin: 0 5px;
+      }
+    }
+  }
 }
 
 .track-card__play,
 .track-card__love {
-    opacity: 0;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    bottom: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    background: rgba(white, 0.2);
-    backdrop-filter: blur(50px);
-    transition: background 300ms ease;
-    transition: opacity 0.4s ease;
-    &:hover {
-        background: $pop-color;
-    }
-    @media screen and (max-width: 800px) {
-        opacity: 1;
-    }
+  opacity: 0;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: rgba(white, 0.2);
+  backdrop-filter: blur(50px);
+  transition: all 300ms ease;
+  transition: opacity 0.4s ease;
+  &:hover {
+    background: $pop-color;
+  }
+  @media screen and (max-width: 1024px) {
+    opacity: 1;
+  }
 }
 .track-card__play {
-    left: 10px;
-    i {
-        position: absolute;
-        top: calc(50% - 7px);
-        left: calc(50% - 5px);
-        font-size: 14px;
-        color: $grey-text-2;
-    }
+  left: 10px;
+  i {
+    position: absolute;
+    top: calc(50% - 7px);
+    left: calc(50% - 5px);
+    font-size: 14px;
+    color: $grey-text-2;
+  }
 }
 .track-card__love {
-    svg {
-        width: 18px;
-        height: 18px;
-        position: absolute;
-        top: calc(50% - 8.5px);
-        left: calc(50% - 9px);
-        path {
-            stroke-width: 1.5px;
-            fill: none;
-        }
+  svg {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: calc(50% - 8.5px);
+    left: calc(50% - 9px);
+    path {
+      stroke-width: 1.5px;
+      fill: none;
     }
+  }
 }
 
 .explicit-tag,
 .explicit-tag-mobile {
-    background: rgba(white, 0.4);
-    width: fit-content;
-    padding: 2px 5px;
-    border-radius: 3px;
-    color: white;
-    font-size: 10px;
+  background: rgba(white, 0.4);
+  width: fit-content;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: white;
+  font-size: 10px;
 }
 .explicit-tag {
-    display: inline-block;
-    @media screen and (max-width: $maxWidthMobile) {
-        display: none;
-    }
+  display: inline-block;
+  @media screen and (max-width: $maxWidthMobile) {
+    display: none;
+  }
 }
 .explicit-tag-mobile {
-    display: none;
-    @media screen and (max-width: $maxWidthMobile) {
-        display: inline-block;
-    }
+  display: none;
+  @media screen and (max-width: $maxWidthMobile) {
+    display: inline-block;
+  }
 }
 .list-track {
-    display: grid;
-    grid-template-rows: 50px;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 0;
-    border-radius: 8px;
-    box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  &:hover {
+    background: rgba($grey2, 0.5);
+    .track-card__play {
+      opacity: 1;
+    }
+  }
+  .list-track__number {
+    position: relative;
+    height: 100%;
+    @include flex(row, center, center);
+    span {
+      color: white;
+      font-size: 14px;
+    }
+    .track-card__play {
+      left: unset;
+      bottom: unset;
+    }
+  }
+  .list-track__cover {
+    width: 50px;
+    height: 50px;
+    border-radius: 2px;
+  }
+  .list-track__info {
+    @include flex(column, center, initial);
+    overflow: hidden;
+    &--title {
+      @include textOverflow();
+      @include titleCard();
+    }
+    &--artiste {
+      @include textOverflow();
+      @include infoCard();
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .list-track__album {
+    @include infoCard();
+    @include textOverflow();
     &:hover {
-        background: rgba($grey2, 0.5);
-        .track-card__play {
-            opacity: 1;
-        }
+      text-decoration: underline;
     }
-    .list-track__number {
-        position: relative;
-        height: 100%;
-        @include flex(row, center, center);
-        span {
-            color: white;
-            font-size: 14px;
-        }
-        .track-card__play {
-            left: unset;
-            bottom: unset;
-        }
+    @media screen and (max-width: 800px) {
+      display: none;
     }
-    .list-track__cover {
-        width: 50px;
-        height: 50px;
-        border-radius: 2px;
+  }
+  .explicit-tag {
+    margin: 0 auto;
+  }
+  .list-track__love-ctnr {
+    position: relative;
+    height: 100%;
+    @include flex(row, center, center);
+    input[type="checkbox"] {
+      width: 0;
+      height: 0;
+      &:checked + .track-card__love svg path {
+        fill: $grey-text-1;
+        stroke: $grey-text-1;
+      }
     }
-    .list-track__info {
-        @include flex(column, center, initial);
-        overflow: hidden;
-        &--title {
-            @include textOverflow();
-            @include titleCard();
-        }
-        &--artiste {
-            @include textOverflow();
-            @include infoCard();
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+    .track-card__love {
+      opacity: 1;
+      right: unset;
+      bottom: unset;
+      background: none;
+      &:hover path {
+        stroke: $grey-text-1;
+      }
+      svg path {
+        stroke: $grey-text-4;
+      }
     }
-    .list-track__album {
-        @include infoCard();
-        @include textOverflow();
-        &:hover {
-            text-decoration: underline;
-        }
-        @media screen and (max-width: 800px) {
-            display: none;
-        }
-    }
-    .explicit-tag {
-        margin: 0 auto;
-    }
-    .list-track__love-ctnr {
-        position: relative;
-        height: 100%;
-        @include flex(row, center, center);
-        input[type="checkbox"] {
-            width: 0;
-            height: 0;
-            &:checked + .track-card__love svg path {
-                fill: $grey-text-1;
-                stroke: $grey-text-1;
-            }
-        }
-        .track-card__love {
-            opacity: 1;
-            right: unset;
-            bottom: unset;
-            background: none;
-            &:hover path {
-                stroke: $grey-text-1;
-            }
-            svg path {
-                stroke: $grey-text-4;
-            }
-        }
-    }
-    .list-track__duration {
-        color: $grey-text-4;
-        margin: 0 auto;
-    }
+  }
+  .list-track__duration {
+    color: $grey-text-4;
+    margin: 0 auto;
+  }
 }
 
 .popular-card {
-    background: rgba(white, 0.2);
-    border-radius: 5px;
-    display: flex;
-    padding: 7px;
-    position: relative;
-    &:hover .track-card__play {
-        opacity: 1;
+  background: rgba(white, 0.2);
+  border-radius: 5px;
+  display: flex;
+  padding: 7px;
+  position: relative;
+  &:hover .track-card__play {
+    opacity: 1;
+  }
+  .track-card__play {
+    left: unset;
+    right: 10px;
+  }
+  .popular-card__profile,
+  .popular-card__cover {
+    width: 60px;
+    height: 60px;
+    background: rgba(white, 0.4);
+  }
+  .popular-card__cover {
+    border-radius: 3px;
+  }
+  .popular-card__profile {
+    border-radius: 50%;
+  }
+  .popular-card__info {
+    overflow: hidden;
+    padding-left: 10px;
+    @include flex(column, center, flex-start);
+    .popular-card__info--title {
+      @include titleCard();
+      @include textOverflow();
     }
-    .track-card__play {
-        left: unset;
-        right: 10px;
-    }
-    .popular-card__profile,
-    .popular-card__cover {
-        width: 60px;
-        height: 60px;
-        background: rgba(white, 0.4);
-    }
-    .popular-card__cover {
-        border-radius: 3px;
-    }
-    .popular-card__profile {
-        border-radius: 50%;
-    }
-    .popular-card__info {
-        overflow: hidden;
-        padding-left: 10px;
-        @include flex(column, center, flex-start);
-        .popular-card__info--title {
-            @include titleCard();
-            @include textOverflow();
+    .popular-card__info--subtitle {
+      color: $grey-text-4;
+      @include textOverflow();
+      span:last-child {
+        display: inline-block;
+        &::before {
+          content: "";
+          width: 3px;
+          height: 3px;
+          background-color: $grey-text-4;
+          display: inline-block;
+          border-radius: 50%;
+          margin: 0 4px 2px;
         }
-        .popular-card__info--subtitle {
-            color: $grey-text-4;
-            @include textOverflow();
-            span:last-child {
-                display: inline-block;
-                &::before {
-                    content: "";
-                    width: 3px;
-                    height: 3px;
-                    background-color: $grey-text-4;
-                    display: inline-block;
-                    border-radius: 50%;
-                    margin: 0 4px 2px;
-                }
-            }
-        }
+      }
     }
-    .popular-card__link {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-    }
+  }
+  .popular-card__link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
 }

@@ -5,30 +5,24 @@
   font-family: "SF Pro";
   src: url("/fonts/SF-Pro.ttf") format("ttf");
 }
-
 /*  MIXINS  */
-section {
+section:not(.player) {
   margin-bottom: 50px !important;
 }
-
 @media screen and (max-width: 1024px) {
-  section {
+  section:not(.player) {
     margin-bottom: 40px !important;
   }
 }
-
 @media screen and (max-width: 600px) {
-  section {
+  section:not(.player) {
     margin-bottom: 30px !important;
   }
 }
 
 .albums-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 /* SWIPER */
@@ -40,15 +34,14 @@ section {
 
 .swiper-slide {
   /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
+}
+@media screen and (max-width: 600px) {
+  .swiper-slide {
+    width: auto !important;
+  }
 }
 
 .arrows {
@@ -56,30 +49,105 @@ section {
   top: 30px;
   right: 0px;
   width: 92px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
-
 .arrows .swiper-button-prev,
 .arrows .swiper-button-next {
   height: 30px;
   width: 30px;
   color: #e0e0e0;
 }
-
 .arrows .swiper-button-prev::after,
 .arrows .swiper-button-next::after {
   font-size: 18px;
 }
-
 @media screen and (max-width: 600px) {
   .arrows .swiper-button-prev,
-  .arrows .swiper-button-next {
+.arrows .swiper-button-next {
     display: none;
+  }
+}
+
+.album-card,
+.artist-card,
+.track-card {
+  width: 150px;
+}
+@media screen and (min-width: 600px) {
+  .album-card,
+.artist-card,
+.track-card {
+    width: 18vw;
+  }
+}
+@media screen and (min-width: 850px) {
+  .album-card,
+.artist-card,
+.track-card {
+    width: 23vw;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .album-card,
+.artist-card,
+.track-card {
+    width: 18vw;
+  }
+}
+@media screen and (min-width: 1250px) {
+  .album-card,
+.artist-card,
+.track-card {
+    width: 15vw;
+  }
+}
+@media screen and (min-width: 1760px) {
+  .album-card,
+.artist-card,
+.track-card {
+    width: 264px;
+  }
+}
+
+.album-card__img-ctnr,
+.artist-card__img-ctnr,
+.track-card__img-cntr {
+  width: 100%;
+  height: 150px;
+}
+@media screen and (min-width: 600px) {
+  .album-card__img-ctnr,
+.artist-card__img-ctnr,
+.track-card__img-cntr {
+    height: 18vw;
+  }
+}
+@media screen and (min-width: 850px) {
+  .album-card__img-ctnr,
+.artist-card__img-ctnr,
+.track-card__img-cntr {
+    height: 23vw;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .album-card__img-ctnr,
+.artist-card__img-ctnr,
+.track-card__img-cntr {
+    height: 18vw;
+  }
+}
+@media screen and (min-width: 1250px) {
+  .album-card__img-ctnr,
+.artist-card__img-ctnr,
+.track-card__img-cntr {
+    height: 15vw;
+  }
+}
+@media screen and (min-width: 1760px) {
+  .album-card__img-ctnr,
+.artist-card__img-ctnr,
+.track-card__img-cntr {
+    height: 264px;
   }
 }
