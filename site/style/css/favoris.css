@@ -1,10 +1,7 @@
 /*  COLORS  */
 /*  MEDIA  */
 /*  FONTS  */
-@font-face {
-  font-family: "SF Pro";
-  src: url("/fonts/SF-Pro.ttf") format("ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /*  MIXINS  */
 .list-track {
   grid-template-columns: 50px 50px 1fr 1fr 70px 50px 45px;

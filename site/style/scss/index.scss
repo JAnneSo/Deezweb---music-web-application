@@ -1,5 +1,8 @@
 @import "tools.scss";
 
+main {
+  position: relative;
+}
 section:not(.player) {
   margin-bottom: 50px !important;
   @media screen and (max-width: $maxWidthTablet) {
@@ -8,6 +11,17 @@ section:not(.player) {
   @media screen and (max-width: $maxWidthMobile) {
     margin-bottom: 30px !important;
   }
+}
+#loader {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background: $background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 .albums-section {
   display: flex;
@@ -35,7 +49,7 @@ section:not(.player) {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: $maxWidthMobile) {
     width: auto !important;
   }
 }
@@ -64,7 +78,7 @@ section:not(.player) {
 .album-card,
 .artist-card,
 .track-card {
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: $minWidthTablet) {
     width: 18vw;
   }
   @media screen and (min-width: 850px) {
@@ -91,7 +105,7 @@ section:not(.player) {
   //   @media screen and (min-width: 500px) {
   //     height: 27.14vw;
   //   }
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: $minWidthTablet) {
     height: 18vw;
   }
   @media screen and (min-width: 850px) {

@@ -95,6 +95,7 @@ if (search_params.has("id")) {
           range.style.display = "block";
           range.setAttribute("value", "0");
         }
+        document.getElementById("player").style.top = 0;
         loadMusic(trackList[0]);
         /**
          * @function playPlaylist

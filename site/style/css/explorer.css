@@ -1,10 +1,7 @@
 /*  COLORS  */
 /*  MEDIA  */
 /*  FONTS  */
-@font-face {
-  font-family: "SF Pro";
-  src: url("/fonts/SF-Pro.ttf") format("ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /*  MIXINS  */
 .explore-section {
   display: grid;
@@ -54,7 +51,7 @@
     align-items: center;
   }
 }
-.genre-card .genre-card__cover {
+.genre-card__cover {
   width: 100%;
   height: 100%;
   -o-object-position: center;
@@ -62,7 +59,12 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
-.genre-card .genre-card__link {
+@media screen and (max-width: 600px) {
+  .genre-card__cover {
+    filter: blur(10px);
+  }
+}
+.genre-card__link {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -73,23 +75,17 @@
   text-align: center;
   box-sizing: border-box;
   padding: 15px 5px;
-  font-size: 20px;
+  font-size: 18px;
   color: #e0e0e0;
-  -webkit-backdrop-filter: blur(50px);
-          backdrop-filter: blur(50px);
-  background: rgba(27, 27, 27, 0.3);
+  background: rgba(27, 27, 27, 0.5);
   transition: all 0.8s ease;
 }
-@media screen and (max-width: 850px) {
-  .genre-card .genre-card__link {
-    font-size: 18px;
-  }
-}
 @media screen and (max-width: 600px) {
-  .genre-card .genre-card__link {
+  .genre-card__link {
     font-size: 16px;
     padding: 5px;
     align-items: center;
+    height: 100%;
   }
 }
 

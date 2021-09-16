@@ -1,16 +1,15 @@
 /*  COLORS  */
 /*  MEDIA  */
 /*  FONTS  */
-@font-face {
-  font-family: "SF Pro";
-  src: url("/fonts/SF-Pro.ttf") format("ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /*  MIXINS  */
 .controls-container .control {
   cursor: pointer;
 }
-.controls-container .control:hover {
-  color: #bdbdbd;
+@media screen and (min-width: 1025px) {
+  .controls-container .control:hover {
+    color: #bdbdbd;
+  }
 }
 
 .album-ctnr {
@@ -74,8 +73,10 @@
   margin: 7px 5px;
   background: #828282;
 }
-.album-ctnr .album__info .album__info--genre a:hover {
-  text-decoration: underline;
+@media screen and (min-width: 1025px) {
+  .album-ctnr .album__info .album__info--genre a:hover {
+    text-decoration: underline;
+  }
 }
 .album-ctnr .btn-ctnr {
   position: absolute;

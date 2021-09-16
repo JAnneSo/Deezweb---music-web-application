@@ -286,6 +286,33 @@ function createListCard(index, objTrack) {
 
   return cardElt;
 }
+/**
+ * @function navScroll
+ * @description manages the disappearance/appearance of the nav bar
+ */
+function navScroll() {
+  if (window.innerWidth < 600) {
+    let departScroll = window.pageYOffset;
+    window.onscroll = function () {
+      let currentScrollpos = window.pageYOffset;
+      if (window.pageYOffset == 0) {
+        document.getElementById("navBar").style.bottom = "-1px";
+      } else if (departScroll > currentScrollpos) {
+        document.getElementById("navBar").style.bottom = "-1px";
+      } else {
+        document.getElementById("navBar").style.bottom = "-70px";
+      }
+      departScroll = currentScrollpos;
+    };
+  }
+}
+
+window.onload = () => {
+  navScroll();
+};
+window.onresize = () => {
+  navScroll();
+};
 
 /**
  * @function loadTrack
@@ -303,6 +330,7 @@ function loadTrack(track) {
   ).innerHTML = `${track.artist.name} - ${track.album.title}`;
   range.style.display = "block";
   range.setAttribute("value", "0");
+  document.getElementById("player").style.top = 0;
 }
 
 /**

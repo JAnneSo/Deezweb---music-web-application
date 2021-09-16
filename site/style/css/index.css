@@ -1,11 +1,12 @@
 /*  COLORS  */
 /*  MEDIA  */
 /*  FONTS  */
-@font-face {
-  font-family: "SF Pro";
-  src: url("/fonts/SF-Pro.ttf") format("ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /*  MIXINS  */
+main {
+  position: relative;
+}
+
 section:not(.player) {
   margin-bottom: 50px !important;
 }
@@ -18,6 +19,18 @@ section:not(.player) {
   section:not(.player) {
     margin-bottom: 30px !important;
   }
+}
+
+#loader {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
 .albums-section {
@@ -74,7 +87,7 @@ section:not(.player) {
 .track-card {
   width: 150px;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 601px) {
   .album-card,
 .artist-card,
 .track-card {
@@ -116,7 +129,7 @@ section:not(.player) {
   width: 100%;
   height: 150px;
 }
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 601px) {
   .album-card__img-ctnr,
 .artist-card__img-ctnr,
 .track-card__img-cntr {

@@ -40,8 +40,10 @@
   }
   .artist__info--deezer-link {
     color: $grey-text-1;
-    &:hover {
-      text-decoration: underline;
+    @media screen and (min-width: $maxWidthTablet + 1) {
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -62,8 +64,11 @@ h2 {
       @media screen and (max-width: $maxWidthMobile) {
         width: 50vw;
       }
-      .album-card__info--title {
-        font-size: 16px;
+      &__img-ctnr {
+        height: 20vw;
+        @media screen and (max-width: $maxWidthMobile) {
+          height: 50vw;
+        }
       }
     }
   }

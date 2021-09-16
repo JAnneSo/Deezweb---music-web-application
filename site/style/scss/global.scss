@@ -4,10 +4,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: SF Pro;
-  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
   background: $background;
   display: flex;
+  @media screen and (max-width: $maxWidthTablet) {
+    font-size: 12px;
+  }
   @media screen and (max-width: $maxWidthMobile) {
     display: block;
   }
@@ -40,7 +43,7 @@ body {
   }
   h1 {
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 600;
   }
   h2 {
     font-size: 22px;
@@ -54,7 +57,7 @@ aside {
   background: $grey1;
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: $maxWidthMobile) {
+  @media screen and (min-width: $maxWidthMobile + 1) {
     top: 0;
     width: 200px;
     height: 100vh;
@@ -67,13 +70,12 @@ aside {
     flex-direction: row;
     z-index: 1;
     bottom: -1px;
+    transition: bottom .4s ease;
     // backdrop-filter: blur(50px);
     // background: rgba(black, 0.1);
   }
   .logo {
     color: $grey-text-3;
-    font-size: 16px;
-    font-weight: 700;
     margin: 0 0 30px 30px;
     @media screen and (max-width: $maxWidthMobile) {
       display: none;
@@ -115,16 +117,21 @@ aside {
 
       border-radius: 5px;
       cursor: pointer;
-      &:hover {
-        background: $grey2;
+      @media screen and (min-width: $maxWidthTablet + 1) {
+        &:hover {
+          background: $grey2;
+        }
       }
     }
 
     .nav-link {
       padding: 5px 20px;
       display: block;
-      font-size: 14px;
+      font-size: 16px;
       color: $grey-text-4;
+      @media screen and (max-width: $maxWidthTablet) {
+        font-size: 16px;
+      }
       @media screen and (max-width: $maxWidthMobile) {
         span {
           display: none;
@@ -140,8 +147,8 @@ aside {
       }
     }
     .fa {
-      margin-right: 10px;
-      font-size: 14px;
+      margin-right: 12px;
+      font-size: 18px;
       color: $pop-color;
       @media screen and (max-width: $maxWidthMobile) {
         font-size: 24px;
@@ -161,15 +168,18 @@ aside {
   }
   input[type="search"] {
     width: 100%;
-    padding: 5px 20px;
-    font-size: 14px;
+    padding: 8px 20px;
+    font-size: 18px;
     padding: 5px 15px 5px 20px;
     color: $grey-text-2;
+    @media screen and (max-width: $maxWidthTablet) {
+      font-size: 16px;
+    }
   }
   button {
     position: absolute;
     right: 5px;
-    top: 2px;
+    top: 4px;
     margin: auto 5px;
     padding: 0 2px;
     font-size: 15px;
@@ -196,7 +206,7 @@ aside {
   z-index: 1;
   position: fixed;
   backdrop-filter: blur(50px);
-  background: rgba(black, 0.1);
+  background: rgba(black, 0.2);
   @media screen and (min-width: $maxWidthMobile) {
     height: 55px;
     top: 0;
@@ -211,7 +221,8 @@ aside {
     padding: 0 10px;
     height: 61px;
     width: 100vw;
-    bottom: 58px;
+    top: -150%;
+    transition: top .4s ease;
     @include flex(row-reverse, space-between, center);
   }
   .controls-container {
@@ -229,8 +240,10 @@ aside {
     }
     .play {
       cursor: pointer;
-      &:hover {
-        color: $grey-text-3;
+      @media screen and (min-width: $maxWidthTablet + 1) {
+        &:hover {
+          color: $grey-text-3;
+        }
       }
     }
 
@@ -282,10 +295,12 @@ aside {
         align-items: center;
         padding-top: 0;
       }
-      &:hover {
-        .duration,
-        label {
-          opacity: 1;
+      @media screen and (min-width: $maxWidthTablet + 1) {
+        &:hover {
+          .duration,
+          label {
+            opacity: 1;
+          }
         }
       }
       p {
@@ -415,7 +430,7 @@ main {
   max-width: 1500px;
   margin: 0 auto;
   @media screen and (max-width: $maxWidthMobile) {
-    padding: 40px 20px 140px;
+    padding: 60px 20px 140px;
   }
 }
 
@@ -436,9 +451,11 @@ main {
       top: 0;
       width: 100%;
       height: 100%;
-      transition: background 0.4s ease;
-      &:hover {
-        background: rgba($color: #000000, $alpha: 0.4);
+      transition: all 0.4s ease;
+      @media screen and (min-width: $maxWidthTablet + 1) {
+        &:hover {
+          background: rgba($color: #000000, $alpha: 0.4);
+        }
       }
     }
     .album-card__cover {
@@ -470,8 +487,10 @@ main {
     border-radius: 50%;
     width: 100%;
     position: relative;
-    &:hover .artist-card__cover {
-      transform: scale(1.1);
+    @media screen and (min-width: $maxWidthTablet + 1) {
+      &:hover .artist-card__cover {
+        transform: scale(1.1);
+      }
     }
     .artist-card__cover {
       @include imageFit();
@@ -494,8 +513,8 @@ main {
       display: block;
       text-align: center;
       color: $grey-text-2;
-      font-size: 20px;
-      @media screen and (max-width: 850px) {
+      font-size: 18px;
+      @media screen and (max-width: $maxWidthTablet) {
         font-size: 16px;
       }
     }
@@ -510,12 +529,14 @@ main {
     border-radius: 10px;
     position: relative;
     overflow: hidden;
-    &:hover {
-      a,
-      .track-card__play,
-      .track-card__love {
-        opacity: 1;
-        transition: opacity 0.4s ease;
+    @media screen and (min-width: $maxWidthTablet + 1) {
+      &:hover {
+        a,
+        .track-card__play,
+        .track-card__love {
+          opacity: 1;
+          transition: opacity 0.4s ease;
+        }
       }
     }
     a {
@@ -527,6 +548,9 @@ main {
       background: rgba(black, 0.3);
       opacity: 0;
       transition: opacity 0.4s ease;
+      @media screen and (max-width: $maxWidthTablet) {
+        opacity: 1;
+      }
     }
   }
   .track-card__cover {
@@ -590,8 +614,10 @@ main {
   backdrop-filter: blur(50px);
   transition: all 300ms ease;
   transition: opacity 0.4s ease;
-  &:hover {
-    background: $pop-color;
+  @media screen and (min-width: $maxWidthTablet + 1) {
+    &:hover {
+      background: $pop-color;
+    }
   }
   @media screen and (max-width: 1024px) {
     opacity: 1;
@@ -650,10 +676,12 @@ main {
   padding: 8px 0;
   border-radius: 8px;
   box-sizing: border-box;
-  &:hover {
-    background: rgba($grey2, 0.5);
-    .track-card__play {
-      opacity: 1;
+  @media screen and (min-width: $maxWidthTablet + 1) {
+    &:hover {
+      background: rgba($grey2, 0.5);
+      .track-card__play {
+        opacity: 1;
+      }
     }
   }
   .list-track__number {
@@ -719,8 +747,10 @@ main {
       right: unset;
       bottom: unset;
       background: none;
-      &:hover path {
-        stroke: $grey-text-1;
+      @media screen and (min-width: $maxWidthTablet + 1) {
+        &:hover path {
+          stroke: $grey-text-1;
+        }
       }
       svg path {
         stroke: $grey-text-4;
@@ -739,8 +769,10 @@ main {
   display: flex;
   padding: 7px;
   position: relative;
-  &:hover .track-card__play {
-    opacity: 1;
+  @media screen and (min-width: $maxWidthTablet + 1) {
+    &:hover .track-card__play {
+      opacity: 1;
+    }
   }
   .track-card__play {
     left: unset;

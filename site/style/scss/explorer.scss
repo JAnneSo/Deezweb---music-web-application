@@ -1,86 +1,87 @@
 @import "tools.scss";
 
 .explore-section {
-    display: grid;
-    grid-template-columns: repeat(4, 17vw);
-    justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 17vw);
+  justify-content: space-around;
+  transition: grid-template-columns 0.5s ease;
+  @media screen and (max-width: 1225px) {
+    grid-template-columns: repeat(3, 20vw);
     transition: grid-template-columns 0.5s ease;
-    @media screen and (max-width: 1225px) {
-        grid-template-columns: repeat(3, 20vw);
-        transition: grid-template-columns 0.5s ease;
-    }
-    @media screen and (max-width: 850px) {
-        grid-template-columns: repeat(2, 27vw);
-        transition: grid-template-columns 0.5s ease;
-    }
-    @media screen and (max-width: $maxWidthMobile) {
-        grid-template-columns: repeat(2, 35vw);
-    }
+  }
+  @media screen and (max-width: 850px) {
+    grid-template-columns: repeat(2, 27vw);
+    transition: grid-template-columns 0.5s ease;
+  }
+  @media screen and (max-width: $maxWidthMobile) {
+    grid-template-columns: repeat(2, 35vw);
+  }
 }
 
 .genre-card {
-    width: 100%;
+  width: 100%;
+  height: 19vw;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 40px;
+  @media screen and (max-width: 850px) {
     height: 19vw;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 40px;
-    @media screen and (max-width: 850px) {
-        height: 19vw;
-        margin-bottom: 5vw;
-    }
+    margin-bottom: 5vw;
+  }
+  @media screen and (max-width: $maxWidthMobile) {
+    height: 25vw;
+    font-size: 18px;
+    align-items: center;
+  }
+  &__cover {
+    @include imageFit();
     @media screen and (max-width: $maxWidthMobile) {
-        height: 25vw;
-        font-size: 18px;
-        align-items: center;
+      filter: blur(10px);
     }
-    .genre-card__cover {
-        @include imageFit();
+  }
+  &__link {
+    @include flex(row, center, flex-end);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 15px 5px;
+    font-size: 18px;
+    color: $grey-text-2;
+    //backdrop-filter: blur(50px);
+    background: rgba(27, 27, 27, 0.5);
+    transition: all 0.8s ease;
+    @media screen and (max-width: $maxWidthMobile) {
+      font-size: 16px;
+      padding: 5px;
+      align-items: center;
+      height: 100%;
     }
-    .genre-card__link {
-        @include flex(row, center, flex-end);
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        box-sizing: border-box;
-        padding: 15px 5px;
-        font-size: 20px;
-        color: $grey-text-2;
-        backdrop-filter: blur(50px);
-        background: rgba(27, 27, 27, 0.3);
-        transition: all 0.8s ease;
-        @media screen and (max-width: 850px) {
-            font-size: 18px;
-        }
-        @media screen and (max-width: $maxWidthMobile) {
-            font-size: 16px;
-            padding: 5px;
-            align-items: center;
-        }
-    }
+  }
 }
 
 .artist-card {
-    margin-bottom: 20px;
-    .artist-card__img-ctnr {
-        height: 17vw;
-        @media screen and (max-width: 1225px) {
-            height: 20vw;
-        }
-        @media screen and (max-width: 850px) {
-            height: 27vw;
-        }
-        @media screen and (max-width: $maxWidthMobile) {
-            height: 35vw;
-        }
+  margin-bottom: 20px;
+  .artist-card__img-ctnr {
+    height: 17vw;
+    @media screen and (max-width: 1225px) {
+      height: 20vw;
     }
-    .artist-card__info {
-        .artist-card__info--artiste {
-            font-size: 20px;
-            @media screen and (max-width: 850px) {
-                font-size: 16px;
-            }
-        }
+    @media screen and (max-width: 850px) {
+      height: 27vw;
     }
+    @media screen and (max-width: $maxWidthMobile) {
+      height: 35vw;
+    }
+  }
+  .artist-card__info {
+    .artist-card__info--artiste {
+      font-size: 20px;
+      @media screen and (max-width: 850px) {
+        font-size: 16px;
+      }
+    }
+  }
 }

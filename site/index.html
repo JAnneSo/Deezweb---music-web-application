@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <aside>
+    <aside id="navBar">
         <a href="index.html" class="logo"><img src="assets/images/Deezweb.svg" alt="deezweb"></a>
         <div class="search-container">
             <input type="search" id="side-search" placeholder="Rechercher"
@@ -34,7 +34,7 @@
         </nav>
     </aside>
     <div class="container-main">
-        <section class="player">
+        <section class="player" id="player">
             <audio id="audio-song">
             </audio>
             <div class="controls-container">
@@ -62,10 +62,11 @@
         </section>
 
         <main id="home-main">
+            <div id="loader">
+                <lottie-player src="assets/loader.json" background="transparent" speed="1"
+                    style="width: 70px; height: 70px;" loop autoplay></lottie-player>
+            </div>
             <h1>Accueil</h1>
-            <lottie-player id="loader" src="assets/loader.json" background="transparent" speed="1"
-                style="width: 70px; height: 70px;" loop autoplay></lottie-player>
-
             <section>
                 <h2>Albums</h2>
                 <!-- SWIPER -->

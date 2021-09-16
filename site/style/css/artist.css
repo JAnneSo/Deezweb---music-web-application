@@ -1,10 +1,7 @@
 /*  COLORS  */
 /*  MEDIA  */
 /*  FONTS  */
-@font-face {
-  font-family: "SF Pro";
-  src: url("/fonts/SF-Pro.ttf") format("ttf");
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /*  MIXINS  */
 .artist {
   position: relative;
@@ -53,8 +50,10 @@
 .artist .artist__info--deezer-link {
   color: #f2f2f2;
 }
-.artist .artist__info--deezer-link:hover {
-  text-decoration: underline;
+@media screen and (min-width: 1025px) {
+  .artist .artist__info--deezer-link:hover {
+    text-decoration: underline;
+  }
 }
 
 h2 {
@@ -83,8 +82,13 @@ h2 {
     width: 50vw;
   }
 }
-.popular-section .popular-section__album .album-card .album-card__info--title {
-  font-size: 16px;
+.popular-section .popular-section__album .album-card__img-ctnr {
+  height: 20vw;
+}
+@media screen and (max-width: 600px) {
+  .popular-section .popular-section__album .album-card__img-ctnr {
+    height: 50vw;
+  }
 }
 .popular-section .popular-section__tracks {
   width: 100%;
