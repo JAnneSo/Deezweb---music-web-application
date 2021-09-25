@@ -14,6 +14,7 @@ main {
 #loader {
   position: absolute;
   height: 80vh;
+  display: none;
 }
 
 fieldset {
