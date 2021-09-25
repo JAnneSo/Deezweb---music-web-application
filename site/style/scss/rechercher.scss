@@ -3,8 +3,12 @@
 main {
   padding-top: 70px;
 }
+.content {
+  position: relative;
+}
 #loader {
-  display: none;
+  position: absolute;
+  height: 80vh;
 }
 fieldset {
   border: none;
@@ -94,12 +98,17 @@ fieldset {
   grid-template-columns: repeat(3, 33%);
   justify-content: space-between;
   @media screen and (max-width: 800px) {
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(3, 32%);
-    grid-gap: 2%;
+    display: block;
   }
   .track-card__play {
     z-index: 3;
+  }
+  .popular-card {
+    @media screen and (max-width: 800px) {
+      &:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+    }
   }
 }
 
@@ -108,19 +117,16 @@ fieldset {
 .track-container,
 .research-section {
   display: grid;
-  grid-template-columns: repeat(4, 17vw);
-  justify-content: space-around;
-  transition: grid-template-columns 0.5s ease;
+  grid-template-columns: repeat(4, 18vw);
+  justify-content: space-between;
   @media screen and (max-width: 1225px) {
-    grid-template-columns: repeat(3, 20vw);
-    transition: grid-template-columns 0.5s ease;
+    grid-template-columns: repeat(3, 22vw);
   }
   @media screen and (max-width: 850px) {
-    grid-template-columns: repeat(2, 27vw);
-    transition: grid-template-columns 0.5s ease;
+    grid-template-columns: repeat(2, 28vw);
   }
   @media screen and (max-width: $maxWidthMobile) {
-    grid-template-columns: repeat(2, 35vw);
+    grid-template-columns: repeat(2, 40vw);
   }
 }
 
@@ -129,15 +135,15 @@ fieldset {
     margin-bottom: 20px;
   }
   .artist-card__img-ctnr {
-    height: 17vw;
+    height: 18vw;
     @media screen and (max-width: 1225px) {
-      height: 20vw;
+      height: 22vw;
     }
     @media screen and (max-width: 850px) {
-      height: 27vw;
+      height: 28vw;
     }
     @media screen and (max-width: $maxWidthMobile) {
-      height: 35vw;
+      height: 40vw;
     }
   }
   .artist-card__info {
@@ -158,14 +164,14 @@ fieldset {
 .track-card__img-cntr,
 .album-card__img-ctnr,
 .artist-card__img-ctnr {
-  height: 17vw;
+  height: 18vw;
   @media screen and (max-width: 1225px) {
-    height: 20vw;
+    height: 22vw;
   }
   @media screen and (max-width: 850px) {
-    height: 27vw;
+    height: 28vw;
   }
   @media screen and (max-width: $maxWidthMobile) {
-    height: 35vw;
+    height: 40vw;
   }
 }

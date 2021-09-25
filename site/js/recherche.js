@@ -32,7 +32,9 @@ function displaySection(
  * @param {string} containerId
  */
 function deleteContent(containerId) {
-  document.getElementById(containerId).innerHTML = "";
+  if (document.getElementById(containerId)) {
+    document.getElementById(containerId).innerHTML = "";
+  }
 }
 
 /**
@@ -41,7 +43,10 @@ function deleteContent(containerId) {
  * @param {string} inputValue
  */
 function globalResearch(inputValue) {
-  loader.style.display = "block";
+  loader.style.display = "flex";
+  deleteContent("artist-section");
+  deleteContent("album-section");
+  deleteContent("track-section");
   document.getElementById("research").innerHTML = "";
   for (let i = 0; i < radioElts.length; i++) {
     if (radioElts[i].checked) {
@@ -88,7 +93,7 @@ function globalResearch(inputValue) {
                     createArtistCard
                   );
                 } else {
-                  deleteContent("artist-container");
+                  // deleteContent("artist-container");
                 }
                 if (albumsOK) {
                   divElt.innerHTML += `<div class="popular-card">
@@ -108,7 +113,7 @@ function globalResearch(inputValue) {
                     createAlbumCard
                   );
                 } else {
-                  deleteContent("album-container");
+                  // deleteContent("album-container");
                 }
                 if (tracksOK) {
                   divElt.innerHTML += `<div class="popular-card">
@@ -129,14 +134,14 @@ function globalResearch(inputValue) {
                     createTrackCard
                   );
                 } else {
-                  deleteContent("track-container");
+                  // deleteContent("track-container");
                 }
                 popularSection.appendChild(divElt);
                 getCheckboxState();
               } else {
-                deleteContent("artist-section");
-                deleteContent("album-section");
-                deleteContent("track-section");
+                // deleteContent("artist-section");
+                // deleteContent("album-section");
+                // deleteContent("track-section");
                 popularSection.innerHTML = "<h2>Il n'y a pas de résultats</h2>";
               }
             })

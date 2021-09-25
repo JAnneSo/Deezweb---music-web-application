@@ -7,8 +7,13 @@ main {
   padding-top: 70px;
 }
 
+.content {
+  position: relative;
+}
+
 #loader {
-  display: none;
+  position: absolute;
+  height: 80vh;
 }
 
 fieldset {
@@ -103,13 +108,16 @@ fieldset .filters label:not(:last-child) {
 }
 @media screen and (max-width: 800px) {
   .popular-container {
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(3, 32%);
-    grid-gap: 2%;
+    display: block;
   }
 }
 .popular-container .track-card__play {
   z-index: 3;
+}
+@media screen and (max-width: 800px) {
+  .popular-container .popular-card:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
 }
 
 .artist-container,
@@ -117,19 +125,15 @@ fieldset .filters label:not(:last-child) {
 .track-container,
 .research-section {
   display: grid;
-  grid-template-columns: repeat(4, 17vw);
-  justify-content: space-around;
-  transition: grid-template-columns 0.5s ease;
-  transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
+  grid-template-columns: repeat(4, 18vw);
+  justify-content: space-between;
 }
 @media screen and (max-width: 1225px) {
   .artist-container,
 .album-container,
 .track-container,
 .research-section {
-    grid-template-columns: repeat(3, 20vw);
-    transition: grid-template-columns 0.5s ease;
-    transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
+    grid-template-columns: repeat(3, 22vw);
   }
 }
 @media screen and (max-width: 850px) {
@@ -137,9 +141,7 @@ fieldset .filters label:not(:last-child) {
 .album-container,
 .track-container,
 .research-section {
-    grid-template-columns: repeat(2, 27vw);
-    transition: grid-template-columns 0.5s ease;
-    transition: grid-template-columns 0.5s ease, -ms-grid-columns 0.5s ease;
+    grid-template-columns: repeat(2, 28vw);
   }
 }
 @media screen and (max-width: 600px) {
@@ -147,7 +149,7 @@ fieldset .filters label:not(:last-child) {
 .album-container,
 .track-container,
 .research-section {
-    grid-template-columns: repeat(2, 35vw);
+    grid-template-columns: repeat(2, 40vw);
   }
 }
 
@@ -155,21 +157,21 @@ fieldset .filters label:not(:last-child) {
   margin-bottom: 20px;
 }
 .artist-container .artist-card__img-ctnr {
-  height: 17vw;
+  height: 18vw;
 }
 @media screen and (max-width: 1225px) {
   .artist-container .artist-card__img-ctnr {
-    height: 20vw;
+    height: 22vw;
   }
 }
 @media screen and (max-width: 850px) {
   .artist-container .artist-card__img-ctnr {
-    height: 27vw;
+    height: 28vw;
   }
 }
 @media screen and (max-width: 600px) {
   .artist-container .artist-card__img-ctnr {
-    height: 35vw;
+    height: 40vw;
   }
 }
 .artist-container .artist-card__info .artist-card__info--artiste {
@@ -189,26 +191,26 @@ fieldset .filters label:not(:last-child) {
 .track-card__img-cntr,
 .album-card__img-ctnr,
 .artist-card__img-ctnr {
-  height: 17vw;
+  height: 18vw;
 }
 @media screen and (max-width: 1225px) {
   .track-card__img-cntr,
 .album-card__img-ctnr,
 .artist-card__img-ctnr {
-    height: 20vw;
+    height: 22vw;
   }
 }
 @media screen and (max-width: 850px) {
   .track-card__img-cntr,
 .album-card__img-ctnr,
 .artist-card__img-ctnr {
-    height: 27vw;
+    height: 28vw;
   }
 }
 @media screen and (max-width: 600px) {
   .track-card__img-cntr,
 .album-card__img-ctnr,
 .artist-card__img-ctnr {
-    height: 35vw;
+    height: 40vw;
   }
 }
