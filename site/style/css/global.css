@@ -641,6 +641,11 @@ main {
     transition: opacity 0.4s ease;
   }
 }
+.track-card .track-card__img-cntr img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .track-card .track-card__img-cntr a {
   display: block;
   position: absolute;

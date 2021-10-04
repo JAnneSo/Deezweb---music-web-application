@@ -20,8 +20,7 @@ songs, albums and artists using the free developer API provided by the Deezer se
 
 ## Installation
 
-Install the _Moesif Origin & CORS Changer_ extension on your browser and activate it.<br>
-Open index.html.
+Download and open index.html.
 
 ## Overview
 
